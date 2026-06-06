@@ -1,0 +1,1024 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 1 — The Weimar Republic 1918–1929 · Interactive Study Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="stylesheet.css">
+
+
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <div class="badge">Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany</div>
+            <h1>Topic 1 · The Weimar Republic 1918–1929</h1>
+            <p>Interactive revision guide · All key content + full exam practice</p>
+        </div>
+        <a href="index.html" class="home-link">← 🏡 Home</a>
+    </header>
+
+    <nav class="tab-bar" id="tabBar">
+        <button class="tab-btn active" onclick="switchTab('learn',this)">📚 Key Learning</button>
+        <button class="tab-btn" onclick="switchTab('mcq',this)">❓ MCQ Quiz</button>
+        <button class="tab-btn" onclick="switchTab('matching',this)">🔗 Matching</button>
+        <button class="tab-btn" onclick="switchTab('fib',this)">✏️ Fill the Blanks</button>
+        <button class="tab-btn" onclick="switchTab('misconceptions',this)">⚠️ Misconceptions</button>
+        <button class="tab-btn" onclick="switchTab('examtips',this)">🎯 Exam Tips</button>
+        <button class="tab-btn" onclick="switchTab('flashcards',this)">🃏 Flashcards</button>
+        <button class="tab-btn" onclick="switchTab('truefalse',this)">✅ True / False</button>
+        <button class="tab-btn" onclick="switchTab('exampractice',this)">📝 Exam Practice</button>
+    </nav>
+
+    <main>
+
+        <!-- ═══════════════════════ KEY LEARNING ═══════════════════════ -->
+        <div class="tab-panel active" id="tab-learn">
+            <h2 class="section-title">Key Learning Topics</h2>
+            <p class="section-sub">Click any card to expand detailed notes.</p>
+            <div class="topic-grid" id="topicGrid"></div>
+        </div>
+
+        <!-- ═══════════════════════ MCQ ═══════════════════════ -->
+        <div class="tab-panel" id="tab-mcq">
+            <h2 class="section-title">Multiple Choice Questions</h2>
+            <p class="section-sub">Select an answer to reveal instant feedback.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="mcqScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct answers</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">out of <strong id="mcqTotal">0</strong> attempted</div>
+                <button class="reset-btn" onclick="resetMCQ()">RESET</button>
+            </div>
+            <div class="quiz-wrap" id="mcqWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ MATCHING ═══════════════════════ -->
+        <div class="tab-panel" id="tab-matching">
+            <h2 class="section-title">Matching Activity</h2>
+            <p class="section-sub">Click a term on the left, then click the matching definition on the right.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="matchScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">matched</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">out of <strong id="matchTotal">0</strong></div>
+                <button class="reset-btn" onclick="resetMatch()">RESET</button>
+            </div>
+            <div class="match-grid">
+                <div>
+                    <div class="match-label">TERMS</div>
+                    <div class="match-col" id="matchLeft"></div>
+                </div>
+                <div>
+                    <div class="match-label">DEFINITIONS</div>
+                    <div class="match-col" id="matchRight"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════ FILL IN BLANKS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-fib">
+            <h2 class="section-title">Fill in the Blanks</h2>
+            <p class="section-sub">Choose the correct word from each dropdown. Wrong answers reset — try again!</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="fibScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">of <strong id="fibTotal">0</strong> blanks</div>
+                <button class="reset-btn" onclick="resetFIB()">RESET</button>
+            </div>
+            <div class="fib-wrap" id="fibWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ MISCONCEPTIONS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-misconceptions">
+            <h2 class="section-title">Common Misconceptions</h2>
+            <p class="section-sub">What students often think — and what examiners actually want.</p>
+            <div class="misc-list" id="miscList"></div>
+        </div>
+
+        <!-- ═══════════════════════ EXAM TIPS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-examtips">
+            <h2 class="section-title">Exam Questions &amp; Tips</h2>
+            <p class="section-sub">Most repeated question types and mark-scheme structures from real papers.</p>
+            <div class="tips-grid" id="tipsGrid"></div>
+        </div>
+
+        <!-- ═══════════════════════ FLASHCARDS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-flashcards">
+            <h2 class="section-title">Flashcards</h2>
+            <p class="section-sub">Test yourself! Flip the card and rate your knowledge.</p>
+            <div class="fc-container">
+                <div class="score-bar" id="fcScoreBar" style="display:none;margin-bottom:20px">
+                    <div>
+                        <div class="score-num" id="fcKnown" style="color:#2d7a4f">0</div>
+                        <div style="font-size:12px;color:var(--mid)">known</div>
+                    </div>
+                    <div>
+                        <div class="score-num" id="fcUnknown" style="color:#c84b31">0</div>
+                        <div style="font-size:12px;color:var(--mid)">learning</div>
+                    </div>
+                    <div style="font-size:13px;color:var(--mid)">out of <strong id="fcTotalTrack">0</strong></div>
+                    <button class="reset-btn" onclick="resetFlashcards()">RESET</button>
+                </div>
+                <div id="fcActiveArea">
+                    <div class="fc-progress" id="fcProgress">Card 1 of 0</div>
+                    <div class="flashcard" id="flashcard" onclick="flipCard()">
+                        <div class="fc-inner">
+                            <div class="fc-front">
+                                <div class="fc-label">KEY TERM</div>
+                                <div class="fc-term" id="fcTerm"></div>
+                            </div>
+                            <div class="fc-back">
+                                <div class="fc-def" id="fcDef"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fc-hint">👆 Click card to flip</p>
+                    <div class="fc-nav" id="fcNavDefault">
+                        <button class="fc-btn outline" onclick="prevCard()">← Prev</button>
+                        <button class="fc-btn outline" onclick="flipCard()">Flip</button>
+                        <button class="fc-btn" onclick="nextCard()">Next →</button>
+                    </div>
+                    <div class="fc-nav" id="fcNavAssess" style="display:none;gap:15px">
+                        <button class="fc-btn outline" style="border-color:#c84b31;color:#c84b31;flex:1"
+                            onclick="markCard(false)">❌
+                            Still Learning</button>
+                        <button class="fc-btn" style="background:#2d7a4f;border-color:#2d7a4f;flex:1"
+                            onclick="markCard(true)">✅ Got
+                            It</button>
+                    </div>
+                </div>
+                <div id="fcSummaryArea" style="display:none;text-align:center;padding:40px 20px">
+                    <h3
+                        style="font-family:'Playfair Display',serif;color:var(--accent2);font-size:24px;margin-bottom:12px">
+                        Session Complete! 🎉</h3>
+                    <p style="margin:15px 0;color:var(--text-dim)">You knew <strong id="fcSummaryKnown"
+                            style="color:var(--accent2)">0</strong> out of <strong id="fcSummaryTotal"
+                            style="color:var(--accent2)">0</strong> cards.</p>
+                    <div style="margin-top:25px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap">
+                        <button class="fc-btn" id="btnReviewWrong" onclick="reviewWrong()"
+                            style="background:#c84b31;border-color:#c84b31">Review Incorrect</button>
+                        <button class="fc-btn outline" onclick="resetFlashcards()">Practice All Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════ TRUE / FALSE ═══════════════════════ -->
+        <div class="tab-panel" id="tab-truefalse">
+            <h2 class="section-title">True or False?</h2>
+            <p class="section-sub">Test your knowledge with these statements.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="tfScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">of <strong id="tfTotal">0</strong> answered</div>
+                <button class="reset-btn" onclick="resetTF()">RESET</button>
+            </div>
+            <div class="tf-wrap" id="tfWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ EXAM PRACTICE ═══════════════════════ -->
+        <div class="tab-panel" id="tab-exampractice">
+            <h2 class="section-title">Exam Practice Questions</h2>
+            <p class="section-sub">Full exam questions with mark schemes. Use <strong>Hint</strong>, <strong>Sentence
+                    Starter</strong> and <strong>Submit &amp; See Mark Scheme</strong> for each question.</p>
+            <div class="ep-list" id="epList"></div>
+        </div>
+
+    </main>
+<script>
+
+     const pageMeta = {
+            badge: "Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany",
+            title: "Q3d · How Far Do You Agree?",
+            subtitle: "Interactive revision guide · Interpretation evaluation skills + full exam practice"
+        };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ARRAY 1: topics — 📚 Key Learning Cards
+// Topic: Q3d "How Far Do You Agree with Interpretation 2?" — Weimar & Nazi Germany
+// ─────────────────────────────────────────────────────────────────────────────
+
+const topics = [
+  {
+    title: "What is Question 3(d)?",
+    tag: "Question Overview",
+    content: `<p>Question 3(d) is the final and highest-tariff question on Paper 3. It asks you to evaluate two historical interpretations on a specific topic and reach a clear judgement about how far you agree with Interpretation 2.</p>
+<ul>
+  <li><strong>Total marks:</strong> 20 marks (16 for analysis + 4 for SPaG)</li>
+  <li><strong>Recommended time:</strong> 5 minutes planning, 20 minutes writing</li>
+  <li><strong>Both interpretations:</strong> You must use Interpretation 1 AND Interpretation 2</li>
+  <li><strong>Sources B and C:</strong> You should use these — they count as your own knowledge</li>
+  <li><strong>Judgement:</strong> You must state how far you agree with Interpretation 2 and sustain that judgement throughout</li>
+</ul>
+<div class="formula-box">
+  <strong>The Formula:</strong> Introduction (judgement) → PEEL paragraph for Int. 2 → PEEL paragraph for Int. 1 → Conclusion (sustained judgement + weighing)
+</div>
+<div class="case-study-box">
+  <h4>Past Paper Topics (Q3d)</h4>
+  <p>2018: Challenges facing the Weimar Republic 1919–23 | 2019: Nazi policies towards women | 2020: Support for the Nazi regime 1933–39 | 2021: Nazi Party support 1924–28 | 2022: Why Hitler became Chancellor 1933 | 2023: Cultural changes in Weimar Republic 1924–29 | 2024: Nazi methods of controlling people 1933–39</p>
+</div>`
+  },
+  {
+    title: "Making and Sustaining a Judgement",
+    tag: "Key Skill",
+    content: `<p>The most important skill in Q3(d) is making a <strong>clear, consistent judgement</strong> about how far you agree with Interpretation 2. Examiners award the highest marks (Level 4: 13–16) only when the judgement is sustained from introduction to conclusion.</p>
+<ul>
+  <li><strong>What "sustained" means:</strong> Your verdict at the start must match your verdict at the end. Do not say "I fully agree" in your introduction and "I partially agree" in your conclusion.</li>
+  <li><strong>Degree words to use:</strong> "mostly agree", "largely agree", "partially agree", "do not agree", "agree to a limited extent" — be precise, not vague</li>
+  <li><strong>Avoid:</strong> "kind of", "maybe", "to some extent" without explanation — these suggest you haven't decided</li>
+</ul>
+<div class="two-col">
+  <div><div class="col-head">❌ Weak Judgement</div>
+    <div class="con-item">Changing verdict halfway through the answer</div>
+    <div class="con-item">Saying both interpretations are equally valid with no decision</div>
+    <div class="con-item">Using vague phrases like "both sides have a point"</div>
+  </div>
+  <div><div class="col-head">✅ Strong Judgement</div>
+    <div class="pro-item">Opening sentence states a clear verdict with a reason</div>
+    <div class="pro-item">Each paragraph links back to how far you agree</div>
+    <div class="pro-item">Conclusion weighs both interpretations and reaffirms verdict with best evidence</div>
+  </div>
+</div>
+<div class="formula-box">
+  <strong>Great Conclusion Formula:</strong> Judgement (how far you agree) + Counter (what Int. 1 gets right) + Support (your strongest evidence for your verdict)
+</div>`
+  },
+  {
+    title: "Writing a PEEL Paragraph for Q3(d)",
+    tag: "Essay Structure",
+    content: `<p>Each body paragraph should follow the <strong>PEEL structure</strong>, adapted specifically for interpretation questions. Every paragraph should contain a quote or paraphrase from an interpretation.</p>
+<ul>
+  <li><strong>P — Point:</strong> State your judgement on Interpretation 2 (agree/disagree) and why</li>
+  <li><strong>E — Evidence:</strong> Quote or paraphrase directly from the interpretation. You can also use Sources B or C as evidence.</li>
+  <li><strong>E — Explain:</strong> Explain why this evidence supports your judgement using own contextual knowledge</li>
+  <li><strong>L — Link:</strong> Link back to the question — how does this show how far you agree with Interpretation 2?</li>
+</ul>
+<div class="case-study-box">
+  <h4>Example PEEL — Hitler becoming Chancellor (2022 question)</h4>
+  <p><strong>P:</strong> I agree with Interpretation 2 that mass support was crucial to Hitler becoming Chancellor.<br>
+  <strong>E:</strong> Interpretation 2 states that "mass support gave Hitler a key to unlocking the door to power."<br>
+  <strong>E:</strong> By July 1932 the Nazis were the largest party in the Reichstag. In the 1932 election Hitler came second to Hindenburg in the presidential race, showing his national appeal.<br>
+  <strong>L:</strong> This shows Interpretation 2 is convincing because without electoral success, Hitler would never have been considered as a candidate for Chancellor at all.</p>
+</div>
+<p>Note: always mark references to an interpretation with <strong>(In)</strong> as examiners look for this as a signal that you are engaging with the interpretations.</p>`
+  },
+  {
+    title: "How to Use Sources B and C in Your Answer",
+    tag: "Source Skills",
+    content: `<p>In Q3(d), Sources B and C are provided alongside the interpretations. Unlike the source utility question (Q3b), here the sources act as <strong>your own knowledge</strong> — you use them to support or challenge the interpretations.</p>
+<ul>
+  <li><strong>Do NOT:</strong> Evaluate the sources for usefulness or reliability — that is for Q3(b)</li>
+  <li><strong>DO:</strong> Use the content of the sources as evidence to support or counter an interpretation</li>
+  <li><strong>Do NOT:</strong> Use Source A — you receive no marks for this</li>
+  <li><strong>DO:</strong> Refer to who produced the source and when, as this adds context to your evidence</li>
+</ul>
+<div class="case-study-box">
+  <h4>Example: Using a Source as Evidence</h4>
+  <p>Question: How far do you agree about Nazi Party support 1924–28?<br><br>
+  "Source C [a photograph of a large Nazi rally in Nuremberg, 1928] supports Interpretation 1's claim that the Nazi Party had growing support in some areas, as it shows a large crowd gathering for a Nazi event even during the 'Golden Years', suggesting pockets of enthusiasm for the movement existed despite broader electoral weakness."</p>
+</div>
+<div class="formula-box">
+  <strong>Source Integration Formula:</strong> Source [B/C] supports/challenges Interpretation [1/2] because it shows [content] → This suggests [link to judgement]
+</div>`
+  },
+  {
+    title: "The SPaG Marks (4 marks)",
+    tag: "SPaG",
+    content: `<p>An additional <strong>4 marks</strong> are available for Spelling, Punctuation and Grammar (SPaG) in Q3(d) only. These marks are awarded for consistency and quality across the <em>whole</em> answer.</p>
+<ul>
+  <li><strong>0 marks:</strong> Nothing written, or too many errors to follow the argument</li>
+  <li><strong>1 mark:</strong> Basic control of spelling and grammar; limited specialist terms</li>
+  <li><strong>2–3 marks:</strong> Mostly accurate spelling and punctuation; good grammar; range of specialist terms used correctly</li>
+  <li><strong>4 marks:</strong> Consistently accurate spelling and punctuation; excellent grammar; wide range of specialist terms used throughout</li>
+</ul>
+<div class="two-col">
+  <div><div class="col-head">Specialist Terms to Include</div>
+    <div class="pro-item">Reichstag, Chancellor, Weimar Republic, proportional representation</div>
+    <div class="pro-item">Hyperinflation, reparations, Dawes Plan, the Great Depression</div>
+    <div class="pro-item">SA, SS, Gestapo, Hitler Youth, Volksgemeinschaft</div>
+    <div class="pro-item">Putsch, Freikorps, Spartacists, Kapp Putsch</div>
+  </div>
+  <div><div class="col-head">Top SPaG Tips</div>
+    <div class="pro-item">Use paragraphs — each new idea starts a new paragraph</div>
+    <div class="pro-item">Re-read your answer: where you would take a breath, add a comma or full stop</div>
+    <div class="pro-item">Spell key names correctly: Hindenburg, Stresemann, Goebbels, Röhm</div>
+    <div class="pro-item">Vary sentence length — mix short, punchy sentences with longer analytical ones</div>
+  </div>
+</div>`
+  },
+  {
+    title: "The Marking Level Descriptors for Q3(d)",
+    tag: "Mark Scheme",
+    content: `<p>Examiners read the <em>whole answer</em> and match it to a level. Individual points are not rewarded separately. Understanding the levels helps you aim for Level 4.</p>
+<ul>
+  <li><strong>Level 1 (1–4 marks):</strong> Simple comments about the interpretations; no real analysis; little or no judgement; limited own knowledge</li>
+  <li><strong>Level 2 (5–8 marks):</strong> Some analysis of one or both interpretations; partial judgement, but not sustained; some relevant own knowledge</li>
+  <li><strong>Level 3 (9–12 marks):</strong> Analysis of both interpretations with relevant own knowledge; a judgement is present but may not be fully sustained throughout</li>
+  <li><strong>Level 4 (13–16 marks):</strong> Perceptive analysis and evaluation of both interpretations; consistent and sustained judgement throughout; well-selected contextual knowledge used to assess the strength of each interpretation</li>
+</ul>
+<div class="case-study-box">
+  <h4>What Gets You from Level 3 to Level 4?</h4>
+  <p>The key difference is a <strong>sustained judgement</strong>. Level 3 answers often have a good argument in body paragraphs but lose the thread in the conclusion, or change their mind. Level 4 answers also tend to <em>evaluate how convincing</em> each interpretation is, rather than just describing what they say. Try phrases like: "This makes Interpretation 2 more convincing because..." or "Interpretation 1 is limited because it only considers..."</p>
+</div>`
+  },
+  {
+    title: "Common Past Paper Topics: Key Content Knowledge",
+    tag: "Content Knowledge",
+    content: `<p>While Q3(d) rewards your skill in evaluating interpretations, you still need strong factual knowledge to support your argument. Here is a summary of the key content for common topics.</p>
+<div class="two-col">
+  <div><div class="col-head">Weimar Challenges 1919–23</div>
+    <div class="pro-item">Spartacist Uprising (1919) — left-wing threat; crushed by Freikorps</div>
+    <div class="pro-item">Kapp Putsch (1920) — right-wing; stopped by General Strike</div>
+    <div class="pro-item">French occupation of the Ruhr (1923) → hyperinflation</div>
+    <div class="pro-item">Munich Putsch (November 1923) — Hitler imprisoned</div>
+  </div>
+  <div><div class="col-head">Nazi Rise & Control 1924–39</div>
+    <div class="pro-item">Golden Years (1924–29): Dawes Plan, Stresemann, Nazi seats fell to 12</div>
+    <div class="pro-item">Great Depression (1929): unemployment → Nazi support surged to 230 seats (July 1932)</div>
+    <div class="pro-item">Hitler appointed Chancellor January 1933; Reichstag Fire → Enabling Act</div>
+    <div class="pro-item">Control via SS/Gestapo, propaganda (Goebbels), Hitler Youth, censorship</div>
+  </div>
+</div>
+<div class="case-study-box">
+  <h4>Nazi Policies Towards Women — Key Facts</h4>
+  <p>Law for the Encouragement of Marriage (1933): interest-free loans if women left work; 800,000 couples took up the scheme. Mother's Cross: bronze (4+ children), silver (6+), gold (8+). By 1939 women's employment had actually risen from 11.5m to 12.5m as rearmament created a labour shortage. Law for the Reduction of Unemployment removed women from civil service jobs.</p>
+</div>`
+  }
+];
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ARRAY 2: mcqData — ❓ Multiple Choice Quiz
+// ─────────────────────────────────────────────────────────────────────────────
+
+const mcqData = [
+  {
+    q: "In Q3(d), how many marks are awarded for analysis and evaluation of the interpretations?",
+    opts: [
+      "12 marks",
+      "20 marks",
+      "16 marks",
+      "8 marks"
+    ],
+    ans: 2,
+    explain: "Correct: C. Q3(d) awards 16 marks for analysis and evaluation of the interpretations. An additional 4 marks are awarded for SPaG, making a total of 20 marks. A is wrong (12 marks is the 'Explain Why' question). B is wrong (20 is the total including SPaG). D is wrong (8 marks is the source utility question Q3b)."
+  },
+  {
+    q: "Which of the following is a common error that prevents students from achieving Level 4 in Q3(d)?",
+    opts: [
+      "Quoting directly from one of the interpretations",
+      "Using Sources B and C as additional evidence",
+      "Changing your argument or judgement halfway through your answer",
+      "Referring to contextual own knowledge"
+    ],
+    ans: 2,
+    explain: "Correct: C. Changing your argument halfway through means there is no 'sustained judgement', which is required for Level 4 (13–16 marks). A is wrong — quoting from interpretations is required. B is wrong — using Sources B and C is encouraged and counts as own knowledge. D is wrong — using own knowledge is essential to reach the higher levels."
+  },
+  {
+    q: "Interpretation 2 (Kershaw, 1991) argues that Hitler became Chancellor in 1933 mainly because of which factor?",
+    opts: [
+      "The actions of von Papen persuading Hindenburg",
+      "The Wall Street Crash destroying the German economy",
+      "Mass support — the Nazis had won the votes of a third of Germans by 1932",
+      "The weaknesses of the Weimar Constitution's proportional representation system"
+    ],
+    ans: 2,
+    explain: "Correct: C. Kershaw's Interpretation 2 emphasises that 'mass support gave Hitler a key to unlocking the door to power' and that no other party leader had Hitler's level of support. A describes Interpretation 1 (H A Turner). B is context but not Kershaw's main argument. D is relevant context but not the focus of either interpretation."
+  },
+  {
+    q: "According to the mark scheme, what is the maximum marks a student can receive if they use only ONE of the two interpretations in their Q3(d) answer?",
+    opts: [
+      "8 marks",
+      "4 marks",
+      "12 marks",
+      "16 marks"
+    ],
+    ans: 1,
+    explain: "Correct: B. If a student only uses one interpretation, they are limited to a maximum of 4 marks. This is a critical error. A (8 marks), C (12 marks) and D (16 marks) are all too high — using both interpretations is essential to access Levels 2, 3, and 4."
+  },
+  {
+    q: "In the 'Golden Years' (1924–28), how many seats did the Nazi Party win in the 1928 Reichstag election?",
+    opts: [
+      "32 seats",
+      "107 seats",
+      "14 seats",
+      "12 seats"
+    ],
+    ans: 3,
+    explain: "Correct: D. The Nazis won only 12 seats in the 1928 election, representing less than 3% of votes. This shows their lack of support during the prosperous Stresemann era. A (32 seats) is incorrect. B (107 seats) reflects their July 1932 peak. C (14 seats) was their December 1924 result, not 1928."
+  },
+  {
+    q: "Interpretation 1 (C Epstein, 2015) about the Nazi regime 1933–39 argues which of the following?",
+    opts: [
+      "Germans were completely devoted to Hitler and the Nazi Party",
+      "Many Germans did not fully conform with the Nazi regime and showed widespread dissent",
+      "Nazi propaganda was so effective that opposition became impossible",
+      "The German economy's success meant most Germans were contented"
+    ],
+    ans: 1,
+    explain: "Correct: B. Epstein's Interpretation 1 emphasises non-conformity, stating that some people left the Nazi Party, refused to give the 'Heil Hitler' salute, listened to foreign radio, and that 'widespread complaining' showed Germans did not always fully support the regime. A describes Interpretation 2 (Gellately). C and D are not the focus of either interpretation."
+  },
+  {
+    q: "When answering Q3(d), which source should you NOT reference, as it earns no marks?",
+    opts: [
+      "Source B",
+      "Source C",
+      "Source A",
+      "Both Sources B and C"
+    ],
+    ans: 2,
+    explain: "Correct: C. Source A is used in the inference question (Q3a) and is not available for use in Q3(d). Referencing Source A earns no marks. Sources B and C (A wrong) and (B wrong) should both be used — they count as your own knowledge in Q3(d). D is wrong for the same reason."
+  },
+  {
+    q: "What does a strong conclusion to Q3(d) ALWAYS include?",
+    opts: [
+      "A new piece of evidence not used in the body paragraphs",
+      "A description of what both interpretations say",
+      "A clear judgement, an acknowledgement of the counter-argument, and the strongest supporting evidence",
+      "An explanation of why the historian who wrote Interpretation 2 might be biased"
+    ],
+    ans: 2,
+    explain: "Correct: C. The Edexcel mark scheme rewards conclusions containing: Judgement (how far you agree with Int. 2), Counter (what Int. 1 gets right), and Support (your best evidence). A is unnecessary — you don't need new evidence. B is too descriptive. D — evaluating the historian's bias is relevant to Q3(b) usefulness questions, not Q3(d)."
+  },
+  {
+    q: "In the context of Nazi policies towards women, which statement is accurate?",
+    opts: [
+      "The total number of women in employment fell dramatically between 1933 and 1939",
+      "The Law for the Encouragement of Marriage was introduced in 1937",
+      "Women's employment actually increased from approximately 11.5 million to 12.5 million between 1933 and 1939",
+      "The Mother's Cross was awarded to women who completed the 'duty year' in industry"
+    ],
+    ans: 2,
+    explain: "Correct: C. Despite Nazi ideology promoting women's domestic role, total female employment rose from 11.5m to 12.5m 1933–39 as rearmament created a labour shortage. A is wrong — employment rose overall. B is wrong — the Law for the Encouragement of Marriage was introduced in 1933 (repealed 1937). D is wrong — the Mother's Cross rewarded women who had 4+ children."
+  },
+  {
+    q: "What is the recommended planning time for Question 3(d)?",
+    opts: [
+      "10 minutes",
+      "No planning — start writing immediately",
+      "5 minutes",
+      "2 minutes"
+    ],
+    ans: 2,
+    explain: "Correct: C. Examiners recommend spending 5 minutes planning Q3(d) before writing. Planning should include annotating the interpretations, deciding your judgement, and identifying which evidence from Sources B and C you will use. A (10 minutes) is too long and wastes writing time. B — not planning risks an unsustained argument. D (2 minutes) is insufficient for a 20-mark question."
+  },
+  {
+    q: "Interpretation 1 (H A Turner, 1996) about Hitler becoming Chancellor argues that which factor was most important?",
+    opts: [
+      "Nazi propaganda and mass support across all classes",
+      "Elite political manipulation — von Papen persuading Hindenburg to appoint Hitler",
+      "The weakness of the Weimar Constitution",
+      "The impact of the Great Depression on the German economy"
+    ],
+    ans: 1,
+    explain: "Correct: B. Turner's Interpretation 1 focuses on backroom political deals, arguing 'it was handed to him by the men who controlled Germany' and that 'von Papen managed to persuade Hindenburg to appoint Hitler as Chancellor.' A describes Interpretation 2 (Kershaw). C and D are relevant context but are not Turner's specific argument."
+  },
+  {
+    q: "Which abbreviation should students write in brackets to signal to examiners that they are referencing an interpretation?",
+    opts: [
+      "(Src)",
+      "(KL)",
+      "(In)",
+      "(AO3)"
+    ],
+    ans: 2,
+    explain: "Correct: C. Students should write (In) after each reference to an interpretation to clearly signal this to examiners. This is the recognised convention on the Edexcel mark scheme. A (Src) is not a standard notation. B (KL) is not used. D (AO3) is the assessment objective label, not a citation convention."
+  }
+];
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ARRAY 3: matchData — 🔗 Keyword Matching
+// ─────────────────────────────────────────────────────────────────────────────
+
+const matchData = [
+  { term: "Sustained judgement", def: "A verdict on how far you agree with Interpretation 2 that remains consistent from the introduction to the conclusion." },
+  { term: "SPaG", def: "Spelling, Punctuation and Grammar — worth 4 additional marks in Q3(d) for accuracy and use of specialist vocabulary." },
+  { term: "PEEL paragraph", def: "Point, Evidence, Explain, Link — a paragraph structure used to analyse interpretations and support a judgement in Q3(d)." },
+  { term: "Interpretation 1 (Turner, 1996)", def: "Argues Hitler became Chancellor because of elite political manipulation — von Papen persuading Hindenburg to appoint him." },
+  { term: "Interpretation 2 (Kershaw, 1991)", def: "Argues mass support and electoral success was the key reason Hitler became Chancellor, with 13 million voters and 800,000 party members by 1932." },
+  { term: "Reichstag", def: "The German parliament; the Nazis became the largest party in the Reichstag in July 1932 with 230 seats." },
+  { term: "Proportional representation", def: "The Weimar voting system that awarded seats based on the share of votes received, allowing the Nazi Party to gain seats even with minority support." },
+  { term: "Dawes Plan (1924)", def: "A US-backed scheme that restructured German reparations payments and loaned $800 million to Germany, helping to stabilise the economy during the 'Golden Years'." },
+  { term: "Hyperinflation (1923)", def: "An extreme loss of the value of money in Germany, caused by the Weimar government printing money to pay striking workers in the Ruhr; it wiped out savings." },
+  { term: "Law for the Encouragement of Marriage (1933)", def: "Nazi policy offering interest-free loans to couples if the woman left employment; 800,000 couples accepted the loans, but it was repealed in 1937." },
+  { term: "Mother's Cross", def: "A Nazi medal awarded to women for having multiple children: bronze for 4+, silver for 6+, gold for 8+, promoting motherhood as a national duty." },
+  { term: "Volksgemeinschaft", def: "The Nazi concept of a 'people's community' — a racially pure, harmonious German society used to justify both propaganda and exclusion of minorities." },
+  { term: "Enabling Act (1933)", def: "Law passed after the Reichstag Fire that gave Hitler the power to pass laws without the Reichstag's approval, effectively ending democracy in Germany." },
+  { term: "Gestapo", def: "The Nazi secret police, responsible for surveillance, arrest and interrogation of those considered enemies of the regime; used fear to suppress opposition." }
+];
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ARRAY 4 & 5: fibData + fibWords — ✏️ Fill in the Blanks
+// ─────────────────────────────────────────────────────────────────────────────
+
+const fibData = [
+  {
+    display: "Q3(d) is worth _____ marks for analysis of the interpretations, plus _____ additional marks for SPaG.",
+    blanks: { B1: "16", B2: "4" }
+  },
+  {
+    display: "Students must use both _____ 1 and Interpretation 2, and should use Sources _____ and C as their own knowledge.",
+    blanks: { B1: "Interpretation", B2: "B" }
+  },
+  {
+    display: "A _____ judgement means your verdict on how far you agree with Interpretation 2 remains the same throughout the entire answer.",
+    blanks: { B1: "sustained" }
+  },
+  {
+    display: "The _____ Plan (1924) loaned money to Germany and helped launch the period known as the '_____ Years'.",
+    blanks: { B1: "Dawes", B2: "Golden" }
+  },
+  {
+    display: "In the 1928 Reichstag elections, the Nazi Party won only _____ seats, representing less than _____ percent of the vote.",
+    blanks: { B1: "12", B2: "3" }
+  },
+  {
+    display: "The _____ Putsch of November 1923 was Hitler's failed attempt to seize power in Munich; he was subsequently imprisoned and used the time to write _____.",
+    blanks: { B1: "Munich", B2: "Mein Kampf" }
+  },
+  {
+    display: "The Law for the _____ of Marriage (1933) offered couples interest-free loans on the condition that the woman left _____ employment.",
+    blanks: { B1: "Encouragement", B2: "paid" }
+  },
+  {
+    display: "According to the mark scheme for Q3(d), students who do not include a clear _____ on Interpretation 2 cannot score above _____ marks.",
+    blanks: { B1: "judgement", B2: "4" }
+  },
+  {
+    display: "Historian _____ (2015) argues in Interpretation 1 that many Germans did not fully conform with the Nazi regime, citing 'widespread _____' as evidence.",
+    blanks: { B1: "Epstein", B2: "complaining" }
+  },
+  {
+    display: "The _____ Act of March 1933 gave Hitler the power to pass laws without the Reichstag, effectively making Germany a _____.",
+    blanks: { B1: "Enabling", B2: "dictatorship" }
+  },
+  {
+    display: "Between 1933 and 1939, women's total employment in Germany actually _____ from 11.5 million to _____ million, contradicting Nazi ideology.",
+    blanks: { B1: "increased", B2: "12.5" }
+  },
+  {
+    display: "The PEEL paragraph structure stands for Point, _____, Explain, and _____.",
+    blanks: { B1: "Evidence", B2: "Link" }
+  }
+];
+
+const fibWords = [
+  "16", "4", "Interpretation", "B", "sustained", "Dawes", "Golden",
+  "12", "3", "Munich", "Mein Kampf", "Encouragement", "paid",
+  "judgement", "Epstein", "complaining", "Enabling", "dictatorship",
+  "increased", "12.5", "Evidence", "Link",
+  "Young", "Silver", "8", "20", "12", "Kapp", "Spartacist",
+  "Hyperinflation", "decreased", "Gellately", "Turner", "Kershaw",
+  "partial", "consistent", "Source", "A", "C", "propaganda", "Analysis",
+  "evaluate", "Stresemann", "Hindenburg", "Chancellor"
+];
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ARRAY 6: tfData — ✅ True / False Quiz
+// ─────────────────────────────────────────────────────────────────────────────
+
+const tfData = [
+  {
+    statement: "In Q3(d), students can use Source A as additional evidence to support their judgement.",
+    answer: false,
+    explanation: "FALSE. Source A is used in the inference question Q3(a) and is NOT available for use in Q3(d). Referencing Source A earns no marks in this question. Only Sources B and C can be used, and they count as the student's own knowledge."
+  },
+  {
+    statement: "A student who only analyses Interpretation 2 without addressing Interpretation 1 can score a maximum of 4 marks in Q3(d).",
+    answer: true,
+    explanation: "TRUE. The Edexcel mark scheme explicitly states that using only one interpretation limits the student to a maximum of 4 marks. Both interpretations must be used to access Levels 2, 3, and 4. This is one of the most commonly penalised errors."
+  },
+  {
+    statement: "The Nazi Party became the largest party in the Reichstag for the first time in the November 1932 election.",
+    answer: false,
+    explanation: "FALSE. The Nazis first became the largest party in the Reichstag in the July 1932 election, winning 230 seats. In the November 1932 election their vote actually fell — they lost 34 seats — though they remained the largest party. This is an important distinction when evaluating interpretations about Hitler's rise to power."
+  },
+  {
+    statement: "Kershaw's Interpretation 2 (1991) argues that mass popular support was the key reason Hitler became Chancellor in January 1933.",
+    answer: true,
+    explanation: "TRUE. Kershaw argues that 'mass support gave Hitler a key to unlocking the door to power' and that 'no other party leader had anything like Hitler's support.' This contrasts with Turner's Interpretation 1, which emphasises backroom political deals between von Papen and Hindenburg as the decisive factor."
+  },
+  {
+    statement: "Hyperinflation in 1923 was caused entirely by the cost of Germany's reparations payments under the Treaty of Versailles.",
+    answer: false,
+    explanation: "FALSE. While reparations were a contributing factor, the immediate trigger for hyperinflation was the Weimar government's decision to print money to pay workers on strike during the French occupation of the Ruhr in 1923. The government could not find a solution and simply printed more money, ruining the economy. This nuance is important when evaluating Interpretation 2 about the Weimar Republic's challenges."
+  },
+  {
+    statement: "Between 1933 and 1939, the total number of women in paid employment in Germany increased despite Nazi ideology promoting women's domestic role.",
+    answer: true,
+    explanation: "TRUE. Although the Nazis promoted the idea that women should stay at home (Kinder, Küche, Kirche), women's employment rose from approximately 11.5 million to 12.5 million by 1939. This was largely due to labour shortages created by rearmament under the Four Year Plan (1936), which directly contradicted the regime's stated goals for women."
+  },
+  {
+    statement: "SPaG marks in Q3(d) are awarded for specific sections of the answer, such as the introduction or conclusion.",
+    answer: false,
+    explanation: "FALSE. SPaG marks are awarded as an overall mark for the whole answer — not for specific sections. Examiners read the entire response and decide which level of SPaG it represents based on consistency of accuracy and the range of specialist terms used throughout."
+  },
+  {
+    statement: "The Enabling Act (March 1933) required a two-thirds majority in the Reichstag to pass.",
+    answer: true,
+    explanation: "TRUE. The Enabling Act required a two-thirds majority. Hitler achieved this by arresting Communist deputies, intimidating opposition with the SA, and winning the support of the Catholic Centre Party. This context is important when evaluating how much the Nazi regime relied on fear and coercion versus genuine consent."
+  },
+  {
+    statement: "In Q3(d), the mark scheme rewards students for correctly identifying the origin and purpose of the historical interpretations.",
+    answer: false,
+    explanation: "FALSE. Evaluating the origin and purpose of interpretations (who wrote them, when, and why) is rewarded in Q3(c) — the 'how convincing' comparison question — not in Q3(d). In Q3(d), marks are awarded for analysing the content of the interpretations and making a sustained judgement about how far you agree with Interpretation 2, supported by contextual knowledge."
+  },
+  {
+    statement: "After the Munich Putsch of 1923, Hitler was tried, imprisoned, and used his time in Landsberg Prison to write Mein Kampf.",
+    answer: true,
+    explanation: "TRUE. Hitler was sentenced to five years but served only nine months. During his imprisonment at Landsberg Prison he wrote Mein Kampf (My Struggle), which outlined his political ideology including anti-Semitism, Lebensraum, and the overthrow of the Weimar Republic. This is relevant context for questions about the Nazi Party's development in the years 1924–28."
+  }
+];
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ARRAY 7: miscData — ⚠️ Common Misconceptions
+// ─────────────────────────────────────────────────────────────────────────────
+
+const miscData = [
+  {
+    wrong: "I can use Source A in my Q3(d) answer to support my argument about the interpretations.",
+    correct: "Source A is only used in Q3(a) — the inference question. In Q3(d) it earns zero marks. Only Sources B and C can be used, and they function as your own contextual knowledge, not as sources to evaluate. Referencing Source A wastes precious time and marks."
+  },
+  {
+    wrong: "I disagree with Interpretation 2 so I should evaluate and agree with Interpretation 1 instead.",
+    correct: "The question always asks 'how far do you agree with Interpretation 2' — this is the interpretation you must evaluate as your focus. You must evaluate both interpretations, but your sustained judgement should always be framed in terms of how far you agree or disagree with Interpretation 2. Fully agreeing with Interpretation 1 while ignoring Interpretation 2 as the focus limits you to 4 marks maximum."
+  },
+  {
+    wrong: "To get top marks, I need to find the 'right' answer about which interpretation is more accurate.",
+    correct: "There is no single 'right' answer in Q3(d). The mark scheme explicitly states this: what matters is the quality of your reasoning, your sustained judgement, and your use of contextual knowledge to evaluate how convincing each interpretation is. You can fully agree, partially agree, or disagree with Interpretation 2 — as long as your argument is consistent and well-evidenced, you can access Level 4."
+  },
+  {
+    wrong: "Writing 'both interpretations make valid points' is a good way to show a balanced argument.",
+    correct: "This is one of the most penalised approaches. 'Both are valid' is not a judgement — it is a refusal to make one. The examiner needs to see you weigh the evidence and decide which interpretation is MORE convincing and why. Even if you think both have merit, you must still state which you agree with MORE and sustain that position. Use phrases like 'I mostly agree with Interpretation 2, though Interpretation 1 raises an important counter-argument about...'"
+  },
+  {
+    wrong: "I should explain what happened in Weimar/Nazi Germany in detail, then mention the interpretations at the end.",
+    correct: "Knowledge that is not linked to the interpretations earns zero marks. This is one of the most serious and common errors. Every piece of knowledge must be used to support or challenge one of the interpretations. The question rewards contextual knowledge only when it helps you evaluate how convincing the interpretations are. Structure your answer around the interpretations, not the historical narrative."
+  },
+  {
+    wrong: "Once I've stated my overall judgement in the introduction, I don't need to keep repeating it.",
+    correct: "Your judgement must be sustained throughout — that means linking back to it in every paragraph and especially in the conclusion. Examiners are looking for a consistent thread that runs through the whole answer. Use linking phrases at the end of each paragraph such as: 'This therefore supports Interpretation 2's argument that...' or 'This shows why I find Interpretation 1 more convincing on this point, though overall...'"
+  },
+  {
+    wrong: "SPaG marks are just about spelling — if I can spell Hindenburg and Reichstag, I'll get full marks.",
+    correct: "SPaG marks (4 marks) reward three things: accurate spelling AND punctuation AND grammar, AND the use of a wide range of specialist historical terms. To get 4/4 you need consistent accuracy across the whole answer plus vocabulary like Volksgemeinschaft, proportional representation, Enabling Act, reparations, Reichstag, Chancellor, SA, SS, Gestapo, and hyperinflation used correctly in context."
+  }
+];
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ARRAY 8: examTips — 🎯 Exam Tips & Technique
+// ─────────────────────────────────────────────────────────────────────────────
+
+const examTips = [
+  {
+    type: "Q3(d) — How Far Do You Agree — 16 marks (+4 SPaG)",
+    title: "The Sustained Judgement Essay",
+    content: `<p>This question rewards your ability to evaluate two interpretations and reach a clear, sustained judgement. The examiner reads the whole answer and assigns a level — individual points do not equal individual marks.</p>
+<p><strong>The Formula (PEEL approach):</strong></p>
+<ul>
+  <li><strong>Introduction:</strong> State clearly how far you agree with Interpretation 2 and give a brief reason. Use a degree word: "mostly", "largely", "partially", "not".</li>
+  <li><strong>Paragraph 1 (Int. 2):</strong> Explain why Interpretation 2 is convincing. Quote/paraphrase from Int. 2 (In). Use own knowledge and/or Sources B or C to support it.</li>
+  <li><strong>Paragraph 2 (Int. 1):</strong> Explain why Interpretation 1 also has validity. Quote/paraphrase from Int. 1 (In). Show awareness of what Int. 1 gets right, even if you ultimately prefer Int. 2.</li>
+  <li><strong>Conclusion:</strong> Restate your judgement. Weigh the two interpretations. Explain WHY one is more convincing than the other using your best piece of evidence.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "Both interpretations make valid points about the Weimar Republic. Interpretation 1 says there were political threats and Interpretation 2 says there was hyperinflation. Both are important causes."</p>
+<p><strong>✅ Strong Answer:</strong> "I mostly agree with Interpretation 2 that hyperinflation was the greater challenge facing the Weimar Republic. While Interpretation 1 correctly identifies the threat from extreme political parties, these threats were successfully dealt with — the Spartacists were crushed by the Freikorps and the Kapp Putsch was stopped by a General Strike. Hyperinflation, however, affected virtually every German and had long-term consequences for trust in the Republic. This makes Interpretation 2 more convincing overall (In)."</p>
+<p><strong>Sentence Starters:</strong><br>
+Introduction: "I [mostly/largely/partially] agree with Interpretation 2 that... because..."<br>
+Int. 2 paragraph: "Interpretation 2 is convincing because it states that... (In). This is supported by..."<br>
+Int. 1 paragraph: "However, Interpretation 1 raises an important counter-argument... (In)."<br>
+Conclusion: "Overall, I [agree/disagree] with Interpretation 2 because... While Interpretation 1 is valid in arguing..., [strongest evidence] shows that Interpretation 2 is more convincing."</p>`,
+    pills: ["AO1", "AO2", "AO3", "eval"]
+  },
+  {
+    type: "Evaluating Interpretations — Analysis Skill",
+    title: "How to Judge How Convincing an Interpretation Is",
+    content: `<p>To reach Level 4, you must not just describe what each interpretation says — you must evaluate how <strong>convincing</strong> it is. This means weighing its strengths and limitations against contextual knowledge.</p>
+<p><strong>Three techniques for evaluating an interpretation:</strong></p>
+<ul>
+  <li><strong>Support it:</strong> Bring in specific own knowledge that confirms the interpretation's argument. "Interpretation 2 is supported by the fact that..."</li>
+  <li><strong>Challenge it:</strong> Bring in evidence the interpretation ignores or contradicts. "However, Interpretation 2 does not acknowledge that..."</li>
+  <li><strong>Limit it:</strong> Explain what the interpretation misses or oversimplifies. "Interpretation 1 is limited because it focuses only on... and ignores..."</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "Interpretation 2 says that women were not expected to work in Nazi Germany. This is about Nazi policies towards women."</p>
+<p><strong>✅ Strong Answer:</strong> "Interpretation 2 argues that women were removed from the workforce, stating that 'female doctors and civil servants were sacked.' (In) This is partially convincing — the Law for the Reduction of Unemployment did remove women from civil service roles, and the Law for the Encouragement of Marriage offered loans if women left paid work. However, Interpretation 2 is limited because it fails to account for the fact that by 1939, total female employment had actually risen from 11.5 to 12.5 million, driven by labour shortages from rearmament. This suggests the policy was less successful than Interpretation 2 implies."</p>
+<p><strong>Sentence Starter:</strong> "Interpretation [1/2] is [convincing/limited] because it [claims/ignores/overstates]..."</p>`,
+    pills: ["AO2", "AO3", "eval"]
+  },
+  {
+    type: "Using Sources B and C — Knowledge Integration",
+    title: "Turn Sources Into Your Own Knowledge",
+    content: `<p>Sources B and C are provided alongside the interpretations and can be used in Q3(d) as your own contextual knowledge. This is different from Q3(b), where you evaluate the sources' usefulness. Here, you use their content as evidence.</p>
+<p><strong>How to integrate a source:</strong></p>
+<ul>
+  <li><strong>Step 1:</strong> Read the source content and decide whether it supports or challenges one of the interpretations.</li>
+  <li><strong>Step 2:</strong> Reference the source briefly: "As Source B suggests..." or "Source C shows..."</li>
+  <li><strong>Step 3:</strong> Explain how the source content links to your judgement about the interpretation.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "Source B is useful because it was written at the time."</p>
+<p><strong>✅ Strong Answer:</strong> "Source C [Stresemann's 1929 speech] supports Interpretation 2's argument that German recovery was built on fragile foundations, as Stresemann himself acknowledged that 'if the short-term loans are called in by America, a large section of our economy would collapse.' This shows that even the architect of the Golden Years recognised the underlying instability, making Interpretation 2's argument more convincing (In)."</p>
+<p><strong>Sentence Starter:</strong> "Source [B/C] supports/challenges Interpretation [1/2] because it shows... This suggests that [judgement on how far you agree]."</p>`,
+    pills: ["AO1", "AO2", "AO3"]
+  },
+  {
+    type: "SPaG — Spelling, Punctuation and Grammar (4 marks)",
+    title: "Maximise Your Extra 4 Marks",
+    content: `<p>The 4 SPaG marks are awarded only in Q3(d) and can make a significant difference to your overall Paper 3 grade. They reward consistent accuracy AND the use of specialist vocabulary throughout.</p>
+<p><strong>Checklist for 4/4 SPaG:</strong></p>
+<ul>
+  <li><strong>Paragraphs:</strong> Use a new paragraph for each new point — never write in one block.</li>
+  <li><strong>Punctuation:</strong> Every sentence ends with a full stop. Use commas for subordinate clauses. Apostrophes used correctly.</li>
+  <li><strong>Spell these correctly:</strong> Reichstag, Chancellor, Hindenburg, Stresemann, Goebbels, Volksgemeinschaft, hyperinflation, reparations, Freikorps, Spartacist, proportional representation.</li>
+  <li><strong>Specialist terms to use:</strong> Weimar Republic, Enabling Act, SA/SS/Gestapo, Hitler Youth, Night of the Long Knives, Dawes Plan, Treaty of Versailles, Kapp Putsch, Munich Putsch.</li>
+  <li><strong>Re-read trick:</strong> Read your answer aloud in your head. Every natural breath = a comma or full stop that should be there.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "hitler made germany stronger and lots of people supported him they went to his rallyes and joined his party"</p>
+<p><strong>✅ Strong Answer:</strong> "Hitler's mass support was demonstrated by the Nazis becoming the largest party in the Reichstag in July 1932, with 230 seats. By this point, 800,000 Germans had joined the Nazi Party, and propaganda orchestrated by Goebbels had ensured that Hitler's message reached millions of voters across Germany."</p>
+<p><strong>Sentence Starter:</strong> Not applicable — SPaG is about the quality of your writing throughout, not a formula to follow.</p>`,
+    pills: ["SPaG"]
+  }
+];
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ARRAY 9: flashcards — 🃏 Flashcards
+// ─────────────────────────────────────────────────────────────────────────────
+
+const flashcards = [
+  {
+    term: "What does Q3(d) ask you to do?",
+    def: "Evaluate two historical interpretations on a specific topic and reach a clear, sustained judgement about how far you agree with Interpretation 2. You must use both interpretations and Sources B and C. The question is worth 16 marks + 4 SPaG = 20 marks total."
+  },
+  {
+    term: "What is a 'sustained judgement'?",
+    def: "A verdict on how far you agree with Interpretation 2 that is stated clearly in the introduction and remains consistent throughout every paragraph, including the conclusion. Changing your argument halfway through prevents you from accessing Level 4 (13–16 marks)."
+  },
+  {
+    term: "What is the maximum mark for using only ONE interpretation in Q3(d)?",
+    def: "4 marks maximum. The mark scheme explicitly states that using only one interpretation, or focusing your argument on the wrong interpretation, limits you to Level 1 (1–4 marks). Both interpretations must be referenced and analysed."
+  },
+  {
+    term: "Turner (1996) — what does Interpretation 1 argue about Hitler becoming Chancellor?",
+    def: "Turner argues that Hitler did not seize power — it was handed to him by elite politicians. Von Papen persuaded the ageing President Hindenburg to appoint Hitler as Chancellor. The Nazi Party had actually suffered losses in November 1932 and was starting to fall apart before this appointment."
+  },
+  {
+    term: "Kershaw (1991) — what does Interpretation 2 argue about Hitler becoming Chancellor?",
+    def: "Kershaw argues that mass support was the key factor. By 1932, the Nazis had won the votes of a third of Germans, had 800,000 party members, and 13 million voters were prepared to trust Hitler. 'Mass support gave Hitler a key to unlocking the door to power.'"
+  },
+  {
+    term: "What were the Nazi Party's Reichstag election results 1928–1932?",
+    def: "1928: 12 seats (under 3% of votes). July 1932: 230 seats (37.4%) — largest party. November 1932: 196 seats (33.1%) — fell but still largest. January 1933: Hitler appointed Chancellor. March 1933: 288 seats (43.9%) in last free election."
+  },
+  {
+    term: "What caused hyperinflation in Germany in 1923?",
+    def: "France and Belgium occupied the Ruhr in January 1923 to claim reparations payments. The Weimar government encouraged passive resistance and paid the striking workers by printing more money. This flooded the economy with worthless currency. At its peak, a loaf of bread cost billions of marks."
+  },
+  {
+    term: "What was the Law for the Encouragement of Marriage (1933)?",
+    def: "A Nazi policy offering couples interest-free loans of 1,000 Reichsmarks on the condition that the woman left paid employment. 800,000 couples accepted the loans. The law was repealed in 1937 because of growing labour shortages caused by rearmament."
+  },
+  {
+    term: "What is the PEEL structure for Q3(d)?",
+    def: "Point — state your judgement on Interpretation 2. Evidence — quote or paraphrase from the interpretation, marking it with (In). Explain — use own knowledge to explain why this supports your judgement. Link — link back to the question to sustain your argument about how far you agree."
+  },
+  {
+    term: "What is the great conclusion formula for Q3(d)?",
+    def: "Judgement: State how far you agree with Interpretation 2. Counter: Acknowledge what Interpretation 1 gets right. Support: Use your strongest piece of evidence to justify your final verdict on Interpretation 2. Every conclusion must include all three elements to access the top marks."
+  },
+  {
+    term: "How should Sources B and C be used in Q3(d)?",
+    def: "As your own contextual knowledge — use the content of the sources to support or challenge one of the interpretations. Do NOT evaluate their usefulness or reliability (that is Q3b). Do NOT use Source A. Reference them as: 'Source B supports Interpretation 2 because it shows...'"
+  },
+  {
+    term: "What evidence supports the argument that many Germans DID support the Nazi regime 1933–39?",
+    def: "Nazi Party membership grew by 4 million 1933–39. Many Germans joined Nazi organisations willingly. Unemployment fell from 6 million to under 1 million. The regime's rejection of the Treaty of Versailles was popular. The 1936 Berlin Olympics boosted national pride and international prestige."
+  },
+  {
+    term: "What evidence challenges the idea of widespread Nazi support 1933–39?",
+    def: "Some Germans refused to give the 'Heil Hitler' salute. Edelweiss Pirates resisted Hitler Youth. Martin Niemöller and the Confessing Church opposed Nazi control of religion. Many joined the Nazi Party out of career necessity, not conviction. Increasing working hours and the cost of living caused resentment."
+  },
+  {
+    term: "What specialist terms should you use for maximum SPaG marks?",
+    def: "Reichstag, Chancellor, Weimar Republic, hyperinflation, reparations, proportional representation, Dawes Plan, Enabling Act, Volksgemeinschaft, SA, SS, Gestapo, Hitler Youth, Freikorps, Spartacists, Kapp Putsch, Munich Putsch, Treaty of Versailles, Night of the Long Knives."
+  }
+];
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ARRAY 10: examQuestions — 📝 Exam Practice
+// ─────────────────────────────────────────────────────────────────────────────
+
+const examQuestions = [
+  {
+    num: "Q1",
+    marks: 1,
+    type: "mcq",
+    caseStudy: "",
+    question: "How many marks are available for analysis and evaluation of interpretations in Question 3(d)?",
+    options: [
+      "8 marks",
+      "12 marks",
+      "16 marks",
+      "20 marks"
+    ],
+    answer: 2,
+    hint: "Remember: 16 + 4 = 20 total. The 4 extra marks are for something else.",
+    starter: "The correct answer is C.",
+    markScheme: `<div class="marks-section">
+<h5>Answer: C — 1 mark</h5>
+<p><strong>C (16 marks): Correct.</strong> Q3(d) awards 16 marks for analysis and evaluation of both interpretations, plus an additional 4 marks for SPaG = 20 total.</p>
+<ul>
+  <li><strong>Why A (8 marks) is wrong:</strong> 8 marks is the allocation for the source utility question Q3(b).</li>
+  <li><strong>Why B (12 marks) is wrong:</strong> 12 marks is the allocation for the 'Explain Why' question Q3(c).</li>
+  <li><strong>Why D (20 marks) is wrong:</strong> 20 is the total including SPaG, not just the interpretation analysis element.</li>
+</ul>
+</div>`,
+    modelAnswer: ""
+  },
+  {
+    num: "Q2",
+    marks: 4,
+    type: "written",
+    caseStudy: `Interpretation 1: From Hitler's Thirty Days to Power by H A Turner, published in 1996.
+"In January 1933, Hitler did not seize power; it was handed to him by the men who controlled Germany. The Nazi Party had suffered huge losses in the Reichstag elections of November 1932 and it was starting to fall apart by January 1933. Hindenburg began to mistrust Chancellor von Schleicher. Meanwhile, von Papen managed to overcome the elderly President Hindenburg's doubts about Hitler and persuaded him to appoint Hitler as Chancellor."`,
+    question: "Give TWO things you can infer from Interpretation 1 about why Hitler became Chancellor in 1933. [4 marks]",
+    hint: "An inference is something suggested or implied by the source — not a direct quote. Use the formula: 'I can infer that... The detail that suggests this is...'",
+    starter: "Inference 1: I can infer that... The detail in Interpretation 1 that suggests this is...\n\nInference 2: I can infer that... The detail in Interpretation 1 that suggests this is...",
+    markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (2 marks per inference)</h5>
+<p>Each inference is worth 2 marks: 1 mark for the inference itself, 1 mark for the supporting detail from the source.</p>
+<p><strong>Acceptable inferences include:</strong></p>
+<ul>
+  <li>That Hitler's appointment was not inevitable — the Nazi Party was losing support and declining by early 1933.</li>
+  <li>That personal relationships and political manoeuvring among Germany's elite were decisive in Hitler's appointment.</li>
+  <li>That Hindenburg had genuine reservations about Hitler and needed to be persuaded.</li>
+  <li>That von Papen played a key role in Hitler's appointment by working to undermine von Schleicher.</li>
+</ul>
+<p><strong>Do NOT award:</strong> Simple paraphrases of the source that contain no inferential step (e.g. "The Nazi Party lost seats in November 1932" with no further development).</p>
+<p><strong>Examiner's Comment:</strong> The most common error is copying out a quote rather than making an inference. Students must go beyond what the source literally says to what it implies or suggests.</p>
+</div>`,
+    modelAnswer: "Inference 1: I can infer that Hitler's rise to power was not inevitable and that the Nazi Party was in decline before he became Chancellor. The detail in Interpretation 1 that suggests this is Turner's statement that 'the Nazi Party had suffered huge losses in the Reichstag elections of November 1932 and it was starting to fall apart by January 1933', implying that Hitler's appointment came despite his party's deteriorating position.\n\nInference 2: I can infer that elite political manipulation was more important than popular support in making Hitler Chancellor. The detail that suggests this is that 'von Papen managed to overcome the elderly President Hindenburg's doubts about Hitler', suggesting that without this personal persuasion, Hindenburg might not have appointed Hitler at all."
+  },
+  {
+    num: "Q3",
+    marks: 4,
+    type: "written",
+    caseStudy: "",
+    question: "Explain why the Weimar Republic faced serious challenges in the years 1919–23. You may use the following in your answer: the Kapp Putsch (1920) and hyperinflation (1923). You must also use information of your own. [12 marks]",
+    hint: "This is the 12-mark 'Explain Why' question. Aim for at least 3 explained reasons. Each paragraph: state the reason → explain how it challenged the Weimar Republic → link to why it was a serious challenge. Your own knowledge point must be a different reason from the two given.",
+    starter: "One reason the Weimar Republic faced challenges was... This was a serious challenge because...\n\nAnother reason was... For example,...\n\nA further challenge was [own knowledge point]... This mattered because...",
+    markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 12 marks (Level response)</h5>
+<ul>
+  <li><strong>Level 1 (1–3 marks):</strong> Simple statements of reasons with little or no explanation.</li>
+  <li><strong>Level 2 (4–6 marks):</strong> Some explanation of why challenges were serious; limited development.</li>
+  <li><strong>Level 3 (7–9 marks):</strong> Several explained reasons; good use of the stimulus material; some own knowledge.</li>
+  <li><strong>Level 4 (10–12 marks):</strong> Multiple well-explained reasons; both stimulus points used effectively; strong own-knowledge point; links between causes considered.</li>
+</ul>
+<p><strong>Reasons that can be credited:</strong></p>
+<ul>
+  <li>Kapp Putsch (1920): right-wing threat to democracy; government had to flee Berlin; showed the army could not be trusted to defend the Republic</li>
+  <li>Hyperinflation (1923): triggered by printing money to pay Ruhr strikers; wiped out savings; undermined confidence in the Republic</li>
+  <li>Spartacist Uprising (1919): left-wing threat; showed Republic was vulnerable immediately after formation</li>
+  <li>Munich Putsch (1923): Hitler's attempted coup; showed the Republic faced threats from the extreme right</li>
+  <li>The 'stab in the back' myth: many Germans blamed the Republic for Germany's defeat in WW1, creating a lack of legitimacy from the start</li>
+  <li>The Treaty of Versailles (1919): reparations, territorial losses, and War Guilt Clause created economic and political resentment</li>
+</ul>
+<p><strong>Do NOT award:</strong> Vague statements such as "people didn't like the Weimar Republic" without explanation of why or how.</p>
+</div>`,
+    modelAnswer: "One reason the Weimar Republic faced serious challenges was the threat from extreme political groups on both the left and right. In March 1920, the Kapp Putsch saw Wolfgang Kapp and Freikorps soldiers march on Berlin and temporarily seize control of the government, forcing the elected Weimar government to flee the capital. This was a serious challenge because it demonstrated that the army — which the government had relied on to crush the Spartacists — could not be trusted to protect the Republic. The putsch was only stopped by a General Strike called by trade unions, showing how fragile the government's hold on power was.\n\nAnother major challenge was the economic crisis caused by hyperinflation in 1923. When France occupied the Ruhr in January 1923 to claim reparations payments, the Weimar government encouraged passive resistance and paid the striking workers by printing more money. The resulting hyperinflation devastated the German economy — a loaf of bread eventually cost billions of marks. Middle-class Germans who had saved money saw their savings become worthless overnight, while pensioners and those on fixed incomes were plunged into poverty. This created widespread resentment towards the Weimar government and damaged its credibility.\n\nFurthermore, the Republic faced a crisis of legitimacy from its very foundation due to the Treaty of Versailles (1919). Germany was forced to accept the 'War Guilt Clause' (Article 231), pay £6.6 billion in reparations, and lose 13% of its territory. Many Germans blamed the Weimar politicians — the so-called 'November Criminals' — for signing this humiliating treaty. This 'stab in the back' myth undermined public support for the Republic and provided extremist parties like the Nazis with a powerful propaganda weapon for years to come."
+  },
+  {
+    num: "Q4",
+    marks: 8,
+    type: "written",
+    caseStudy: `Source B: From a speech by Joseph Goebbels, Nazi Minister of Propaganda, at a rally in Berlin, 1934.
+"The woman's place is in the home. It is her first, best, and most suitable place. Her most glorious duty is to give children to her people and nation. The woman who gives a child to her country does her duty just as much as the man who goes to war."
+
+Source C: A photograph showing women working in a large textile factory in Germany, 1938.`,
+    question: "How useful are Sources B and C for an enquiry into the success of Nazi policies towards women in the years 1933–39? Explain your answer, using Sources B and C and your knowledge of the historical context. [8 marks]",
+    hint: "For each source, consider: What does the content tell us? Who produced it and why? What does the context (date, author, purpose) tell us about its usefulness? What are its limitations? Aim for a separate paragraph for each source.",
+    starter: "Source B is useful for this enquiry because its content shows... However, its usefulness is limited because it was produced by [who/why]...\n\nSource C is useful because it shows... Its limitations include...",
+    markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 8 marks (Level response)</h5>
+<ul>
+  <li><strong>Level 1 (1–2 marks):</strong> Simple comments on content only; no contextual knowledge used.</li>
+  <li><strong>Level 2 (3–5 marks):</strong> Some explanation of usefulness based on content and/or context; limited development of limitations.</li>
+  <li><strong>Level 3 (6–7 marks):</strong> Developed analysis of usefulness and limitations; contextual knowledge integrated for both sources.</li>
+  <li><strong>Level 4 (8 marks):</strong> Perceptive evaluation of both sources; confident use of contextual knowledge to enhance analysis; clear judgement on the nature and extent of usefulness for the specific enquiry.</li>
+</ul>
+<p><strong>Source B — useful because:</strong> Shows the ideological basis for Nazi women's policy; reflects what the regime wanted people to believe; Goebbels as Propaganda Minister makes this highly representative of official Nazi messaging.</p>
+<p><strong>Source B — limited because:</strong> Propaganda — designed to persuade, not to inform; does not reflect the reality that women's employment rose; gives no indication of whether women actually accepted these ideas.</p>
+<p><strong>Source C — useful because:</strong> Shows that women were still working in factories in 1938 despite official ideology; provides visual evidence that challenges the success of Nazi policy; contemporary photograph carries evidential weight.</p>
+<p><strong>Source C — limited because:</strong> A single factory — may not be representative; purpose is unclear (could itself be propaganda showing a 'modern' Germany); gives no figures for how many women were in industry.</p>
+<p><strong>Examiner's Comment:</strong> Students must go beyond describing what sources show. The key is to explain what their content and context tell us specifically about the SUCCESS (or failure) of Nazi policies — linking analysis to the enquiry question.</p>
+</div>`,
+    modelAnswer: "Source B is useful for this enquiry because its content reveals the ideological foundation of Nazi policy towards women. Goebbels states that a woman's 'most glorious duty is to give children to her people and nation', which shows clearly that the Nazi regime intended to push women out of the public sphere and into the domestic role of wife and mother. The source is especially useful because Goebbels was the Nazi Minister of Propaganda, meaning this speech represents the official message the regime wanted to communicate to the German population. This helps us understand what the Nazis were trying to achieve with policies like the Law for the Encouragement of Marriage (1933) and the Mother's Cross.\n\nHowever, Source B's usefulness is limited because it is propaganda — produced to persuade, not to inform. It tells us what the regime wanted people to believe about women's roles, but not whether those policies actually succeeded. We know from contextual knowledge that the total number of women in employment actually rose from 11.5 million to 12.5 million between 1933 and 1939, as rearmament created a labour shortage. This suggests the reality was far more complex than Goebbels' speech implies.\n\nSource C — a photograph of women operating machinery in a textile factory in 1938 — is directly useful for examining the success of Nazi policy because it provides visual evidence that women remained in the industrial workforce despite the regime's ideology. The fact that this was taken in 1938 is significant, as it shows that five years into Nazi rule, women were still working in industry. This supports the argument that the regime's attempt to remove women from the workforce was ultimately unsuccessful.\n\nIts limitations, however, include the fact that it shows only one factory and may not be representative of the wider picture. We do not know the purpose for which the photograph was taken — it could itself be propaganda designed to celebrate German industrial productivity. Overall, used together, both sources are useful because they reveal the gap between Nazi ideology (Source B) and practice (Source C), helping us assess the partial failure of Nazi women's policies."
+  },
+  {
+    num: "Q5",
+    marks: 16,
+    type: "written",
+    caseStudy: `Interpretation 1: From Weimar and Nazi Germany by J Hite and C Hinton, published in 2000.
+"The Nazis' attempts to drive women back into the home were not particularly successful. In fact, the number of women in all types of jobs increased, mainly due to the work opportunities created by the economic recovery. By 1936, more workers were needed in agriculture and industry in Germany and by 1939 this shortage of workers was a serious problem. This led to more women returning to work. Overall, the Nazis took a cautious approach to the employment of women and only a few women were actually forced out of jobs."
+
+Interpretation 2: From The History Learning Site, a history website.
+"Hitler was very clear that women should bring up children at home while their husbands worked. Schools taught girls from a young age that all good German women should get married and have children. 800,000 couples accepted loans offered as part of the Law for the Encouragement of Marriage. Women were not expected to work in Nazi Germany. Within months of Hitler coming to power, many female doctors and civil servants were sacked, followed by female teachers and lawyers. By 1939, very few women were in full-time work."`,
+    question: "Spelling, punctuation, grammar and use of specialist terminology will be assessed in part (d).\n\nHow far do you agree with Interpretation 2 about the success of Nazi policies towards women in the years 1933–39?\n\nExplain your answer, using both interpretations and your knowledge of the historical context. [16 marks + 4 SPaG]",
+    hint: "Plan first (5 minutes). Decide your judgement — do you mostly agree, partially agree, or disagree with Interpretation 2? State it clearly in your opening sentence and stick to it. Aim for: intro → paragraph on Int. 2 → paragraph on Int. 1 → conclusion that weighs both.",
+    starter: "I [mostly/partially/do not] agree with Interpretation 2 about the success of Nazi policies towards women because...\n\nInterpretation 2 argues that... (In). This is supported by the fact that...\n\nHowever, Interpretation 1 challenges this by stating... (In). Evidence for this includes...\n\nOverall, I [agree/disagree] with Interpretation 2 because... While Interpretation 1 correctly identifies..., the strongest evidence shows that...",
+    markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 16 marks + 4 SPaG (Level response)</h5>
+<ul>
+  <li><strong>Level 1 (1–4 marks):</strong> Simple comments about what the interpretations say; no real analysis; little or no judgement; may only address one interpretation.</li>
+  <li><strong>Level 2 (5–8 marks):</strong> Some analysis of one or both interpretations; some own knowledge used; a judgement may be present but is not sustained.</li>
+  <li><strong>Level 3 (9–12 marks):</strong> Analysis of both interpretations with contextual knowledge; a judgement is made but may not be fully sustained; some evaluation of how convincing each interpretation is.</li>
+  <li><strong>Level 4 (13–16 marks):</strong> Perceptive and evaluative analysis of both interpretations; sustained judgement throughout; well-selected contextual knowledge used to assess the strengths and limitations of each interpretation; clear final weighing of both interpretations in the conclusion.</li>
+</ul>
+<p><strong>Evidence that supports Interpretation 2:</strong></p>
+<ul>
+  <li>Law for the Encouragement of Marriage (1933): 800,000 couples accepted loans if women left work</li>
+  <li>Female doctors, civil servants, teachers and lawyers were sacked in 1933</li>
+  <li>Mother's Cross rewarded women for having 4+ children, reinforcing domestic ideology</li>
+  <li>Nazi schooling for girls emphasised domestic skills, marriage, and motherhood (Kinder, Küche, Kirche)</li>
+  <li>National Socialist Womanhood organisation had 2.8 million members promoting domestic role</li>
+</ul>
+<p><strong>Evidence that supports Interpretation 1 (challenges Int. 2):</strong></p>
+<ul>
+  <li>Women's total employment rose from 11.5 million (1933) to 12.5 million (1939)</li>
+  <li>Labour shortages from rearmament (Four Year Plan, 1936) forced regime to bring women back to work</li>
+  <li>Law for the Encouragement of Marriage was repealed in 1937</li>
+  <li>Women were never fully removed from agriculture or textiles where female labour was essential</li>
+  <li>By 1939, the regime was actively recruiting women back into employment</li>
+</ul>
+<p><strong>SPaG:</strong> Award 1–4 marks based on accuracy of spelling/punctuation/grammar and range of specialist terms used consistently across the whole answer.</p>
+<p><strong>Examiner's Comment:</strong> The most common reason students fall short of Level 4 is failing to sustain their judgement. If a student agrees with Interpretation 2 in the introduction but then spends the entire body arguing for Interpretation 1, this is not sustained. The best answers weave their judgement through every paragraph using phrases like 'This shows why I find Interpretation 2 partially convincing, but...' Students who consistently state and reinforce their overall verdict access the top marks.</p>
+</div>`,
+    modelAnswer: "I mostly agree with Interpretation 2 about the success of Nazi policies towards women, as it accurately reflects the regime's clear ideological goals and the concrete policy measures taken in the early years of Nazi rule to remove women from public life. (In)\n\nInterpretation 2 argues that 'women were not expected to work in Nazi Germany' and that 'many female doctors and civil servants were sacked' within months of Hitler coming to power. (In) This is convincing because it reflects the genuine policy measures introduced by the Nazi regime from 1933 onwards. The Law for the Encouragement of Marriage offered couples interest-free loans if women left paid employment, and 800,000 couples accepted these loans — a significant number that shows the policy had real impact on women's lives. The introduction of the Mother's Cross rewarded women for having four or more children, reinforcing the message that motherhood was a woman's highest contribution to the nation. The regime removed women from the civil service, law, and medicine in 1933, demonstrating a deliberate effort to reshape women's roles. This evidence supports Interpretation 2's argument that the Nazi regime was clear and purposeful in its approach to women. (In)\n\nHowever, Interpretation 1 presents a valid counter-argument that undermines the idea that these policies were fully successful. Hite and Hinton argue that 'the number of women in all types of jobs increased' and that 'only a few women were actually forced out of jobs.' (In) This is supported by the statistics: women's total employment rose from approximately 11.5 million in 1933 to 12.5 million by 1939. The key reason for this was the rearmament programme under the Four Year Plan (1936), which created a serious labour shortage. The regime was forced to bring women back into agriculture and industry, directly contradicting the ideology expressed in Interpretation 2. The Law for the Encouragement of Marriage was even repealed in 1937, suggesting the regime recognised its policy was unworkable in the face of economic reality. This shows that Interpretation 1 is convincing in highlighting the gap between Nazi ideology and practice. (In)\n\nOverall, I mostly agree with Interpretation 2, because it accurately captures the regime's ideological commitment and the genuine policy measures taken in the early years. (In) While Interpretation 1 is correct that the policies ultimately failed to remove women from the workforce — and this is an important qualification — this does not mean the policies had no success. The Nazi regime did succeed in shaping expectations about women's roles in society, stigmatising professional women, and creating strong social pressure for women to marry and have children. Therefore, Interpretation 2 is more convincing in capturing the regime's intentions and its partial success in enforcing a domestic ideology, even if Interpretation 1 is right that the practical, economic realities of rearmament meant the ideal could never fully be achieved. (In)"
+  },
+  {
+    num: "Q6",
+    marks: 16,
+    type: "written",
+    caseStudy: `Interpretation 1: From Hitler's Thirty Days to Power by H A Turner, published in 1996.
+"In January 1933, Hitler did not seize power; it was handed to him by the men who controlled Germany. The Nazi Party had suffered huge losses in the Reichstag elections of November 1932 and it was starting to fall apart by January 1933. Hindenburg began to mistrust Chancellor von Schleicher. Meanwhile, von Papen managed to overcome the elderly President Hindenburg's doubts about Hitler and persuaded him to appoint Hitler as Chancellor. Hitler was supported by less than half the German population when he was appointed Chancellor by President Hindenburg."
+
+Interpretation 2: From Hitler by I Kershaw, published in 1991.
+"It was an extraordinary achievement by the Nazis to win the votes of a third of the German people between 1929 and 1932. By 1932, Hitler was in charge of a massive movement of 800,000 Party members and 13 million voters were generally prepared to place their trust in him. Nazi propaganda suggested that victory was inevitable. Mass support gave Hitler a key to unlocking the door to power. No other party leader had anything like Hitler's support from the German population."`,
+    question: "Spelling, punctuation, grammar and use of specialist terminology will be assessed in part (d).\n\nHow far do you agree with Interpretation 2 about the reasons why Hitler became Chancellor in 1933?\n\nExplain your answer, using both interpretations and your knowledge of the historical context. [16 marks + 4 SPaG]",
+    hint: "Plan: decide whether you mostly agree with Interpretation 2 (mass support) or Interpretation 1 (elite manipulation). Both have strong evidence. Your judgement: which factor was ultimately MORE important, and why? Remember to sustain your verdict in every paragraph.",
+    starter: "I [mostly/partially/do not] agree with Interpretation 2 that mass support was the key reason Hitler became Chancellor in 1933. (In)\n\nInterpretation 2 is convincing because it states that... (In). This is supported by...\n\nHowever, Interpretation 1 argues that... (In). The evidence for this includes...\n\nOverall, I [agree/disagree with] Interpretation 2 because... While Turner correctly identifies..., Kershaw's argument is [more/less] convincing because...",
+    markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 16 marks + 4 SPaG (Level response)</h5>
+<ul>
+  <li><strong>Level 1 (1–4 marks):</strong> Describes what the interpretations say; little analysis; no sustained judgement.</li>
+  <li><strong>Level 2 (5–8 marks):</strong> Some analysis of one or both interpretations; partial judgement; some contextual knowledge.</li>
+  <li><strong>Level 3 (9–12 marks):</strong> Analysis of both interpretations with contextual knowledge; a judgement present but may lack full consistency.</li>
+  <li><strong>Level 4 (13–16 marks):</strong> Perceptive evaluation of both; sustained judgement throughout; contextual knowledge used to evaluate how convincing each interpretation is; strong conclusion that weighs both interpretations.</li>
+</ul>
+<p><strong>Evidence to support Interpretation 2 (mass support):</strong></p>
+<ul>
+  <li>Nazis became largest party in Reichstag in July 1932 (230 seats, 37.4% of votes)</li>
+  <li>13 million voters, 800,000 Nazi Party members by 1932</li>
+  <li>Hitler came second to Hindenburg in the 1932 presidential election</li>
+  <li>Goebbels' propaganda made the Nazi movement seem unstoppable and inevitable</li>
+  <li>No other party had comparable mass appeal — the SPD had only 133 seats in July 1932</li>
+</ul>
+<p><strong>Evidence to support Interpretation 1 (elite manipulation):</strong></p>
+<ul>
+  <li>Nazi seats actually fell by 34 in November 1932 — the party was losing momentum</li>
+  <li>Hitler was supported by less than half of Germans when appointed — he had not won an election</li>
+  <li>Hindenburg had previously refused to appoint Hitler; he needed to be persuaded by von Papen</li>
+  <li>Von Papen and Hindenburg believed they could control Hitler — a serious miscalculation</li>
+  <li>Von Schleicher's inability to form a stable government was the immediate trigger for Hitler's appointment</li>
+</ul>
+<p><strong>Examiner's Comment:</strong> Stronger answers will note that both factors were necessary — mass support made Hitler an option, but elite manipulation made him Chancellor at that specific moment. The best answers will judge which was the more fundamental or long-term cause.</p>
+</div>`,
+    modelAnswer: "I mostly agree with Interpretation 2 that mass support was the key reason Hitler became Chancellor in 1933, as without the electoral success that Kershaw describes, Hitler would never have been considered a serious candidate for Chancellor in the first place. (In)\n\nInterpretation 2 is convincing because it identifies the scale of the Nazis' democratic achievement. Kershaw states that 'mass support gave Hitler a key to unlocking the door to power' and that 'no other party leader had anything like Hitler's support.' (In) This is well-supported by the evidence. Between 1929 and 1932, as the Great Depression threw six million Germans out of work, Nazi support surged dramatically. In the July 1932 Reichstag election the Nazis won 230 seats — 37.4% of the vote — making them by far the largest party in Germany. Hitler came second to the war hero Hindenburg in the 1932 presidential election, demonstrating that his appeal had moved beyond just the discontented fringes of German society. By 1932, the Nazi Party had 800,000 members and 13 million loyal voters. This mass movement was essential because it gave Hitler the political leverage that made him impossible for elites like von Papen to ignore. Without these numbers, he could not have been a plausible Chancellor. (In)\n\nHowever, Interpretation 1 raises an important counter-argument. Turner argues that 'Hitler did not seize power; it was handed to him by the men who controlled Germany', and that von Papen persuaded an ageing and reluctant Hindenburg to appoint Hitler. (In) This perspective has merit. In November 1932, the Nazis actually lost 34 seats — their share of the vote fell from 37.4% to 33.1%, suggesting their mass support was already declining. Turner's point that Hitler was 'supported by less than half the German population' when appointed is accurate — he had never won an outright majority. Hindenburg had previously refused to appoint Hitler as Chancellor and needed to be persuaded by von Papen, who believed he could control Hitler and use him as a puppet. Had von Schleicher been able to form a stable government, Hitler might never have been offered the Chancellorship. This shows that elite political manoeuvring was the immediate cause of Hitler's appointment. (In)\n\nOverall, I mostly agree with Interpretation 2, because while Turner correctly identifies the decisive role of von Papen and Hindenburg in the short term, Kershaw's argument is more convincing in the longer term. (In) The reason Hitler was even considered as a candidate was his mass movement — without 13 million voters and 230 Reichstag seats, von Papen would never have suggested him to Hindenburg in the first place. The elite manipulation described in Interpretation 1 determined the timing of Hitler's appointment, but the mass support described in Interpretation 2 was the fundamental, underlying cause that made it possible. Interpretation 2 therefore provides the more convincing explanation of why Hitler became Chancellor in January 1933. (In)"
+  }
+];
+
+</script>
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weimar &amp; Nazi Germany — Revision Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── CSS Variables (mirror stylesheet.css) ── */
+    :root {
+      --bg: #0f0e0c;
+      --surface: #1a1814;
+      --surface2: #242018;
+      --border: #2e2a22;
+      --accent: #c8963a;
+      --accent2: #e8b84b;
+      --red: #c84b31;
+      --green: #2d7a4f;
+      --mid: #8a8070;
+      --text: #e8e0d0;
+      --text-dim: #b0a898;
+      --card-bg: #1e1c17;
+      --radius: 10px;
+      --shadow: 0 4px 24px rgba(0,0,0,.5);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* ── Hero Header ── */
+    .hero {
+      background: linear-gradient(135deg, #1a0a00 0%, #2a1800 40%, #1a1200 100%);
+      border-bottom: 2px solid var(--accent);
+      padding: 52px 40px 44px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 40px,
+        rgba(200,150,58,.03) 40px, rgba(200,150,58,.03) 41px);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #0f0e0c;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 3px;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1.1;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .hero-sub {
+      color: var(--mid);
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: .04em;
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .hero-stat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero-stat span:first-child {
+      color: var(--accent2);
+      font-size: 14px;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Question Cards Grid ── */
+    .q-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+
+    .q-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .2s, transform .15s, box-shadow .2s;
+      position: relative;
+    }
+
+    .q-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    }
+
+    .q-card-accent {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .q-card-body {
+      padding: 22px 22px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .q-card-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .q-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--accent2);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .q-card-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+
+    .q-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 22px;
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,.15);
+    }
+
+    .q-card-marks {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--mid);
+    }
+
+    .q-card-marks strong {
+      color: var(--accent2);
+    }
+
+    .q-card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      letter-spacing: .04em;
+    }
+
+    .q-card-arrow {
+      position: absolute;
+      bottom: 14px;
+      right: 20px;
+      font-size: 18px;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .q-card:hover .q-card-arrow {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+
+    /* ── How to Use Section ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+
+    .how-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .how-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .how-label {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .how-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+
+    /* ── Paper info banner ── */
+    .paper-banner {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .paper-banner-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .pb-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--mid);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .pb-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .pb-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── Formula box (reuse from stylesheet) ── */
+    .formula-box {
+      background: rgba(200,150,58,.08);
+      border: 1px solid rgba(200,150,58,.2);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--accent2);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .formula-box strong {
+      color: var(--accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: .06em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .hero { padding: 36px 16px 32px; }
+      main { padding: 28px 12px 48px; }
+      .paper-banner { gap: 16px; }
+      .pb-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <div class="hero-badge">Edexcel GCSE History · Paper 3</div>
+    <h1>Weimar &amp; Nazi Germany<br>1918–39</h1>
+    <p class="hero-sub">Complete interactive revision suite · All question types covered</p>
+    <div class="hero-meta">
+      <div class="hero-stat"><span>5</span><span>Question Guides</span></div>
+      <div class="hero-stat"><span>8</span><span>Activity Types</span></div>
+      <div class="hero-stat"><span>48</span><span>Marks of Practice</span></div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Paper Info ── -->
+    <div class="paper-banner">
+      <div class="paper-banner-item">
+        <span class="pb-label">Exam Board</span>
+        <span class="pb-value">Edexcel</span>
+      </div>
+      <div class="pb-divider"></div>
+      <div class="paper-banner-item">
+        <span class="pb-label">Paper</span>
+        <span class="pb-value">Paper 3 — Section B</span>
+      </div>
+      <div class="pb-divider"></div>
+      <div class="paper-banner-item">
+        <span class="pb-label">Topic</span>
+        <span class="pb-value">Weimar &amp; Nazi Germany, 1918–39</span>
+      </div>
+      <div class="pb-divider"></div>
+      <div class="paper-banner-item">
+        <span class="pb-label">Total marks</span>
+        <span class="pb-value">52 marks · 1 hr 20 min</span>
+      </div>
+    </div>
+
+    <!-- ── Question Guides ── -->
+    <div class="section-label">Question-by-Question Revision Guides</div>
+
+    <div class="q-grid">
+
+      <!-- Q1 -->
+      <a class="q-card" href="Q1_Give_Two_Things_You_Can_Infer.html">
+        <div class="q-card-accent"></div>
+        <div class="q-card-body">
+          <div class="q-card-number">Question 3(a)</div>
+          <div class="q-card-title">Give Two Things You Can Infer</div>
+          <div class="q-card-desc">Practise reading a source and making supported inferences. Covers what counts as inference vs. description, how to structure your answer, and common traps.</div>
+        </div>
+        <div class="q-card-footer">
+          <span class="q-card-marks"><strong>4</strong> marks · ~5 min</span>
+          <div class="q-card-tags">
+            <span class="tag">Source A</span>
+            <span class="tag">AO3</span>
+          </div>
+        </div>
+        <span class="q-card-arrow">→</span>
+      </a>
+
+      <!-- Q2 -->
+      <a class="q-card" href="Q2_Explain_Why.html">
+        <div class="q-card-accent"></div>
+        <div class="q-card-body">
+          <div class="q-card-number">Question 3(b) — Extended</div>
+          <div class="q-card-title">Explain Why…</div>
+          <div class="q-card-desc">Master the 12-mark causal explanation question. Covers the two-factor structure, how to link causes, and the difference between description and explanation.</div>
+        </div>
+        <div class="q-card-footer">
+          <span class="q-card-marks"><strong>12</strong> marks · ~15 min</span>
+          <div class="q-card-tags">
+            <span class="tag">Causation</span>
+            <span class="tag">AO1</span>
+            <span class="tag">AO2</span>
+          </div>
+        </div>
+        <span class="q-card-arrow">→</span>
+      </a>
+
+      <!-- Q3 -->
+      <a class="q-card" href="Q3a_Usefulness_of_Sources.html">
+        <div class="q-card-accent"></div>
+        <div class="q-card-body">
+          <div class="q-card-number">Question 3(a) — Sources</div>
+          <div class="q-card-title">How Useful are Sources B and C?</div>
+          <div class="q-card-desc">Develop source utility analysis skills. Covers nature, origin, purpose, content evaluation, and how to use own knowledge to contextualise sources for marks.</div>
+        </div>
+        <div class="q-card-footer">
+          <span class="q-card-marks"><strong>8</strong> marks · ~12 min</span>
+          <div class="q-card-tags">
+            <span class="tag">Sources B &amp; C</span>
+            <span class="tag">AO3</span>
+          </div>
+        </div>
+        <span class="q-card-arrow">→</span>
+      </a>
+
+      <!-- Q4 — current page -->
+      <a class="q-card" href="Q3b_Q3c_Comparing_Interpretations.html">
+        <div class="q-card-accent"></div>
+        <div class="q-card-body">
+          <div class="q-card-number">Questions 3(b) &amp; 3(c)</div>
+          <div class="q-card-title">Comparing Interpretations</div>
+          <div class="q-card-desc">Understand how to identify the main difference between two historical interpretations and explain why historians reach different conclusions using Sources B and C.</div>
+        </div>
+        <div class="q-card-footer">
+          <span class="q-card-marks"><strong>4 + 4</strong> marks · ~10 min</span>
+          <div class="q-card-tags">
+            <span class="tag">AO3</span>
+            <span class="tag">AO4</span>
+          </div>
+        </div>
+        <span class="q-card-arrow">→</span>
+      </a>
+
+      <!-- Q5 -->
+      <a class="q-card" href="Q3d_How_Far_Do_You_Agree.html">
+        <div class="q-card-accent"></div>
+        <div class="q-card-body">
+          <div class="q-card-number">Question 3(d)</div>
+          <div class="q-card-title">How Far Do You Agree with Interpretation 2?</div>
+          <div class="q-card-desc">The big essay. Learn how to build an evaluative argument, weigh interpretations against each other, deploy own knowledge, and reach a supported judgement.</div>
+        </div>
+        <div class="q-card-footer">
+          <span class="q-card-marks"><strong>16</strong> marks · ~25 min</span>
+          <div class="q-card-tags">
+            <span class="tag">Extended Writing</span>
+            <span class="tag">AO4</span>
+          </div>
+        </div>
+        <span class="q-card-arrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- ── Mark Breakdown ── -->
+    <div class="section-label">Paper 3 Mark Breakdown at a Glance</div>
+
+    <div class="formula-box">
+      <strong>Section B — Weimar &amp; Nazi Germany</strong>
+      Q3(a) Inference · · · · · · · · 4 marks &nbsp;·&nbsp; ~5 min<br>
+      Q3(b) Explain Why · · · · · · 12 marks &nbsp;·&nbsp; ~15 min<br>
+      Q3(a) Source Utility · · · · · 8 marks &nbsp;·&nbsp; ~12 min<br>
+      Q3(b) Main Difference · · · 4 marks &nbsp;·&nbsp; ~5 min<br>
+      Q3(c) Why Different · · · · · 4 marks &nbsp;·&nbsp; ~5 min<br>
+      Q3(d) Extended Essay · · · 16 marks &nbsp;·&nbsp; ~25 min<br>
+      ─────────────────────────────────────<br>
+      Total · · · · · · · · · · · · · · · <strong style="color:var(--accent2)">48 marks &nbsp;·&nbsp; ~1 hr 7 min</strong>
+    </div>
+
+    <!-- ── How to Use ── -->
+    <div class="section-label">What's Inside Each Guide</div>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-icon">📚</div>
+        <div>
+          <div class="how-label">Key Learning</div>
+          <div class="how-desc">Expandable content cards covering all core concepts, techniques, and examples for the question type.</div>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">❓</div>
+        <div>
+          <div class="how-label">MCQ Quiz</div>
+          <div class="how-desc">Multiple-choice questions with instant feedback and detailed explanations for every option.</div>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">🔗</div>
+        <div>
+          <div class="how-label">Keyword Matching</div>
+          <div class="how-desc">Drag-and-match key terms to their definitions to build precise subject vocabulary.</div>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">✏️</div>
+        <div>
+          <div class="how-label">Fill in the Blanks</div>
+          <div class="how-desc">Complete sentences using a word bank — tests recall of key facts, dates, and exam technique rules.</div>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">✅</div>
+        <div>
+          <div class="how-label">True / False</div>
+          <div class="how-desc">Challenge common misconceptions with statements that target the most frequent student errors.</div>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">⚠️</div>
+        <div>
+          <div class="how-label">Misconceptions</div>
+          <div class="how-desc">See exactly what examiners warn about and learn the accurate, mark-scheme-approved response.</div>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">🎯</div>
+        <div>
+          <div class="how-label">Exam Tips</div>
+          <div class="how-desc">Step-by-step formula for each question type with weak vs. strong answer examples and sentence starters.</div>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">🃏</div>
+        <div>
+          <div class="how-label">Flashcards</div>
+          <div class="how-desc">Flip-card revision of every key term, technique, and past-exam example — ideal for last-minute review.</div>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon">📝</div>
+        <div>
+          <div class="how-label">Exam Practice</div>
+          <div class="how-desc">Real exam-style questions with hints, sentence starters, mark schemes, and full model answers.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    Edexcel GCSE History · Paper 3 · Weimar &amp; Nazi Germany 1918–39 · Revision Suite
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 1 — The Weimar Republic 1918–1929 · Interactive Study Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="stylesheet.css">
+
+
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <div class="badge">Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany</div>
+            <h1>Topic 1 · The Weimar Republic 1918–1929</h1>
+            <p>Interactive revision guide · All key content + full exam practice</p>
+        </div>
+        <a href="index.html" class="home-link">← 🏡 Home</a>
+    </header>
+
+    <nav class="tab-bar" id="tabBar">
+        <button class="tab-btn active" onclick="switchTab('learn',this)">📚 Key Learning</button>
+        <button class="tab-btn" onclick="switchTab('mcq',this)">❓ MCQ Quiz</button>
+        <button class="tab-btn" onclick="switchTab('matching',this)">🔗 Matching</button>
+        <button class="tab-btn" onclick="switchTab('fib',this)">✏️ Fill the Blanks</button>
+        <button class="tab-btn" onclick="switchTab('misconceptions',this)">⚠️ Misconceptions</button>
+        <button class="tab-btn" onclick="switchTab('examtips',this)">🎯 Exam Tips</button>
+        <button class="tab-btn" onclick="switchTab('flashcards',this)">🃏 Flashcards</button>
+        <button class="tab-btn" onclick="switchTab('truefalse',this)">✅ True / False</button>
+        <button class="tab-btn" onclick="switchTab('exampractice',this)">📝 Exam Practice</button>
+    </nav>
+
+    <main>
+
+        <!-- ═══════════════════════ KEY LEARNING ═══════════════════════ -->
+        <div class="tab-panel active" id="tab-learn">
+            <h2 class="section-title">Key Learning Topics</h2>
+            <p class="section-sub">Click any card to expand detailed notes.</p>
+            <div class="topic-grid" id="topicGrid"></div>
+        </div>
+
+        <!-- ═══════════════════════ MCQ ═══════════════════════ -->
+        <div class="tab-panel" id="tab-mcq">
+            <h2 class="section-title">Multiple Choice Questions</h2>
+            <p class="section-sub">Select an answer to reveal instant feedback.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="mcqScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct answers</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">out of <strong id="mcqTotal">0</strong> attempted</div>
+                <button class="reset-btn" onclick="resetMCQ()">RESET</button>
+            </div>
+            <div class="quiz-wrap" id="mcqWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ MATCHING ═══════════════════════ -->
+        <div class="tab-panel" id="tab-matching">
+            <h2 class="section-title">Matching Activity</h2>
+            <p class="section-sub">Click a term on the left, then click the matching definition on the right.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="matchScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">matched</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">out of <strong id="matchTotal">0</strong></div>
+                <button class="reset-btn" onclick="resetMatch()">RESET</button>
+            </div>
+            <div class="match-grid">
+                <div>
+                    <div class="match-label">TERMS</div>
+                    <div class="match-col" id="matchLeft"></div>
+                </div>
+                <div>
+                    <div class="match-label">DEFINITIONS</div>
+                    <div class="match-col" id="matchRight"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════ FILL IN BLANKS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-fib">
+            <h2 class="section-title">Fill in the Blanks</h2>
+            <p class="section-sub">Choose the correct word from each dropdown. Wrong answers reset — try again!</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="fibScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">of <strong id="fibTotal">0</strong> blanks</div>
+                <button class="reset-btn" onclick="resetFIB()">RESET</button>
+            </div>
+            <div class="fib-wrap" id="fibWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ MISCONCEPTIONS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-misconceptions">
+            <h2 class="section-title">Common Misconceptions</h2>
+            <p class="section-sub">What students often think — and what examiners actually want.</p>
+            <div class="misc-list" id="miscList"></div>
+        </div>
+
+        <!-- ═══════════════════════ EXAM TIPS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-examtips">
+            <h2 class="section-title">Exam Questions &amp; Tips</h2>
+            <p class="section-sub">Most repeated question types and mark-scheme structures from real papers.</p>
+            <div class="tips-grid" id="tipsGrid"></div>
+        </div>
+
+        <!-- ═══════════════════════ FLASHCARDS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-flashcards">
+            <h2 class="section-title">Flashcards</h2>
+            <p class="section-sub">Test yourself! Flip the card and rate your knowledge.</p>
+            <div class="fc-container">
+                <div class="score-bar" id="fcScoreBar" style="display:none;margin-bottom:20px">
+                    <div>
+                        <div class="score-num" id="fcKnown" style="color:#2d7a4f">0</div>
+                        <div style="font-size:12px;color:var(--mid)">known</div>
+                    </div>
+                    <div>
+                        <div class="score-num" id="fcUnknown" style="color:#c84b31">0</div>
+                        <div style="font-size:12px;color:var(--mid)">learning</div>
+                    </div>
+                    <div style="font-size:13px;color:var(--mid)">out of <strong id="fcTotalTrack">0</strong></div>
+                    <button class="reset-btn" onclick="resetFlashcards()">RESET</button>
+                </div>
+                <div id="fcActiveArea">
+                    <div class="fc-progress" id="fcProgress">Card 1 of 0</div>
+                    <div class="flashcard" id="flashcard" onclick="flipCard()">
+                        <div class="fc-inner">
+                            <div class="fc-front">
+                                <div class="fc-label">KEY TERM</div>
+                                <div class="fc-term" id="fcTerm"></div>
+                            </div>
+                            <div class="fc-back">
+                                <div class="fc-def" id="fcDef"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fc-hint">👆 Click card to flip</p>
+                    <div class="fc-nav" id="fcNavDefault">
+                        <button class="fc-btn outline" onclick="prevCard()">← Prev</button>
+                        <button class="fc-btn outline" onclick="flipCard()">Flip</button>
+                        <button class="fc-btn" onclick="nextCard()">Next →</button>
+                    </div>
+                    <div class="fc-nav" id="fcNavAssess" style="display:none;gap:15px">
+                        <button class="fc-btn outline" style="border-color:#c84b31;color:#c84b31;flex:1"
+                            onclick="markCard(false)">❌
+                            Still Learning</button>
+                        <button class="fc-btn" style="background:#2d7a4f;border-color:#2d7a4f;flex:1"
+                            onclick="markCard(true)">✅ Got
+                            It</button>
+                    </div>
+                </div>
+                <div id="fcSummaryArea" style="display:none;text-align:center;padding:40px 20px">
+                    <h3
+                        style="font-family:'Playfair Display',serif;color:var(--accent2);font-size:24px;margin-bottom:12px">
+                        Session Complete! 🎉</h3>
+                    <p style="margin:15px 0;color:var(--text-dim)">You knew <strong id="fcSummaryKnown"
+                            style="color:var(--accent2)">0</strong> out of <strong id="fcSummaryTotal"
+                            style="color:var(--accent2)">0</strong> cards.</p>
+                    <div style="margin-top:25px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap">
+                        <button class="fc-btn" id="btnReviewWrong" onclick="reviewWrong()"
+                            style="background:#c84b31;border-color:#c84b31">Review Incorrect</button>
+                        <button class="fc-btn outline" onclick="resetFlashcards()">Practice All Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════ TRUE / FALSE ═══════════════════════ -->
+        <div class="tab-panel" id="tab-truefalse">
+            <h2 class="section-title">True or False?</h2>
+            <p class="section-sub">Test your knowledge with these statements.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="tfScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">of <strong id="tfTotal">0</strong> answered</div>
+                <button class="reset-btn" onclick="resetTF()">RESET</button>
+            </div>
+            <div class="tf-wrap" id="tfWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ EXAM PRACTICE ═══════════════════════ -->
+        <div class="tab-panel" id="tab-exampractice">
+            <h2 class="section-title">Exam Practice Questions</h2>
+            <p class="section-sub">Full exam questions with mark schemes. Use <strong>Hint</strong>, <strong>Sentence
+                    Starter</strong> and <strong>Submit &amp; See Mark Scheme</strong> for each question.</p>
+            <div class="ep-list" id="epList"></div>
+        </div>
+
+    </main>
+
+<script>
+
+    /* ══════════════════════════════════════════════
+       PAGE METADATA — Q3a How Useful are Sources B and C?
+    ══════════════════════════════════════════════ */
+
+    const pageMeta = {
+        badge: "Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany",
+        title: "Q3a · How Useful are Sources B and C?",
+        subtitle: "Interactive revision guide · Source analysis skills + full exam practice"
+    };
+
+    /* ── Apply metadata on load ── */
+    document.addEventListener('DOMContentLoaded', () => {
+        const badgeEl = document.querySelector('.badge');
+        const h1El = document.querySelector('header h1');
+        const subEl = document.querySelector('header p');
+        const titleEl = document.querySelector('title');
+
+        if (badgeEl) badgeEl.innerHTML = pageMeta.badge;
+        if (h1El) h1El.textContent = pageMeta.title;
+        if (subEl) subEl.textContent = pageMeta.subtitle;
+        if (titleEl) titleEl.textContent = pageMeta.title.replace(/&amp;/g, '&');
+    });
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 1 · topics  (Key Learning cards)
+    ══════════════════════════════════════════════ */
+
+    const topics = [
+        {
+            title: "What is the Q3a 'How Useful' Question?",
+            tag: "Overview",
+            content: `<p>Question 3(a) is the first question in <strong>Section B</strong> of Paper 3. It is worth <strong>8 marks</strong> and you should spend no more than <strong>15 minutes</strong> on it — roughly 5 minutes planning and 10 minutes writing.</p>
+<ul>
+  <li><strong>The task:</strong> Evaluate how useful <em>two sources</em> (Sources B and C) are for a historian investigating a specific historical issue.</li>
+  <li><strong>The enquiry:</strong> The question names a specific focus — e.g. "challenges facing the Weimar Republic in 1919–23." Every point must link back to this focus.</li>
+  <li><strong>Critical rule:</strong> If you do not link your answer to the enquiry, you cannot score more than 2 marks.</li>
+  <li><strong>Structure:</strong> Write one focused paragraph per source, each covering content, provenance, own knowledge, and a clear judgement.</li>
+</ul>
+<div class="case-study-box">
+  <h4>Q3a Past Exam Topics (Weimar &amp; Nazi Germany)</h4>
+  <p>2018: Challenges facing the Weimar Republic 1919–23 · 2019: Nazi policies towards women · 2020: Support for the Nazi regime 1933–39 · 2021: Support for the Nazi Party 1924–28 · 2022: Why Hitler became Chancellor in 1933 · 2023: Cultural changes in the Weimar Republic 1924–29 · 2024: Nazi methods of controlling people 1933–39</p>
+</div>`
+        },
+        {
+            title: "Using Source Content",
+            tag: "Skill",
+            content: `<p><strong>Content</strong> is the information shown or described within the source itself. How you extract it depends on the type of source you are given.</p>
+<div class="two-col">
+  <div>
+    <div class="col-head">Written Sources</div>
+    <div class="pro-item">Read closely to identify the author's <strong>overall viewpoint</strong> on the enquiry issue.</div>
+    <div class="pro-item">Locate <strong>key quotes</strong> that speak directly to the focus of the question.</div>
+    <div class="pro-item">Consider what the author's perspective <strong>implies</strong> as well as what it states.</div>
+  </div>
+  <div>
+    <div class="col-head">Visual Sources (Photos / Posters)</div>
+    <div class="pro-item">Ask: <strong>what is happening</strong> in the image and who is present?</div>
+    <div class="pro-item">Consider what is <strong>included or excluded</strong> from the frame.</div>
+    <div class="pro-item">Ask what <strong>message</strong> is communicated, and whether anything appears staged or selected.</div>
+  </div>
+</div>
+<div class="case-study-box">
+  <h4>Example: Extracting Content</h4>
+  <p>"Source C is useful because it shows the economic impact of hyperinflation on ordinary Germans. The source states that 'After the hyperinflation, people didn't trust the government anymore.' This directly shows how economic crisis undermined the political legitimacy of the Weimar Republic — central to the enquiry."</p>
+</div>`
+        },
+        {
+            title: "Using Source Provenance",
+            tag: "Skill",
+            content: `<p><strong>Provenance</strong> is the background information printed above each source. It tells you four key things:</p>
+<ul>
+  <li><strong>Who</strong> created the source (the author, creator, or institution)</li>
+  <li><strong>What</strong> type of source it is (diary, speech, photograph, newspaper article, etc.)</li>
+  <li><strong>When</strong> it was produced (the date or period)</li>
+  <li><strong>Where</strong> it was created (the context or location)</li>
+</ul>
+<p>Use provenance to ask: Is this source <strong>typical</strong> of what you would expect from this author? Is it <strong>accurate</strong> given when it was made? What <strong>factors</strong> — role, audience, purpose — may have shaped it?</p>
+<div class="formula-box">
+  Provenance Framework: WHO made it? · WHAT type? · WHEN? · WHERE? · WHY does this affect usefulness?
+</div>
+<div class="case-study-box">
+  <h4>Example: Analysing Provenance</h4>
+  <p>"The provenance of Source B strengthens its usefulness. Goebbels was the Reich Minister of Propaganda and a close associate of Hitler. As the official voice of Nazi ideology, his speech reliably reflects what the regime wanted women to believe about their role — making it highly useful for understanding official Nazi attitudes, even if it overstates how rigidly these policies were enforced in practice."</p>
+</div>`
+        },
+        {
+            title: "Making a Judgement on Usefulness",
+            tag: "Skill",
+            content: `<p>Q3a requires you to make a <strong>clear judgement</strong> about how useful each source is. A strong judgement:</p>
+<ul>
+  <li>Refers to <strong>specific content</strong> from the source (a quote or description)</li>
+  <li>Uses <strong>provenance</strong> clearly and relevantly</li>
+  <li>Applies <strong>accurate own knowledge</strong> to contextualise the source</li>
+  <li>Links everything back to the <strong>specific enquiry focus</strong> in the question</li>
+</ul>
+<div class="two-col">
+  <div>
+    <div class="col-head">✅ Strong Judgement</div>
+    <div class="pro-item">"Source B is very useful because, written in secret by a regime opponent, the author had no reason to exaggerate anti-Nazi sentiment, giving this account of worker attitudes genuine credibility for the enquiry."</div>
+  </div>
+  <div>
+    <div class="col-head">❌ Weak Judgement</div>
+    <div class="con-item">"Source B might be useful but it could be biased so it is maybe not very reliable." — Vague, focuses on reliability not usefulness, no link to enquiry.</div>
+  </div>
+</div>
+<p><strong>Key rule:</strong> All sources are useful to some extent. Never dismiss a source as useless. Focus on explaining <em>how</em> and <em>why</em> it is useful for the specific enquiry — not on whether you trust it.</p>`
+        },
+        {
+            title: "The SCPJ Paragraph Structure",
+            tag: "Technique",
+            content: `<p>Every Q3a paragraph should follow the <strong>SCPJ structure</strong> to ensure you address all four elements the mark scheme rewards:</p>
+<div class="formula-box">
+  S — State: "Source B/C is useful because it shows that..."<br>
+  C — Content: Quote or describe specific evidence from the source<br>
+  P — Provenance + Knowledge: Background info + own historical context<br>
+  J — Judgement: "This makes it useful for the enquiry because..."
+</div>
+<div class="case-study-box">
+  <h4>SCPJ in Practice — Hitler as Chancellor (Q 2022)</h4>
+  <p><strong>S:</strong> "Source C is useful because it shows that Hitler's appointment as Chancellor resulted from political backroom deals, not just popular support."</p>
+  <p><strong>C:</strong> "The diary records Ribbentrop convincing von Papen over 27–29 January 1933 that 'the only thing that makes sense is for Hindenburg to appoint Hitler as Chancellor,' culminating in the appointment on 30 January."</p>
+  <p><strong>P+K:</strong> "The source is from Ribbentrop's own diary — he was directly involved in the negotiations. From my own knowledge, Hindenburg had repeatedly refused to appoint Hitler as Chancellor despite the Nazis winning most seats in July 1932, and von Papen believed he could control Hitler in a coalition."</p>
+  <p><strong>J:</strong> "As a first-hand account from an insider to the negotiations, this source provides uniquely valuable evidence of the political dealmaking that the history books record as the decisive factor in Hitler's rise to power."</p>
+</div>`
+        },
+        {
+            title: "Limitations of Sources — Do You Need Them?",
+            tag: "Technique",
+            content: `<p>You do <strong>not</strong> need to include limitations to achieve full marks. Responses that focus entirely on a source's <strong>strengths</strong> frequently score higher than those dominated by criticism.</p>
+<p>If you choose to include a limitation, it must be:</p>
+<ul>
+  <li><strong>Supported by specific knowledge</strong> — not a vague assertion that the source is "biased"</li>
+  <li><strong>Focused on the enquiry</strong> — explain why this limitation affects usefulness for <em>this</em> question</li>
+  <li><strong>Brief</strong> — one sentence, followed immediately by a return to usefulness</li>
+</ul>
+<div class="two-col">
+  <div>
+    <div class="col-head">✅ Valid Limitation</div>
+    <div class="pro-item">"However, Source C shows only one textile factory in one large city and may not reflect the experience of women in rural Germany — though it remains useful for showing the reality of women's working lives during the rearmament period."</div>
+  </div>
+  <div>
+    <div class="col-head">❌ Invalid Limitation</div>
+    <div class="con-item">"Source B is not useful because it is biased." — No knowledge used; focus is on reliability; no link to the enquiry; no conclusion about usefulness.</div>
+  </div>
+</div>`
+        },
+        {
+            title: "Using Own Knowledge Correctly",
+            tag: "Skill",
+            content: `<p>Own knowledge earns marks <strong>only</strong> when it is linked directly to the source and used to explain why the source is useful for the enquiry. A knowledge dump that ignores the source scores nothing.</p>
+<ul>
+  <li>Your knowledge should <strong>contextualise</strong> what the source shows — filling in background that makes the source evidence more meaningful.</li>
+  <li>Knowledge added in a separate paragraph, disconnected from the source, <strong>earns no marks</strong>.</li>
+  <li>Keep knowledge <strong>specific and accurate</strong> — vague claims such as "life was hard" or "there was lots of opposition" are insufficient.</li>
+</ul>
+<div class="case-study-box">
+  <h4>Example: Own Knowledge Linked to Source</h4>
+  <p>"Source B shows Freikorps soldiers with military vehicles near the Reichstag during the Kapp Putsch. From my own knowledge, I know that in March 1920, Ebert planned to disband the Freikorps to comply with the Treaty of Versailles. Fearing unemployment, around 5,000 Freikorps soldiers under Wolfgang Kapp marched on Berlin and briefly seized the capital. This knowledge contextualises what the photograph shows — making it useful as evidence of the <em>scale and seriousness</em> of the threat posed to the Weimar Republic."</p>
+</div>`
+        }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 2 · mcqData  (Multiple Choice Quiz)
+    ══════════════════════════════════════════════ */
+
+    const mcqData = [
+        {
+            q: "How many marks is the Q3a 'How Useful are Sources B and C?' question worth?",
+            opts: ["4 marks", "6 marks", "8 marks", "12 marks"],
+            ans: 2,
+            explain: "Correct: C — 8 marks. Q3a is not 4 marks (that is the 'Give Two Inferences' question), not 6 marks, and not 12 marks (that is the 'Explain Why' question). You should spend a maximum of 15 minutes on Q3a."
+        },
+        {
+            q: "If a student only writes about one source in their Q3a answer, what is the maximum mark they can receive?",
+            opts: ["2 marks", "4 marks", "5 marks", "8 marks"],
+            ans: 2,
+            explain: "Correct: C — 5 marks. To access the full 8 marks, both Source B and Source C must be discussed in separate paragraphs. Writing only about one source, however detailed, caps you at 5. This is one of the most frequent errors on Q3a."
+        },
+        {
+            q: "Which of the following correctly defines 'provenance'?",
+            opts: [
+                "The main argument made within the source",
+                "The background information about who made the source, what type it is, when and where it was produced",
+                "The reasons why a source is unreliable or biased",
+                "The specific statistics and facts mentioned inside the source"
+            ],
+            ans: 1,
+            explain: "Correct: B. Provenance is the background information — Who, What, When, Where — found at the top of each source. It is not the argument (A), a discussion of reliability (C), or the facts inside the source itself (D), which is the content."
+        },
+        {
+            q: "Which of the following would earn NO marks in a Q3a answer?",
+            opts: [
+                "Using the creator's role to explain why the source's perspective is particularly valuable",
+                "Quoting specific content from the source to support a usefulness claim",
+                "Focusing on whether the source is reliable and free from bias rather than how useful it is",
+                "Applying own knowledge to contextualise what the source shows"
+            ],
+            ans: 2,
+            explain: "Correct: C. Focusing on reliability instead of usefulness earns no marks on Q3a. The question asks how useful the source is — these are different concepts. A biased source can still be very useful. Options A, B, and D are all valid approaches that earn marks."
+        },
+        {
+            q: "When should a student include own knowledge in their Q3a answer?",
+            opts: [
+                "Only at the end of the entire answer as a separate paragraph",
+                "It should never be included — Q3a only requires source analysis",
+                "When it is directly linked to the source and helps explain why the source is useful for the specific enquiry",
+                "As much as possible, even if not connected to the source being analysed"
+            ],
+            ans: 2,
+            explain: "Correct: C. Own knowledge earns marks only when it is linked to the source and used to explain why the source is useful for the specific enquiry. Adding unrelated knowledge (D) earns nothing. Own knowledge is required (not B) and should appear within source paragraphs, not in a separate paragraph (A)."
+        },
+        {
+            q: "In the 2022 Edexcel exam, what was the Q3a enquiry focus?",
+            opts: [
+                "Challenges facing the Weimar Republic in the years 1919–23",
+                "Support for the Nazi Party in the years 1924–28",
+                "Why Hitler became Chancellor in 1933",
+                "Nazi methods of controlling people, 1933–39"
+            ],
+            ans: 2,
+            explain: "Correct: C. The 2022 Q3a question focused on 'Why Hitler became Chancellor in 1933.' The 2018 question was about challenges facing the Weimar Republic 1919–23 (A), 2021 was support for the Nazi Party 1924–28 (B), and 2024 was Nazi methods of control (D)."
+        },
+        {
+            q: "What does the 'P' step in the SCPJ structure require you to do?",
+            opts: [
+                "Provide a point summarising the source in your own words",
+                "Analyse the provenance of the source and use own knowledge to contextualise it",
+                "Paraphrase the source to avoid copying",
+                "Prove that the source is reliable using other evidence"
+            ],
+            ans: 1,
+            explain: "Correct: B. The 'P' stands for Provenance + own Knowledge. This step requires you to analyse the background of the source (who made it, when, why) and use your own historical knowledge to contextualise what the source shows. It is not about paraphrasing (C) or proving reliability (D)."
+        },
+        {
+            q: "A photograph published in a Nazi-controlled magazine showing enthusiastic crowds greeting Hitler is best described as:",
+            opts: [
+                "Useless as evidence because it is propaganda and cannot be trusted",
+                "Useful for showing how the Nazi regime used media to project an image of Hitler's popularity, even though the image may have been selected or staged",
+                "Only useful if it can be corroborated by another source",
+                "Unreliable and therefore of no value to historians investigating Nazi Germany"
+            ],
+            ans: 1,
+            explain: "Correct: B. No source is useless. A propaganda photograph is useful precisely because it reveals how the Nazi regime managed its public image — what they wanted people to see and believe. Options A and D incorrectly dismiss the source. Option C conflates corroboration with usefulness."
+        },
+        {
+            q: "Which statement about the limitations of sources in Q3a is accurate?",
+            opts: [
+                "You must always identify a limitation of each source to achieve Level 3",
+                "Including limitations always improves your mark on Q3a",
+                "You do not need to include limitations to achieve full marks; focusing on strengths often produces higher-quality answers",
+                "Limitations must be written in a separate concluding paragraph"
+            ],
+            ans: 2,
+            explain: "Correct: C. You do not need to include limitations for full marks, and responses focused exclusively on a source's strengths often score higher. If you do include a limitation, it must be brief, knowledge-supported, and still conclude with a statement of usefulness. Options A and B are incorrect; D describes an ineffective structure."
+        },
+        {
+            q: "Goebbels' speech of March 1933 on women's roles is useful as a historical source because:",
+            opts: [
+                "It proves that all German women followed Nazi policies about family life",
+                "As the Reich Minister of Propaganda, Goebbels' speech reliably represents the official Nazi ideology the regime wanted women to accept",
+                "It was written in secret so Goebbels had no reason to exaggerate",
+                "The speech was widely reported internationally and so influenced policy across Europe"
+            ],
+            ans: 1,
+            explain: "Correct: B. Goebbels was the Reich Minister of Propaganda — his public speeches directly communicated official Nazi ideology. The source is useful because it reveals what the regime wanted women to believe, not because it proves all women complied (A). It was not secret (C) and there is no evidence of international policy influence (D)."
+        },
+        {
+            q: "Ribbentrop's diary recording the negotiations of January 1933 between von Papen and Hindenburg is most useful for an enquiry into:",
+            opts: [
+                "The challenges facing the Weimar Republic in the years 1919–23",
+                "The extent of popular support for Hitler among ordinary Germans",
+                "The political backroom dealings that led to Hitler's appointment as Chancellor in 1933",
+                "Nazi methods of controlling the German population after 1933"
+            ],
+            ans: 2,
+            explain: "Correct: C. Ribbentrop's diary records the key conversations between von Papen and Hindenburg in January 1933 — making it directly useful for understanding the political machinations behind Hitler's appointment. It is not relevant to 1919–23 challenges (A), popular support (B), or post-1933 control methods (D)."
+        },
+        {
+            q: "The Kapp Putsch of 1920 is relevant historical context for a source showing Freikorps soldiers in Berlin because:",
+            opts: [
+                "It shows that the Weimar Republic successfully defeated all right-wing threats from the very beginning",
+                "It demonstrates that the Freikorps were always loyal to the Weimar government",
+                "It reveals that armed right-wing paramilitary groups posed a serious threat to the Weimar Republic's survival, with 5,000 soldiers briefly seizing the capital",
+                "It proves that hyperinflation was caused directly by military spending on the Freikorps"
+            ],
+            ans: 2,
+            explain: "Correct: C. The Kapp Putsch shows that the Freikorps were willing and able to use armed force to overthrow the Weimar government — around 5,000 soldiers briefly occupied Berlin in March 1920. Option A is incorrect as the Putsch was a serious near-miss. Option B is the opposite of the truth. Option D confuses causes of hyperinflation."
+        }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 3 · matchData  (Keyword Matching)
+    ══════════════════════════════════════════════ */
+
+    const matchData = [
+        { term: "Provenance", def: "Background information about a source: who made it, what type it is, when and where it was produced — printed at the top of each source." },
+        { term: "Content", def: "The information shown or described within a source — what it says or visually depicts." },
+        { term: "Usefulness / Utility", def: "What a source reveals about a specific historical enquiry through its content, provenance, and context." },
+        { term: "Historical enquiry", def: "A specific question historians investigate by selecting evidence and making judgements — the focus stated in the Q3a question." },
+        { term: "Contextual knowledge", def: "Your own accurate factual knowledge about the historical period, used to explain why a source is valuable for the enquiry." },
+        { term: "Inference", def: "A conclusion drawn from source evidence that is not directly stated — going beyond the surface of what the source says." },
+        { term: "Reliability", def: "Whether a source is accurate and unbiased — distinct from usefulness and NOT what Q3a is testing." },
+        { term: "Kapp Putsch (1920)", def: "A right-wing coup attempt in which ~5,000 Freikorps soldiers under Wolfgang Kapp briefly seized Berlin before being defeated by a general strike." },
+        { term: "Hyperinflation (1923)", def: "A catastrophic collapse of the German currency, caused by the government printing money to pay striking workers during the French occupation of the Ruhr." },
+        { term: "Kinder, Küche, Kirche", def: "The Nazi ideological slogan for women (Children, Kitchen, Church) — the belief that women's proper role was as wives and mothers in the home." },
+        { term: "Albert Speer", def: "Senior Nazi architect and government official who wrote 'Inside the Third Reich' (1970), recalling Hitler's packed election rallies of July 1932." },
+        { term: "Joachim von Ribbentrop", def: "Wealthy businessman and Nazi supporter whose January 1933 diary records the backroom negotiations between von Papen and Hindenburg that led to Hitler becoming Chancellor." },
+        { term: "Freikorps", def: "Demobilised ex-soldiers organised into paramilitary units who posed a violent right-wing threat to the Weimar Republic in the years 1919–23." },
+        { term: "Dawes Plan (1924)", def: "An agreement in which American banks loaned money to Germany to pay its reparations — stabilising the economy but making Germany dependent on US capital." }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 4 · fibData  (Fill in the Blanks)
+       ARRAY 5 · fibWords (Word Bank)
+    ══════════════════════════════════════════════ */
+
+    const fibData = [
+        {
+            display: "Q3a is worth _____ marks and you should spend no more than _____ minutes on it.",
+            blanks: { B1: "8", B2: "15" }
+        },
+        {
+            display: "The provenance of a source tells you who made it, what _____ of source it is, when it was produced, and where it was _____.",
+            blanks: { B1: "type", B2: "created" }
+        },
+        {
+            display: "If you only write about one source in Q3a, the maximum mark you can receive is _____.",
+            blanks: { B1: "5" }
+        },
+        {
+            display: "In Q3a, you must focus on how _____ the source is for the enquiry, not on whether it is _____.",
+            blanks: { B1: "useful", B2: "reliable" }
+        },
+        {
+            display: "The SCPJ structure stands for: State, _____, Provenance/Knowledge, and _____.",
+            blanks: { B1: "Content", B2: "Judgement" }
+        },
+        {
+            display: "The Kapp Putsch of _____ saw right-wing Freikorps soldiers temporarily occupy _____, threatening the Weimar government's survival.",
+            blanks: { B1: "1920", B2: "Berlin" }
+        },
+        {
+            display: "Nazi ideology about women was summed up by the three Ks: Kinder (Children), _____ (Kitchen), and _____ (Church).",
+            blanks: { B1: "Küche", B2: "Kirche" }
+        },
+        {
+            display: "The hyperinflation crisis of _____ was caused partly by the government printing money to pay striking workers during the French occupation of the _____.",
+            blanks: { B1: "1923", B2: "Ruhr" }
+        },
+        {
+            display: "Goebbels was the Nazi Minister of _____, and his 1933 speech on women is useful as it reveals the official Nazi _____ about their role in society.",
+            blanks: { B1: "Propaganda", B2: "ideology" }
+        },
+        {
+            display: "To achieve full marks in Q3a, your judgement must use the source's content, its _____, and your own _____.",
+            blanks: { B1: "provenance", B2: "knowledge" }
+        },
+        {
+            display: "Albert Speer's autobiography, _____ the Third Reich (1970), describes enormous crowds at Hitler's election rallies in July _____.",
+            blanks: { B1: "Inside", B2: "1932" }
+        },
+        {
+            display: "The Dawes Plan of _____ helped stabilise Germany's economy by securing loans from the _____, but made Germany economically dependent.",
+            blanks: { B1: "1924", B2: "USA" }
+        }
+    ];
+
+    const fibWords = [
+        /* ── Correct answers ── */
+        "8", "15", "5",
+        "type", "created",
+        "useful", "reliable",
+        "Content", "Judgement",
+        "1920", "Berlin",
+        "Küche", "Kirche",
+        "1923", "Ruhr",
+        "Propaganda", "ideology",
+        "provenance", "knowledge",
+        "Inside", "1932",
+        "1924", "USA",
+        /* ── Plausible distractors ── */
+        "4", "12", "6", "10", "3", "20",
+        "Evaluation", "Analysis", "Introduction", "Context",
+        "style", "purpose", "published", "origin",
+        "accurate", "biased", "primary",
+        "Beer Hall", "Munich", "Hamburg", "Vienna",
+        "Kinder", "Kirche", "Küche",
+        "1921", "1919", "1925", "1929",
+        "Saarland", "Bavaria", "Rhineland",
+        "Censorship", "Education", "Police",
+        "policy", "attitude", "opinion",
+        "inference", "judgement", "evaluation",
+        "Outside", "About", "Beyond",
+        "1930", "1933", "1928",
+        "Britain", "France", "Russia"
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 6 · tfData  (True / False)
+    ══════════════════════════════════════════════ */
+
+    const tfData = [
+        {
+            statement: "Q3a requires you to evaluate how useful both Sources B and C are for the stated historical enquiry.",
+            answer: true,
+            explanation: "TRUE. Q3a specifically asks you to study and evaluate both Source B and Source C. Writing about only one source limits your maximum mark to 5 out of 8. You must write a focused paragraph on each source to access the full mark range."
+        },
+        {
+            statement: "In Q3a, students should focus primarily on whether the source is reliable and free from bias.",
+            answer: false,
+            explanation: "FALSE. Q3a asks about usefulness, not reliability. These are entirely different concepts. A biased source — such as a Nazi propaganda speech — can still be extremely useful for showing what the regime intended people to believe. Focusing on reliability instead of usefulness earns no marks on this question."
+        },
+        {
+            statement: "Provenance includes information about who created the source, what type it is, when it was made, and where it was produced.",
+            answer: true,
+            explanation: "TRUE. Provenance covers all four of these elements — the classic 'Who, What, When, Where' framework. Each element can help you explain why the source is particularly valuable (or limited) for the specific enquiry you are investigating."
+        },
+        {
+            statement: "You must include limitations of both sources in your Q3a answer to achieve the highest marks.",
+            answer: false,
+            explanation: "FALSE. Limitations are not required for full marks. Responses that focus entirely on the strengths of each source frequently score higher than those dominated by criticism. If you do include a limitation, it must be specific, knowledge-supported, relevant to the enquiry, and followed by a return to usefulness."
+        },
+        {
+            statement: "If you do not link your answer to the enquiry focus in the question, you cannot score more than 2 marks.",
+            answer: true,
+            explanation: "TRUE. Linking all points to the specific historical issue named in the question is essential. Failing to make this connection caps your mark at just 2 out of 8, regardless of how much you write about the sources. Always refer back to the enquiry focus at the start and end of each paragraph."
+        },
+        {
+            statement: "Adding own knowledge that is not linked to the source you are discussing can earn marks in Q3a.",
+            answer: false,
+            explanation: "FALSE. Own knowledge earns marks only when it is directly linked to the source and used to explain why the source is useful for the specific enquiry. A separate paragraph of general historical knowledge, disconnected from the source, earns no marks on Q3a."
+        },
+        {
+            statement: "The Kapp Putsch of 1920 was a right-wing coup attempt in which Freikorps soldiers occupied Berlin after the government planned to disband them.",
+            answer: true,
+            explanation: "TRUE. In March 1920, Ebert planned to disband the Freikorps in compliance with the Treaty of Versailles. Fearing unemployment, approximately 5,000 Freikorps members under Wolfgang Kapp marched on Berlin and briefly occupied the capital. The putsch collapsed when the government called a general strike that paralysed the country within days."
+        },
+        {
+            statement: "Sources B and C for Q3a are found in Section A of the Edexcel Paper 3 exam.",
+            answer: false,
+            explanation: "FALSE. Sources B and C are found in the Sources/Interpretations Booklet and are used for Section B of the paper (Questions 3a to 3d). Source A is only relevant to Section A and is not included in the booklet insert used for Section B."
+        },
+        {
+            statement: "A photograph from a Nazi-controlled magazine can be considered useless as evidence because it may be propaganda.",
+            answer: false,
+            explanation: "FALSE. No source is ever useless. A photograph from a Nazi-controlled magazine is actually useful precisely because it was published under Nazi censorship — it shows what the regime wanted the public to see, and reveals how the Nazis used visual media to project a particular image. You should always explain how a source is useful for the enquiry, never dismiss it as worthless."
+        },
+        {
+            statement: "By the July 1932 Reichstag elections, the Nazi Party had won more seats than any other single party.",
+            answer: true,
+            explanation: "TRUE. The July 1932 elections gave the Nazi Party 230 seats — the largest number for any single party in the Reichstag. Despite this, Hindenburg initially refused to appoint Hitler as Chancellor, preferring other arrangements. Hitler was eventually appointed on 30 January 1933 after negotiations involving von Papen and Hindenburg."
+        },
+        {
+            statement: "Goebbels' 1933 speech on women is not useful as a historical source because, as a propagandist, nothing he said was true.",
+            answer: false,
+            explanation: "FALSE. The fact that Goebbels was the Reich Minister of Propaganda actually makes the source more useful, not less. The speech reliably reveals the official Nazi ideology about women's roles that the regime wanted to promote. Whether the claims were 'true' is irrelevant to Q3a — usefulness is about what the source reveals for the enquiry, not whether it is accurate."
+        },
+        {
+            statement: "Q3a in the Edexcel Weimar and Nazi Germany exam has appeared every year since 2018, always focusing on a specific historical enquiry.",
+            answer: true,
+            explanation: "TRUE. Q3a has appeared on every Edexcel Paper 3 since 2018, rotating through different aspects of Weimar and Nazi Germany. Topics have included Weimar political crises, Nazi ideology, social policies, electoral support, and methods of control. The enquiry focus is always specific to a time period and issue."
+        }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 7 · miscData  (Common Misconceptions)
+    ══════════════════════════════════════════════ */
+
+    const miscData = [
+        {
+            wrong: "Students write about whether the source is reliable or biased instead of whether it is useful.",
+            correct: "Q3a asks about usefulness, not reliability — these are completely different concepts. A biased source (e.g. a Nazi propaganda speech) is still useful because it tells historians exactly how the regime presented its policies to the public. Always focus on what the source reveals for the specific enquiry. The word 'reliable' should not appear in your Q3a answer."
+        },
+        {
+            wrong: "Students say 'this source is not useful because it is biased' and leave it at that.",
+            correct: "No source is ever useless. The mark scheme is designed to reward students who explain how sources ARE useful. Even heavily biased sources provide valuable evidence about beliefs, intentions, and propaganda. If you write that a source is 'not useful,' you will not score marks on Q3a. Always start from the position that both sources are useful and explain precisely how."
+        },
+        {
+            wrong: "Students write only about one source and expect full marks because their paragraph on that source is very detailed.",
+            correct: "Writing about only one source caps your maximum mark at 5 out of 8, no matter how detailed your analysis is. You must evaluate both Source B and Source C in separate, focused paragraphs. Manage your time carefully — 15 minutes maximum for the whole question means roughly one page per source."
+        },
+        {
+            wrong: "Students add whole paragraphs of own knowledge that are not connected to any source.",
+            correct: "Own knowledge only earns marks when it is directly linked to the source and used to explain why the source is useful for the enquiry. A 'knowledge dump' — where you write everything you know about hyperinflation, for example — without tying it back to what the source shows, will earn zero marks. Your knowledge must contextualise and explain the source, not replace it."
+        },
+        {
+            wrong: "Students focus mainly on the limitations of sources and conclude that neither source is very helpful.",
+            correct: "Saying a source is 'not very useful' or that 'both sources are limited' is one of the most damaging mistakes you can make on Q3a. You do not need to include limitations at all to score 8 marks. If you include a limitation, keep it to one sentence and immediately return to a positive judgement about usefulness. Never end a paragraph on a limitation."
+        },
+        {
+            wrong: "Students confuse provenance with content — describing what the source says when the question asks about who made it and why.",
+            correct: "Provenance and content are different parts of a source. Content is WHAT the source says or shows. Provenance is the background: WHO created it, WHAT TYPE it is, WHEN it was made, and WHERE. When using provenance, ask: Does the creator's role, purpose, or position make this source especially valuable for THIS enquiry? Simply describing the source content while calling it 'provenance analysis' is one of the most common structural errors on Q3a."
+        },
+        {
+            wrong: "Students write vague usefulness statements such as 'Source B tells us about the Kapp Putsch' without linking to the enquiry or explaining why this matters.",
+            correct: "Every usefulness statement must be explicitly linked to the specific enquiry in the question, supported by content from the source, and explained with own knowledge. The formula is: 'Source B is useful for an enquiry into [X] because it shows [specific point] — [quote or description] — [own knowledge context] — and this makes it useful because [link back to enquiry].' Vague statements without this chain of reasoning will not access the higher mark levels."
+        }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 8 · examTips  (Exam Tips & Technique)
+    ══════════════════════════════════════════════ */
+
+    const examTips = [
+        {
+            type: "Q3a — 8 marks · How Useful are Sources B and C?",
+            title: "The SCPJ Method: Your Full-Mark Formula",
+            content: `<p>Q3a requires two paragraphs — one on each source. Every paragraph must follow the <strong>SCPJ structure</strong> to cover all mark scheme requirements within 15 minutes.</p>
+<p><strong>The Formula:</strong></p>
+<ul>
+  <li><strong>S — State:</strong> Open with a clear usefulness claim: "Source B is useful for an enquiry into [X] because it shows that…" Make it specific to the enquiry focus.</li>
+  <li><strong>C — Content:</strong> Quote directly from a written source OR describe specifically what a visual source shows. This evidences your opening claim.</li>
+  <li><strong>P — Provenance + Knowledge:</strong> Analyse the Who/What/When/Where and use accurate own knowledge to contextualise the source. Explain why the creator's identity or purpose adds value.</li>
+  <li><strong>J — Judgement:</strong> Close with a clear verdict: "The provenance/content of this source makes it [particularly/very] useful for the enquiry because…" Link back to the named issue.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "Source B is useful because it shows the Kapp Putsch. There were Freikorps soldiers. The Kapp Putsch happened in 1920."</p>
+<p><strong>✅ Strong Answer:</strong> "Source B is useful for an enquiry into the challenges facing the Weimar Republic because it reveals the violent threat posed by the Freikorps to the government itself. The photograph shows armed soldiers with military vehicles occupying a street near the Reichstag — the seat of parliamentary power. From my own knowledge, in March 1920, Ebert planned to disband the Freikorps, prompting Wolfgang Kapp to lead 5,000 soldiers in a march on Berlin. As a contemporary newspaper photograph taken during the Putsch, it provides a direct visual record of how seriously the Weimar Republic's survival was threatened by right-wing paramilitary forces."</p>
+<p><strong>Sentence Starter:</strong> "Source B/C is useful for an enquiry into [TOPIC] because it shows that…"</p>`,
+            pills: ["AO1", "AO2", "AO3"]
+        },
+        {
+            type: "Using Provenance — Don't Confuse It with Content",
+            title: "Who Made It and Why? The Provenance Power Move",
+            content: `<p>A common structural error is treating provenance and content as the same thing. They are distinct and both are essential for Level 3 marks.</p>
+<p><strong>The Formula:</strong></p>
+<ul>
+  <li><strong>Step 1 — Content first:</strong> What does the source actually say or show? Quote or describe specifically.</li>
+  <li><strong>Step 2 — Identify the provenance:</strong> Read the header carefully — who made it, what type, when, where?</li>
+  <li><strong>Step 3 — Ask the provenance question:</strong> Does the creator's identity, role, or purpose make this evidence especially valuable for THIS specific enquiry?</li>
+  <li><strong>Step 4 — Link to own knowledge:</strong> Use what you know about the historical context to explain why the provenance adds value.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "The provenance tells us Source C was made in 1974. This means it might not be accurate about 1923."</p>
+<p><strong>✅ Strong Answer:</strong> "The provenance of Source C strengthens its usefulness. It is an interview with a German factory worker who lived through the 1923 hyperinflation crisis. As a direct participant from the working class — one of the groups most severely affected — her first-hand account gives authentic evidence of how ordinary Germans experienced economic collapse. Her observation that 'people didn't trust the government anymore' after hyperinflation reflects the wider political damage done to the Weimar Republic — central to the enquiry."</p>
+<p><strong>Sentence Starter:</strong> "The provenance of the source makes it [particularly/very] useful because, as a [type of source] by [who], it…"</p>`,
+            pills: ["AO3"]
+        },
+        {
+            type: "Usefulness vs. Reliability — Know the Difference",
+            title: "Stop Asking 'Is It True?' and Ask 'What Does It Show?'",
+            content: `<p>Students lose marks by discussing reliability (is it accurate? is it biased?) instead of usefulness (what does it reveal for the enquiry?). These are different questions.</p>
+<p><strong>The Formula:</strong></p>
+<ul>
+  <li><strong>Step 1:</strong> Identify what the source reveals for the enquiry — even if it is biased, it still reveals something important.</li>
+  <li><strong>Step 2:</strong> Ask: useful for WHAT? "This is useful for the enquiry into [X] because it shows…"</li>
+  <li><strong>Step 3:</strong> Use provenance to enhance usefulness — propaganda is useful because it shows what the regime wanted people to believe.</li>
+  <li><strong>Step 4:</strong> If noting a limitation, keep it brief and return immediately to a usefulness conclusion.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "Source B is not very useful because Goebbels was a propagandist and everything he said was biased and untrue."</p>
+<p><strong>✅ Strong Answer:</strong> "Source B is useful because, as a speech by Goebbels — the Reich Minister of Propaganda — it directly reveals the official Nazi ideology about women's roles at the very start of Nazi rule in 1933. Even though the source promotes the regime's ideal rather than the reality of women's lives, it is highly useful for the enquiry because it shows precisely what the Nazi Party wanted women to accept about their place in German society."</p>
+<p><strong>Sentence Starter:</strong> "Although this source [brief limitation], it is still [very/particularly] useful for the enquiry because…"</p>`,
+            pills: ["AO3"]
+        },
+        {
+            type: "Time Management — 15 Minutes Maximum",
+            title: "Plan Fast, Write Focused: One Page per Source",
+            content: `<p>Q3a must be completed in no more than 15 minutes to protect time for the higher-mark questions (12-mark 'Explain Why' and 16-mark essay) later in the paper.</p>
+<p><strong>The Formula:</strong></p>
+<ul>
+  <li><strong>Minutes 1–5 (Plan):</strong> Read the question carefully. Annotate both sources — underline useful content, note provenance details. Plan which own knowledge you will use for each source.</li>
+  <li><strong>Minutes 6–10 (Write Source B):</strong> One SCPJ paragraph. State usefulness → Content (quote/describe) → Provenance + Knowledge → Judgement. Roughly 10–12 lines.</li>
+  <li><strong>Minutes 11–15 (Write Source C):</strong> One SCPJ paragraph on Source C. Use the same structure. Begin: "Source C is also useful because…"</li>
+</ul>
+<p><strong>❌ Weak Approach:</strong> Writing three pages on Source B alone, then having no time for Source C — maximum mark is 5/8 regardless of quality.</p>
+<p><strong>✅ Strong Approach:</strong> One balanced, focused paragraph per source, each covering all four SCPJ elements clearly and concisely. Quality over quantity.</p>
+<p><strong>Sentence Starter (Source C):</strong> "Source C is also useful for this enquiry because it shows that…"</p>`,
+            pills: ["AO1", "AO3"]
+        }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 9 · flashcards  (Flashcard Deck)
+    ══════════════════════════════════════════════ */
+
+    const flashcards = [
+        {
+            term: "What does Q3a ask you to do?",
+            def: "Evaluate how useful Sources B and C are for a specific historical enquiry. You must analyse both sources using their content, provenance, and own knowledge, and make a clear judgement about each source's usefulness for the named enquiry focus."
+        },
+        {
+            term: "What does SCPJ stand for?",
+            def: "State (how the source is useful) → Content (specific evidence from the source) → Provenance/Knowledge (background information + own historical context) → Judgement (why this makes the source useful for the specific enquiry)."
+        },
+        {
+            term: "What is provenance?",
+            def: "The background information about a source, printed at the top of each source in the exam. It tells you: WHO made it, WHAT type of source it is, WHEN it was produced, and WHERE it was created."
+        },
+        {
+            term: "What is the difference between usefulness and reliability?",
+            def: "Usefulness is what a source reveals about a specific historical enquiry — even a biased source is useful. Reliability is whether the source is accurate and unbiased. Q3a asks only about usefulness. Never focus on reliability instead of usefulness."
+        },
+        {
+            term: "What is the maximum mark if you only write about one source?",
+            def: "5 out of 8. To access the full 8 marks, you must write a focused, well-developed paragraph on both Source B and Source C. This is the single most common avoidable error on Q3a."
+        },
+        {
+            term: "What was the Kapp Putsch (1920)?",
+            def: "A right-wing coup attempt by ~5,000 Freikorps soldiers under Wolfgang Kapp. They occupied Berlin after President Ebert announced plans to disband the Freikorps. The putsch collapsed within days when the government called a general strike that paralysed the country."
+        },
+        {
+            term: "What caused hyperinflation in Germany in 1923?",
+            def: "France and Belgium occupied the Ruhr in 1923 to enforce reparation payments. The German government called a general strike and printed vast amounts of money to pay the striking workers. This caused the currency to collapse — prices rose by billions of percent and savings were wiped out overnight."
+        },
+        {
+            term: "What is 'Kinder, Küche, Kirche'?",
+            def: "Nazi ideology for women, meaning Children, Kitchen, Church. The Nazis believed women's proper role was as wives and mothers in the domestic sphere, not in professional, political, or public life. This underpinned policies such as the Law for the Encouragement of Marriage (1933) and the Mother's Cross."
+        },
+        {
+            term: "Why is Goebbels' 1933 speech on women useful as a historical source?",
+            def: "As Reich Minister of Propaganda, Goebbels was the official voice of Nazi ideology. His speech directly reveals what the regime wanted women to believe about their role in German society at the very start of Nazi rule. It is useful precisely because it is the authentic expression of official Nazi policy, even if reality did not always match the ideology."
+        },
+        {
+            term: "Why is Ribbentrop's January 1933 diary useful as a source?",
+            def: "Ribbentrop was personally involved in the negotiations between von Papen and Hindenburg that led to Hitler's appointment as Chancellor on 30 January 1933. His diary is a first-hand, insider account of the backroom political dealings that history identifies as decisive in Hitler's rise to power."
+        },
+        {
+            term: "Why should you never say a source is 'useless' in Q3a?",
+            def: "All sources are useful to some extent. Even biased or incomplete sources reveal something valuable — about beliefs, intentions, propaganda techniques, or the lived experience of ordinary people. The mark scheme only rewards explanations of how sources ARE useful. Dismissing a source earns no marks."
+        },
+        {
+            term: "What own knowledge is relevant for a source about Nazi policies towards women?",
+            def: "Law for the Encouragement of Marriage (1933) — loans to women who left work to marry; Mother's Cross — awarded for having large numbers of children; League of German Girls (BDM) — trained girls for domestic roles; by 1938, labour shortages from rearmament meant women were needed back in the workforce, contradicting the ideology."
+        },
+        {
+            term: "What is the Dawes Plan (1924) and why does it matter?",
+            def: "An agreement in which American banks loaned money to Germany to pay reparations to France and Britain. Negotiated by Stresemann, it stabilised Germany's economy and helped end the hyperinflation crisis. However, it made Germany entirely dependent on US loans — meaning if the US economy failed, Germany's would too (as happened in 1929)."
+        },
+        {
+            term: "How should you handle the provenance of a secret account written by a regime opponent?",
+            def: "A source written in secret by a regime opponent is particularly valuable because the author had no reason to exaggerate or moderate their views for a public audience. The secrecy lends authenticity — it shows what the author genuinely believed rather than what they were required to say publicly."
+        }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 10 · examQuestions  (Exam Practice)
+    ══════════════════════════════════════════════ */
+
+    const examQuestions = [
+        {
+            num: "Q1",
+            marks: 8,
+            type: "written",
+            caseStudy: `Source B: A photograph published in a German newspaper in March 1920. It shows Freikorps soldiers taking part in the Kapp Putsch. The soldiers are occupying an area in Berlin near to the Reichstag building.
+
+[The photograph shows armed Freikorps soldiers standing beside a military vehicle on a Berlin street, with the Reichstag parliament building visible in the background.]
+
+Source C: From an interview with a German woman in 1974. She was a factory worker during the early years of the Weimar Republic. Here she is recalling the hyperinflation of 1923.
+
+"You got paid at the end of every day. You had to spend it straight away because the next day your wages would only be worth half as much as the day before. Money was literally not worth the paper it was printed on.
+
+Many people who had their savings in bank accounts lost all the money they had managed to scrape together. We asked ourselves, 'How can that happen? How is it that the government can't control this inflation which wipes out the life savings of most people?' We never got an answer that meant anything.
+
+After the hyperinflation, people didn't trust the government anymore."`,
+            question: "Study Sources B and C. How useful are Sources B and C for an enquiry into the challenges facing the Weimar Republic in the years 1919–23? Explain your answer, using Sources B and C and your knowledge of the historical context. [8 marks]",
+            hint: "Write one paragraph on each source using SCPJ. Source B → political/military challenges (Freikorps/Kapp Putsch). Source C → economic challenges (hyperinflation) and their political impact (loss of trust). For each: quote or describe content, then use provenance + own knowledge, then judge why this makes it useful for the enquiry.",
+            starter: "Source B is useful for an enquiry into the challenges facing the Weimar Republic because it shows the violent threat posed by right-wing paramilitary forces...\n\nSource C is also useful because it reveals both the devastating economic impact of hyperinflation and the political crisis of trust it created...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 8 marks (Level Response)</h5>
+<p>This is assessed using levels, not individual points. The examiner reads the whole response and matches it to the best level.</p>
+<ul>
+  <li><strong>Level 1 (1–2 marks):</strong> Simple statements about content without development. Little or no link to the enquiry. Provenance not used.</li>
+  <li><strong>Level 2 (3–5 marks):</strong> Explains usefulness of one or both sources using content or provenance with some own knowledge. May be unbalanced. Some link to enquiry.</li>
+  <li><strong>Level 3 (6–8 marks):</strong> Analyses usefulness of BOTH sources using content, provenance, and own knowledge. Makes clear judgements explicitly linked to the enquiry focus. Both paragraphs are well-developed and balanced.</li>
+</ul>
+<p><strong>Source B — acceptable points include:</strong></p>
+<ul>
+  <li>Shows the Freikorps were a violent, armed threat to the Weimar Republic</li>
+  <li>Soldiers occupied Berlin near the Reichstag — the seat of parliamentary government</li>
+  <li>As a contemporary newspaper photograph, it captures the reality of the Kapp Putsch</li>
+  <li>Provenance: newspaper photograph from March 1920 — a snapshot of events at the time they occurred</li>
+  <li>Own knowledge: Ebert's plan to disband the Freikorps; Wolfgang Kapp's 5,000-soldier coup attempt; collapse of the Putsch after a general strike</li>
+</ul>
+<p><strong>Source C — acceptable points include:</strong></p>
+<ul>
+  <li>Shows the devastating economic impact of hyperinflation on ordinary workers</li>
+  <li>Reveals the collapse of public trust in the Weimar government as a result</li>
+  <li>Provenance: a factory worker with first-hand experience of 1923 — authentic working-class perspective</li>
+  <li>Limitation: interview conducted in 1974 — 50+ years after events; memory may have been shaped by subsequent experiences</li>
+  <li>Own knowledge: hyperinflation caused by printing money to fund passive resistance in the Ruhr; savings wiped out; new Rentenmark introduced to end crisis</li>
+</ul>
+<p><strong>Do NOT award marks for:</strong> Focusing on reliability not usefulness; own knowledge unconnected to the source; saying either source is useless; writing only about one source.</p>
+<p><strong>Examiner's Comment:</strong> The most common error on this question is focusing on what the source does NOT tell us rather than what it DOES. Strong answers begin each paragraph with a clear, specific usefulness statement and link every point back to the enquiry.</p>
+</div>`,
+            modelAnswer: "Source B is useful for an enquiry into the challenges facing the Weimar Republic in the years 1919–23 because it reveals the violent threat posed by right-wing paramilitary groups to the government itself. The photograph shows armed Freikorps soldiers with a military vehicle occupying a street near the Reichstag building in Berlin — demonstrating that the very seat of parliamentary power had been seized by force. From my own knowledge, I know that in March 1920, Ebert planned to disband the Freikorps in compliance with the Treaty of Versailles. Fearing unemployment, Wolfgang Kapp organised approximately 5,000 Freikorps soldiers to march on Berlin. The putsch only collapsed when the government called a general strike that paralysed the country within days. The provenance of the source makes it particularly valuable: as a contemporary newspaper photograph taken during the Kapp Putsch, it provides a direct visual record of how dangerously close the Weimar Republic came to being overthrown — making it highly useful for an enquiry into the political instability and military threats that challenged the Republic's survival in the early 1920s.\n\nSource C is also useful because it shows how economic mismanagement undermined public trust in the Weimar government — a second, equally serious challenge. The source records that 'After the hyperinflation, people didn't trust the government anymore,' directly linking the economic crisis of 1923 to a collapse of political confidence. From my own knowledge, I know that hyperinflation was triggered when the German government printed excessive amounts of money to pay striking workers during the French occupation of the Ruhr. Savings held in banks were wiped out overnight, and the currency became virtually worthless. The provenance of the source strengthens its usefulness: it is an interview with a German factory worker who lived through these events firsthand. As a direct participant from the working class — one of the groups most severely affected by the loss of savings — her account provides authentic evidence of how ordinary Germans experienced the economic challenges that shook confidence in the Weimar Republic. Although the interview was conducted in 1974, over fifty years after the events, the emotional impact of losing life savings makes this a particularly memorable experience to recall accurately."
+        },
+        {
+            num: "Q2",
+            marks: 8,
+            type: "written",
+            caseStudy: `Source B: From a speech made by Joseph Goebbels in March 1933.
+
+"German women! German men! The birth rate in Germany is rapidly declining so a major change is needed. We believe that German women must use their strength and abilities in different areas from men. Let me say this clearly: the first, best, and most suitable place for the woman is in the family. It is her most glorious duty to give children to her people and nation.
+
+The woman is the teacher of the youth, and therefore the builder of the foundation of the future. If the family is the nation's source of strength, the woman is at its centre.
+
+The best place for the woman to serve her people is in her marriage, in the family, in motherhood."
+
+Source C: A photograph from 1938. The photograph shows women working in a textile factory in a large industrial city.
+
+[The photograph shows several women operating large industrial weaving machines in a factory setting.]`,
+            question: "Study Sources B and C. How useful are Sources B and C for an enquiry into Nazi policies towards women? Explain your answer, using Sources B and C and your knowledge of the historical context. [8 marks]",
+            hint: "Source B reveals what the Nazis officially wanted women to believe — consider Goebbels' role as Propaganda Minister. Source C shows what actually happened in practice by 1938 — consider why women were working in factories despite Nazi ideology. The contrast between the two sources is itself useful for the enquiry.",
+            starter: "Source B is useful because it directly reveals the Nazi regime's official ideology about the role of women in German society...\n\nSource C is also useful because it shows that, in reality, women continued to play an important role in Germany's industrial workforce despite Nazi ideology...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 8 marks (Level Response)</h5>
+<p><strong>Source B — acceptable points include:</strong></p>
+<ul>
+  <li>Directly reveals the official Nazi 'Kinder, Küche, Kirche' ideology — women's place is in the family as wives and mothers</li>
+  <li>Provenance: Goebbels was Reich Minister of Propaganda — the source authentically represents what the regime wanted women to accept</li>
+  <li>Useful for showing the regime's intended policy at the start of Nazi rule in 1933</li>
+  <li>Own knowledge: Law for Encouragement of Marriage 1933; Mother's Cross; League of German Girls; women discouraged from professional roles</li>
+  <li>Limitation: represents official ideology rather than the lived reality of all women in Nazi Germany</li>
+</ul>
+<p><strong>Source C — acceptable points include:</strong></p>
+<ul>
+  <li>Shows women remained a significant part of the industrial workforce by 1938 — contradicting the domestic ideology shown in Source B</li>
+  <li>Provenance: photograph from 1938 — a period when rearmament had created urgent labour shortages</li>
+  <li>Own knowledge: rapid rearmament from 1936 created labour shortages; women were needed in factories and encouraged to return to work; ideological goals were compromised by economic necessity</li>
+  <li>Together the two sources are useful for showing the contradiction between Nazi ideology and economic reality</li>
+</ul>
+<p><strong>Examiner's Comment:</strong> Strong answers on Source B explain WHY Goebbels' role as Propaganda Minister makes the source useful — not just 'it might be biased.' Strong answers on Source C use knowledge of rearmament and labour shortages to explain the historical significance of women still working in factories in 1938.</p>
+</div>`,
+            modelAnswer: "Source B is useful for an enquiry into Nazi policies towards women because it directly reveals the official ideology that underpinned those policies. The speech argues that 'the first, best, and most suitable place for the woman is in the family' and that motherhood is her 'most glorious duty' — making it clear that the Nazis intended to remove women from public and professional life and confine them to the domestic sphere. From my own knowledge, I know that the Nazis implemented a range of policies to enforce this ideology, including the Law for the Encouragement of Marriage in 1933, which offered financial loans to women who left employment to get married, and the Mother's Cross, which rewarded women who bore large numbers of children. The provenance of the source makes it particularly useful: as a speech delivered by Joseph Goebbels in March 1933 — just weeks after the Nazis came to power — it captures the regime's stated intentions at the very beginning of their rule. As Reich Minister of Propaganda, Goebbels was the authoritative voice of Nazi ideology, making this a reliable guide to what the regime officially wanted women to believe about their role in German society.\n\nSource C is also useful because it shows that, in reality, Nazi policies towards women were not fully implemented and that economic necessity overrode ideological goals. The photograph shows women operating heavy industrial machinery in a textile factory in 1938, demonstrating that women remained an important part of Germany's workforce despite the domestic ideology promoted in Source B. From my own knowledge, I know that as Germany accelerated its rearmament programme from 1936 onwards, demand for factory workers grew rapidly. By 1938, labour shortages had become so acute that the Nazi regime was actively encouraging women to return to the workplace, particularly in industries producing military goods. This makes Source C useful for revealing the contradiction at the heart of Nazi policies towards women — the regime's ideology promoted domesticity, but economic and military priorities meant that reality was far more complex."
+        },
+        {
+            num: "Q3",
+            marks: 8,
+            type: "written",
+            caseStudy: `Source B: From Inside the Third Reich, the autobiography of Albert Speer, published in 1970. Here Speer is recalling election rallies held on 27 July 1932. At the time, he was a junior member of the Nazi Party. Speer later became a senior member of the Nazi government.
+
+"Our cars set out for the first stadium. I waited outside the stadium so I did not hear Hitler's speech, but I could hear thunderous applause from the crowd. Afterwards, we set off for another meeting. Hitler was making a total of three speeches that day. At the Berlin Stadium the stands were packed with people and more were waiting outside. Hitler was very late but the crowd had still waited for hours. A roar of applause burst out when the crowd heard that Hitler was on his way."
+
+Source C: From the diary of Joachim von Ribbentrop, written in January 1933. Here Ribbentrop is commenting on discussions about Hitler becoming Chancellor. At the time, Ribbentrop was a wealthy businessman and supporter of the Nazi Party.
+
+"27 January: In the evening I see von Papen. I eventually convince von Papen that the only thing that makes sense is for Hindenburg to appoint Hitler as Chancellor. Von Papen is now absolutely in favour of Hitler becoming Chancellor. I believe that this is the turning point.
+
+29 January: Von Papen says that there are no more obstacles to Hitler becoming Chancellor.
+
+30 January: Hitler is appointed Chancellor."`,
+            question: "Study Sources B and C. How useful are Sources B and C for an enquiry into the reasons why Hitler became Chancellor in 1933? Explain your answer, using Sources B and C and your knowledge of the historical context. [8 marks]",
+            hint: "Source B shows Hitler's popular mass appeal — one reason he could not be ignored. Source C shows the political backroom deals — another reason he was appointed. Together they give different but complementary explanations. For each source: use content, provenance, and own knowledge; make a clear usefulness judgement linked to the enquiry.",
+            starter: "Source B is useful because it shows that Hitler built enormous popular support through his public speaking campaigns, making his appointment politically difficult to resist...\n\nSource C is also useful because it reveals that Hitler's appointment was also the result of key political negotiations between powerful individuals within the government...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 8 marks (Level Response)</h5>
+<p><strong>Source B — acceptable points include:</strong></p>
+<ul>
+  <li>Shows Hitler's enormous popular appeal — packed stadiums, thunderous applause, crowds waiting hours</li>
+  <li>Demonstrates that by July 1932, Hitler had become a genuine mass political phenomenon</li>
+  <li>Provenance: Albert Speer was a committed Nazi Party member — may overemphasise enthusiasm; published 1970 — written with benefit of hindsight</li>
+  <li>Own knowledge: July 1932 elections gave Nazis 230 seats — most of any party; Hitler narrowly lost 1932 presidential election to Hindenburg; Goebbels organised nation-wide speaking tours by aeroplane</li>
+</ul>
+<p><strong>Source C — acceptable points include:</strong></p>
+<ul>
+  <li>Shows Hitler's appointment was the result of political deal-making between powerful individuals, not just popular support</li>
+  <li>Ribbentrop persuaded von Papen; von Papen persuaded Hindenburg; appointment followed within days</li>
+  <li>Provenance: Ribbentrop was directly involved in the negotiations — first-hand insider account; was a Nazi supporter so may present his own role in a positive light</li>
+  <li>Own knowledge: Hindenburg repeatedly refused to appoint Hitler despite Nazi electoral success; von Papen believed he could control Hitler in a coalition; January 1933 political crisis made stable government impossible without Nazi support</li>
+</ul>
+<p><strong>Examiner's Comment:</strong> The strongest answers recognise that the two sources offer complementary reasons — popular support (B) and political machination (C) — and explicitly explain how each adds to the overall enquiry. Weaker answers treat each source in isolation.</p>
+</div>`,
+            modelAnswer: "Source B is useful for an enquiry into the reasons why Hitler became Chancellor in 1933 because it shows the enormous popular support that Hitler had built through his public speaking campaigns — making his appointment as Chancellor politically very difficult to resist. Speer describes 'thunderous applause' from packed stadiums and crowds who had 'waited for hours' to hear Hitler speak, demonstrating that by July 1932 Hitler commanded a genuinely mass following. From my own knowledge, I know that the July 1932 Reichstag elections gave the Nazi Party 230 seats — more than any other single party — and that Hitler had also narrowly lost the 1932 presidential election to Hindenburg. Goebbels organised a nation-wide speaking tour by aeroplane, giving Hitler unprecedented reach across Germany. The provenance of the source adds a note of caution: Speer was a committed junior Nazi Party member at the time and later a senior government official. As a true believer in National Socialism, his recollection of crowds' reactions may exaggerate the enthusiasm, though the sheer scale of attendance at these rallies is well documented.\n\nSource C is also useful because it reveals a second, equally important reason for Hitler's appointment — the backroom political dealing between key power brokers. The diary records Ribbentrop convincing von Papen on 27 January that 'the only thing that makes sense is for Hindenburg to appoint Hitler as Chancellor,' and the rapid succession of entries leading to Hitler's appointment on 30 January shows how quickly these negotiations resolved. From my own knowledge, I know that Hindenburg had repeatedly refused to appoint Hitler despite the Nazis' electoral dominance, viewing him as a dangerous upstart. Von Papen, however, believed he could control Hitler in a coalition government and use him to restore his own political influence. By January 1933, the political situation was so deadlocked that Hindenburg saw no alternative. The provenance of the diary makes it particularly valuable: as a direct participant in the negotiations — not a journalist or historian reporting from outside — Ribbentrop provides a uniquely first-hand account of the decisive conversations that made Hitler Chancellor."
+        },
+        {
+            num: "Q4",
+            marks: 1,
+            type: "mcq",
+            caseStudy: "",
+            question: "Which of the following is identified in the mark scheme as a common error that prevents students achieving 8 marks on Q3a?",
+            options: [
+                "Analysing the provenance of both sources to explain their usefulness",
+                "Focusing on the reliability of the sources rather than their utility",
+                "Using own knowledge linked to the source to contextualise its usefulness",
+                "Writing one developed paragraph on each source"
+            ],
+            answer: 1,
+            hint: "Q3a is about a very specific type of historical judgement — think carefully about what the question actually asks you to assess.",
+            starter: "The correct answer is...",
+            markScheme: `<div class="marks-section">
+<h5>Answer: B — 1 mark</h5>
+<p><strong>B is correct: Focusing on reliability rather than usefulness is a common error that prevents students from achieving 8 marks.</strong> Q3a asks how useful the sources are — not how reliable or accurate they are. The mark scheme explicitly states that answers focusing on reliability rather than utility receive no marks for those sections.</p>
+<ul>
+  <li><strong>Why A is wrong:</strong> Analysing provenance to explain usefulness is exactly what the mark scheme rewards — it is a key feature of Level 3 answers.</li>
+  <li><strong>Why C is wrong:</strong> Using linked own knowledge to contextualise usefulness is also correct technique and earns marks at Level 2 and above.</li>
+  <li><strong>Why D is wrong:</strong> Writing one focused paragraph per source is the recommended structure for achieving the full 8 marks on Q3a.</li>
+</ul>
+</div>`,
+            modelAnswer: ""
+        },
+        {
+            num: "Q5",
+            marks: 8,
+            type: "written",
+            caseStudy: `Source B: From a secret account written by an opponent of the Nazi regime in December 1936. Here he is commenting on the workers in a car factory in Munich.
+
+"The workers in this factory will never be won over by Nazi policies. Even though the workers are better paid than in other factories, they show very little interest in all of Hitler's nonsense. When Hitler made a recent speech, the workers were gathered together and ordered to listen to his radio broadcast. During the speech, they kept talking loudly amongst themselves until members of the SA forced them to be quiet. As soon as the workers thought the speech was over, they rushed to leave. There are only a few Nazis working in the factory and even they think the broadcasting of these speeches does more harm than good for the Nazi regime."
+
+Source C: A photograph published in a German magazine in 1936. The picture shows Hitler being greeted at a railway station. Large crowds are gathered, many with their arms raised in the Nazi salute.
+
+[The photograph shows thousands of people with arms raised, cheering as Hitler's train pulls into a station.]`,
+            question: "Study Sources B and C. How useful are Sources B and C for an enquiry into the extent of support for the Nazi regime in the years 1933–39? Explain your answer, using Sources B and C and your knowledge of the historical context. [8 marks]",
+            hint: "These two sources offer different pictures of support — one showing lack of enthusiasm among workers, one showing apparent mass enthusiasm for Hitler personally. For each source, consider carefully what the provenance tells you about WHY this source takes the perspective it does.",
+            starter: "Source B is useful because it provides evidence that working-class support for the Nazi regime was far from universal, particularly among workers with socialist or communist sympathies...\n\nSource C is also useful because it demonstrates the considerable personal popularity that Hitler himself enjoyed with large sections of German society...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 8 marks (Level Response)</h5>
+<p><strong>Source B — acceptable points include:</strong></p>
+<ul>
+  <li>Shows that working-class support for the regime was limited — workers showed 'very little interest' in Hitler's speeches</li>
+  <li>Workers had to be physically forced to listen to Hitler by the SA — coercion was needed even to simulate support</li>
+  <li>Provenance: written in secret by a regime opponent — no reason to exaggerate; authentic, honest perspective not filtered by censorship</li>
+  <li>Own knowledge: KPD and trade unions banned in 1933, alienating communist and socialist workers; some workers resented loss of collective bargaining rights; Gestapo reports ('Sopade Reports') document genuine discontent</li>
+  <li>Limitation: describes one factory in Munich — may not represent all German workers</li>
+</ul>
+<p><strong>Source C — acceptable points include:</strong></p>
+<ul>
+  <li>Shows Hitler commanding enormous personal popularity — vast crowds giving enthusiastic Nazi salutes</li>
+  <li>Provenance: published in a Nazi-controlled German magazine — subject to censorship; image may have been selected or staged to project Hitler's popularity</li>
+  <li>Own knowledge: Goebbels cultivated the 'Hitler Myth' — Hitler as popular saviour above party politics; SS/SA in crowds may have been required to salute; research shows many Germans distinguished between support for Hitler personally and criticism of the regime</li>
+</ul>
+<p><strong>Examiner's Comment:</strong> Strong answers recognise that these two sources offer complementary and nuanced perspectives. Source B shows that among some groups (particularly workers) support was limited; Source C shows Hitler's personal appeal was nonetheless real and widespread. Weaker answers treat each source as simply showing either 'support' or 'opposition' without nuance.</p>
+</div>`,
+            modelAnswer: "Source B is useful for an enquiry into the extent of support for the Nazi regime in 1933–39 because it provides direct evidence that working-class support for the regime was far from universal. The source describes workers who 'show very little interest in all of Hitler's nonsense' and who had to be silenced by SA members during a Hitler radio broadcast before rushing to leave as soon as it ended. This suggests that even in 1936, coercion rather than genuine enthusiasm was required to ensure workers engaged with Nazi propaganda. From my own knowledge, I know that the Nazis banned the KPD (Communist Party) and all trade unions in 1933, depriving many working-class Germans of the political organisations they had supported. This alienated workers who had backed communist or socialist parties, and Gestapo reports from this period document significant levels of grumbling and discontent among factory workers, particularly in industrial cities. The provenance of the source significantly strengthens its usefulness: as a secret account written by a regime opponent, the author had no audience to perform for and no reason to exaggerate anti-Nazi sentiment. This makes it unusually honest evidence of worker attitudes that the Nazi press would never have published.\n\nSource C is also useful because it shows that, despite the limited support documented in Source B, Hitler himself commanded considerable personal popularity with many Germans. The photograph shows enormous crowds with arms raised in the Nazi salute at a railway station in 1936, suggesting that Hitler's presence could generate genuine mass enthusiasm. From my own knowledge, I know that Goebbels worked systematically to cultivate what historians call the 'Hitler Myth' — the image of Hitler as a unifying national leader who stood above party politics and embodied Germany's hopes. Many Germans separated their loyalty to Hitler personally from criticism of specific Nazi policies or party officials. However, the provenance of Source C introduces an important consideration: as a photograph published in a German magazine in 1936, it was subject to Nazi censorship and may have been specifically selected to project an image of Hitler's popularity. It is also possible that SA or SS members in the crowd were expected to give the salute regardless of their personal feelings — meaning the image may not fully represent the genuine extent of enthusiasm."
+        },
+        {
+            num: "Q6",
+            marks: 8,
+            type: "written",
+            caseStudy: `Source B: From a book written by an American journalist, published in 1960. He visited Germany frequently in the years 1925–28.
+
+"Hitler and the Nazis were hardly ever mentioned in conversation, except in jokes about the Munich Putsch. In the elections of May 1928, only 810,000 out of 31 million people voted for the Nazis. In contrast, the Social Democrat Party received more than 9 million votes.
+
+There was a wonderful feeling of excitement in Germany in those days. Life in Berlin and Munich seemed more free, more modern, more exciting than in any place I have ever visited. The young people of Germany wanted to live life to the full in complete freedom. Most Germans you met believed in democracy and peace."
+
+Source C: A photograph of Hitler at a Nazi Party rally held at Nuremberg in 1928. The Nazi Party had strong support in the city of Nuremberg.
+
+[The photograph shows Hitler at the front of a large outdoor rally with thousands of uniformed supporters visible, many with their arms raised in the Nazi salute.]`,
+            question: "Study Sources B and C. How useful are Sources B and C for an enquiry into support for the Nazi Party in the years 1924–28? Explain your answer, using Sources B and C and your knowledge of the historical context. [8 marks]",
+            hint: "Source B gives a national picture of Nazi support — very limited. Source C shows concentrated local support in a Nazi stronghold. Both are useful for the enquiry but capture different dimensions of it. Think carefully about what the provenance of each source means for how representative it is.",
+            starter: "Source B is useful because it shows that, nationally, the Nazi Party had very limited support during the 'Lean Years' of 1924–28...\n\nSource C is also useful because it shows that, despite limited national support, the Nazis could attract large crowds of committed supporters in areas where the party had established a strong presence...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 8 marks (Level Response)</h5>
+<p><strong>Source B — acceptable points include:</strong></p>
+<ul>
+  <li>Shows that nationally, Nazi support was very limited — only 810,000 votes out of 31 million in May 1928</li>
+  <li>Captures the optimism and stability of the 'Golden Years' — Germans believed in democracy and peace, making extremism less appealing</li>
+  <li>Provenance: American journalist, frequent visitor 1925–28 — relatively impartial foreign observer with good access; may have socialised mainly with educated, liberal Germans</li>
+  <li>Own knowledge: After the Munich Putsch (1923) and Hitler's imprisonment, the 'Lean Years' saw Nazi electoral support collapse; Hitler was banned from public speaking in some states; the party restructured at the Bamberg Conference 1926</li>
+</ul>
+<p><strong>Source C — acceptable points include:</strong></p>
+<ul>
+  <li>Shows that the Nazis could attract large, uniformed crowds at rallies — demonstrating an organised, committed core following</li>
+  <li>Nuremberg was a Nazi stronghold — annual rallies held there from 1926 after the Bamberg Conference</li>
+  <li>Provenance: photograph at a known Nazi stronghold — not representative of national support</li>
+  <li>Own knowledge: by 1928 the Nazi Party had ~100,000 members; Nuremberg became the ceremonial home of the party; the party was well-organised despite limited electoral support</li>
+  <li>Limitation: photograph may focus on a supportive crowd and not represent the wider German population</li>
+</ul>
+<p><strong>Examiner's Comment:</strong> A very common error on this question is treating Source B as showing that the Nazis had NO support. Strong answers recognise that Source B shows limited NATIONAL support, while Source C shows concentrated LOCAL support — making both sources useful for capturing different dimensions of Nazi support in the period.</p>
+</div>`,
+            modelAnswer: "Source B is useful for an enquiry into support for the Nazi Party in the years 1924–28 because it clearly shows that, at a national level, the Nazis were a marginal political force during this period. The source states that in the May 1928 elections, only 810,000 of 31 million voters chose the Nazis, compared to over 9 million who voted for the Social Democrats. The journalist also records that Hitler and the Nazis were 'hardly ever mentioned in conversation, except in jokes about the Munich Putsch,' suggesting the party was widely seen as irrelevant or even ridiculous. From my own knowledge, I know that this period is often called the 'Lean Years' for the Nazi Party. After the failure of the Munich Putsch in 1923 and Hitler's imprisonment, the party was temporarily banned in several German states. The relative economic stability brought by the Dawes Plan meant that most Germans had little reason to turn to extreme nationalism, and the party attracted only a fraction of the vote it would later receive. The provenance of the source adds useful context: the author was an American journalist who visited Germany frequently throughout 1925–28. As a foreign visitor, he may offer a more objective perspective than a German source, though he was likely to have mixed mainly with educated, liberal Germans in Berlin and Munich who were the least sympathetic to the Nazis.\n\nSource C is also useful because it shows that, despite very limited national support, the Nazis could still attract large numbers of committed, organised supporters in areas where the party had established a strong base. The photograph shows a uniformed crowd at a Nazi rally in Nuremberg in 1928, demonstrating that the party retained a disciplined and motivated core following even during its most electorally difficult years. From my own knowledge, I know that the Nazis held annual rallies at Nuremberg from 1926 onwards following the Bamberg Conference, and that by 1928 the party had approximately 100,000 members across Germany. Nuremberg became the ceremonial home of the movement, and its population was among the most sympathetic to National Socialism of any major German city. The provenance of the source introduces an important limitation: the photograph is from a known Nazi stronghold and shows a rally specifically organised to display the party's strength. It may therefore give an exaggerated impression of national Nazi support. Nevertheless, it remains useful for showing that even in the 'Lean Years,' the party had sufficient organisational strength and committed local support to stage impressive public events — a foundation that would allow rapid growth once the economic crisis of 1929 arrived."
+        }
+    ];
+
+</script>
+    <script src="script.js"></script>
+
+    
+
+
+</body>
+
+</html>

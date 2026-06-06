@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 1 — The Weimar Republic 1918–1929 · Interactive Study Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="stylesheet.css">
+
+
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <div class="badge">Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany</div>
+            <h1>Topic 1 · The Weimar Republic 1918–1929</h1>
+            <p>Interactive revision guide · All key content + full exam practice</p>
+        </div>
+        <a href="index.html" class="home-link">← 🏡 Home</a>
+    </header>
+
+    <nav class="tab-bar" id="tabBar">
+        <button class="tab-btn active" onclick="switchTab('learn',this)">📚 Key Learning</button>
+        <button class="tab-btn" onclick="switchTab('mcq',this)">❓ MCQ Quiz</button>
+        <button class="tab-btn" onclick="switchTab('matching',this)">🔗 Matching</button>
+        <button class="tab-btn" onclick="switchTab('fib',this)">✏️ Fill the Blanks</button>
+        <button class="tab-btn" onclick="switchTab('misconceptions',this)">⚠️ Misconceptions</button>
+        <button class="tab-btn" onclick="switchTab('examtips',this)">🎯 Exam Tips</button>
+        <button class="tab-btn" onclick="switchTab('flashcards',this)">🃏 Flashcards</button>
+        <button class="tab-btn" onclick="switchTab('truefalse',this)">✅ True / False</button>
+        <button class="tab-btn" onclick="switchTab('exampractice',this)">📝 Exam Practice</button>
+    </nav>
+
+    <main>
+
+        <!-- ═══════════════════════ KEY LEARNING ═══════════════════════ -->
+        <div class="tab-panel active" id="tab-learn">
+            <h2 class="section-title">Key Learning Topics</h2>
+            <p class="section-sub">Click any card to expand detailed notes.</p>
+            <div class="topic-grid" id="topicGrid"></div>
+        </div>
+
+        <!-- ═══════════════════════ MCQ ═══════════════════════ -->
+        <div class="tab-panel" id="tab-mcq">
+            <h2 class="section-title">Multiple Choice Questions</h2>
+            <p class="section-sub">Select an answer to reveal instant feedback.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="mcqScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct answers</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">out of <strong id="mcqTotal">0</strong> attempted</div>
+                <button class="reset-btn" onclick="resetMCQ()">RESET</button>
+            </div>
+            <div class="quiz-wrap" id="mcqWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ MATCHING ═══════════════════════ -->
+        <div class="tab-panel" id="tab-matching">
+            <h2 class="section-title">Matching Activity</h2>
+            <p class="section-sub">Click a term on the left, then click the matching definition on the right.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="matchScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">matched</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">out of <strong id="matchTotal">0</strong></div>
+                <button class="reset-btn" onclick="resetMatch()">RESET</button>
+            </div>
+            <div class="match-grid">
+                <div>
+                    <div class="match-label">TERMS</div>
+                    <div class="match-col" id="matchLeft"></div>
+                </div>
+                <div>
+                    <div class="match-label">DEFINITIONS</div>
+                    <div class="match-col" id="matchRight"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════ FILL IN BLANKS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-fib">
+            <h2 class="section-title">Fill in the Blanks</h2>
+            <p class="section-sub">Choose the correct word from each dropdown. Wrong answers reset — try again!</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="fibScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">of <strong id="fibTotal">0</strong> blanks</div>
+                <button class="reset-btn" onclick="resetFIB()">RESET</button>
+            </div>
+            <div class="fib-wrap" id="fibWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ MISCONCEPTIONS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-misconceptions">
+            <h2 class="section-title">Common Misconceptions</h2>
+            <p class="section-sub">What students often think — and what examiners actually want.</p>
+            <div class="misc-list" id="miscList"></div>
+        </div>
+
+        <!-- ═══════════════════════ EXAM TIPS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-examtips">
+            <h2 class="section-title">Exam Questions &amp; Tips</h2>
+            <p class="section-sub">Most repeated question types and mark-scheme structures from real papers.</p>
+            <div class="tips-grid" id="tipsGrid"></div>
+        </div>
+
+        <!-- ═══════════════════════ FLASHCARDS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-flashcards">
+            <h2 class="section-title">Flashcards</h2>
+            <p class="section-sub">Test yourself! Flip the card and rate your knowledge.</p>
+            <div class="fc-container">
+                <div class="score-bar" id="fcScoreBar" style="display:none;margin-bottom:20px">
+                    <div>
+                        <div class="score-num" id="fcKnown" style="color:#2d7a4f">0</div>
+                        <div style="font-size:12px;color:var(--mid)">known</div>
+                    </div>
+                    <div>
+                        <div class="score-num" id="fcUnknown" style="color:#c84b31">0</div>
+                        <div style="font-size:12px;color:var(--mid)">learning</div>
+                    </div>
+                    <div style="font-size:13px;color:var(--mid)">out of <strong id="fcTotalTrack">0</strong></div>
+                    <button class="reset-btn" onclick="resetFlashcards()">RESET</button>
+                </div>
+                <div id="fcActiveArea">
+                    <div class="fc-progress" id="fcProgress">Card 1 of 0</div>
+                    <div class="flashcard" id="flashcard" onclick="flipCard()">
+                        <div class="fc-inner">
+                            <div class="fc-front">
+                                <div class="fc-label">KEY TERM</div>
+                                <div class="fc-term" id="fcTerm"></div>
+                            </div>
+                            <div class="fc-back">
+                                <div class="fc-def" id="fcDef"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fc-hint">👆 Click card to flip</p>
+                    <div class="fc-nav" id="fcNavDefault">
+                        <button class="fc-btn outline" onclick="prevCard()">← Prev</button>
+                        <button class="fc-btn outline" onclick="flipCard()">Flip</button>
+                        <button class="fc-btn" onclick="nextCard()">Next →</button>
+                    </div>
+                    <div class="fc-nav" id="fcNavAssess" style="display:none;gap:15px">
+                        <button class="fc-btn outline" style="border-color:#c84b31;color:#c84b31;flex:1"
+                            onclick="markCard(false)">❌
+                            Still Learning</button>
+                        <button class="fc-btn" style="background:#2d7a4f;border-color:#2d7a4f;flex:1"
+                            onclick="markCard(true)">✅ Got
+                            It</button>
+                    </div>
+                </div>
+                <div id="fcSummaryArea" style="display:none;text-align:center;padding:40px 20px">
+                    <h3
+                        style="font-family:'Playfair Display',serif;color:var(--accent2);font-size:24px;margin-bottom:12px">
+                        Session Complete! 🎉</h3>
+                    <p style="margin:15px 0;color:var(--text-dim)">You knew <strong id="fcSummaryKnown"
+                            style="color:var(--accent2)">0</strong> out of <strong id="fcSummaryTotal"
+                            style="color:var(--accent2)">0</strong> cards.</p>
+                    <div style="margin-top:25px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap">
+                        <button class="fc-btn" id="btnReviewWrong" onclick="reviewWrong()"
+                            style="background:#c84b31;border-color:#c84b31">Review Incorrect</button>
+                        <button class="fc-btn outline" onclick="resetFlashcards()">Practice All Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════ TRUE / FALSE ═══════════════════════ -->
+        <div class="tab-panel" id="tab-truefalse">
+            <h2 class="section-title">True or False?</h2>
+            <p class="section-sub">Test your knowledge with these statements.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="tfScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">of <strong id="tfTotal">0</strong> answered</div>
+                <button class="reset-btn" onclick="resetTF()">RESET</button>
+            </div>
+            <div class="tf-wrap" id="tfWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ EXAM PRACTICE ═══════════════════════ -->
+        <div class="tab-panel" id="tab-exampractice">
+            <h2 class="section-title">Exam Practice Questions</h2>
+            <p class="section-sub">Full exam questions with mark schemes. Use <strong>Hint</strong>, <strong>Sentence
+                    Starter</strong> and <strong>Submit &amp; See Mark Scheme</strong> for each question.</p>
+            <div class="ep-list" id="epList"></div>
+        </div>
+
+    </main>
+<script>
+
+    // ─────────────────────────────────────────────
+    // ARRAY 1: topics
+    // ─────────────────────────────────────────────
+    const topics = [
+        {
+            title: "What is a Historical Interpretation?",
+            tag: "Core Concept",
+            content: `<p>An <strong>interpretation</strong> is a historian's (or writer's) <strong>point of view</strong> about a historical event, person or time period. Interpretations are not neutral — they reflect the evidence the author chose to focus on, their academic emphasis, and the time they were writing.</p>
+<ul>
+  <li><strong>Key point:</strong> Interpretations focus on different ideas or evidence, so they will not always agree with each other.</li>
+  <li><strong>Who writes them?</strong> Historians writing after the event, journalists, academics, or sometimes people who lived through it.</li>
+  <li><strong>In Edexcel Paper 3:</strong> You will be given two interpretations in the Sources/Interpretations Booklet and asked to compare and explain them across Questions 3(b), 3(c) and 3(d).</li>
+</ul>
+<div class="case-study-box">
+  <h4>Example Topic Themes (Weimar &amp; Nazi Germany)</h4>
+  <p>Interpretations in this paper have covered: challenges to the Weimar Republic 1919–23; Nazi policies towards women; support for the Nazi regime 1933–39; support for the Nazi Party 1924–28; why Hitler became Chancellor in 1933; cultural changes in Weimar 1924–29; Nazi methods of control 1933–39.</p>
+</div>`
+        },
+        {
+            title: "Question 3(b) — 'What is the Main Difference?' (4 marks)",
+            tag: "Exam Technique",
+            content: `<p>Question 3(b) asks you to identify and explain the <strong>main difference in content</strong> between Interpretation 1 and Interpretation 2. You have approximately <strong>5 minutes</strong> for this question.</p>
+<p><strong>Your answer must:</strong></p>
+<ul>
+  <li><strong>State the main difference</strong> — what is the overall point of disagreement?</li>
+  <li><strong>Explain Interpretation 1's view</strong> with a short quote or clear summary.</li>
+  <li><strong>Explain Interpretation 2's view</strong> with a short quote or clear summary.</li>
+  <li><strong>Reference both</strong> interpretations to achieve full marks.</li>
+</ul>
+<div class="two-col">
+  <div>
+    <div class="col-head">✅ Strong Answer Features</div>
+    <div class="pro-item">Opens by identifying the main difference clearly</div>
+    <div class="pro-item">Uses short quotes from each interpretation</div>
+    <div class="pro-item">Links the quote to the overall difference</div>
+    <div class="pro-item">Uses contrast language: "whereas", "in comparison"</div>
+  </div>
+  <div>
+    <div class="col-head">❌ Weak Answer Features</div>
+    <div class="con-item">Just summarises each interpretation separately</div>
+    <div class="con-item">Omits quotes or evidence from one/both interpretations</div>
+    <div class="con-item">Identifies a minor detail rather than the main difference</div>
+    <div class="con-item">Confuses 3(b) with 3(c) by explaining WHY they differ</div>
+  </div>
+</div>`
+        },
+        {
+            title: "Question 3(c) — 'Why are the Interpretations Different?' (4 marks)",
+            tag: "Exam Technique",
+            content: `<p>Question 3(c) asks you to <strong>explain why</strong> the two interpretations differ — not what the difference is (that was 3(b)). You have approximately <strong>5 minutes</strong> for this question. You <em>may</em> use Sources B and C to support your answer, but you can still achieve full marks without them.</p>
+<p><strong>Reasons interpretations differ include:</strong></p>
+<ul>
+  <li><strong>Different sources used:</strong> One author may have focused on political sources; the other on economic or social sources.</li>
+  <li><strong>Different time focus:</strong> One may emphasise short-term effects; the other longer-term consequences.</li>
+  <li><strong>Different emphasis:</strong> Authors choose to highlight different aspects of the same period (e.g. ideology vs. economic reality).</li>
+</ul>
+<div class="case-study-box">
+  <h4>⚠️ Critical Rule: Do NOT mention provenance</h4>
+  <p>You will receive <strong>no marks</strong> for explaining the date of publication, who wrote it, or their background (provenance). You must focus on the <strong>content and emphasis</strong> of the interpretations and how different sources could lead to different conclusions.</p>
+</div>`
+        },
+        {
+            title: "Using Sources B and C in Question 3(c)",
+            tag: "Key Strategy",
+            content: `<p>The most reliable method for answering 3(c) is to match each source (B or C) to the interpretation it supports, then explain how that source could have led the historian to their viewpoint.</p>
+<ul>
+  <li><strong>Source B</strong> will typically support one interpretation's argument.</li>
+  <li><strong>Source C</strong> will typically support the other interpretation's argument.</li>
+  <li><strong>Never use Source A</strong> — it is for a different question and will receive no marks here.</li>
+</ul>
+<div class="formula-box">
+  <strong>Structure for 3(c) using sources:</strong><br><br>
+  1. State the historians differ because they have given weight to different sources.<br>
+  2. Link Interpretation 1 → matching source (B or C) → quote/detail → how it explains Int 1's view.<br>
+  3. "Whereas" → link Interpretation 2 → the other source → quote/detail → how it explains Int 2's view.
+</div>
+<div class="case-study-box">
+  <h4>Worked Example (Hitler Chancellor 1933)</h4>
+  <p>Interpretation 2 (mass support view) matches Source B (Albert Speer describing huge crowds at rallies). Interpretation 1 (elite politics view) matches Source C (Ribbentrop diary showing von Papen/Hindenburg negotiations). Each author gave weight to these different types of evidence, leading to different conclusions.</p>
+</div>`
+        },
+        {
+            title: "Themes of Difference in Weimar &amp; Nazi Germany Interpretations",
+            tag: "Key Knowledge",
+            content: `<p>Interpretations in the Edexcel Weimar and Nazi Germany paper tend to differ along three main thematic lines. Knowing these helps you quickly identify the main difference in 3(b).</p>
+<div class="two-col">
+  <div>
+    <div class="col-head">Common Themes of Difference</div>
+    <div class="pro-item"><strong>Political vs. Economic causes</strong> — e.g. was Hitler's rise due to elite politics or economic collapse?</div>
+    <div class="pro-item"><strong>Success vs. Failure of policy</strong> — e.g. were Nazi women's policies successful?</div>
+    <div class="pro-item"><strong>Extent of support vs. resistance</strong> — e.g. did Germans broadly support or resist the Nazi regime?</div>
+    <div class="pro-item"><strong>Short-term vs. long-term focus</strong> — e.g. immediate crisis of 1923 vs. longer-term structural weaknesses</div>
+  </div>
+  <div>
+    <div class="col-head">Past Exam Contrasts</div>
+    <div class="pro-item">2018: Political threats vs. economic (hyperinflation) threats to Weimar</div>
+    <div class="pro-item">2019: Nazi women's policy as failure vs. success</div>
+    <div class="pro-item">2020: Germans resisted vs. conformed with Nazi regime</div>
+    <div class="pro-item">2021: Nazis building support (methods) vs. Nazis failing in elections</div>
+    <div class="pro-item">2022: Elite politics gave Hitler power vs. mass popular support</div>
+  </div>
+</div>`
+        },
+        {
+            title: "Key Vocabulary for Comparing Interpretations",
+            tag: "Language &amp; Structure",
+            content: `<p>Using the right vocabulary signals to the examiner that you understand the task and can move between both interpretations fluently.</p>
+<ul>
+  <li><strong>Contrast phrases:</strong> "whereas", "in contrast", "in comparison", "on the other hand", "however"</li>
+  <li><strong>For stating difference:</strong> "The main difference between the interpretations is…", "Interpretations 1 and 2 differ in their views about…"</li>
+  <li><strong>For quoting:</strong> "Interpretation 1 states that…", "This is supported by the claim that…", "The author argues…"</li>
+  <li><strong>For 3(c) (why different):</strong> "The interpretations differ because they have given weight to different sources…", "The authors have chosen to emphasise different aspects…", "They focus on different time periods…"</li>
+</ul>
+<div class="case-study-box">
+  <h4>Sentence Starters Bank</h4>
+  <p><strong>3(b):</strong> "Interpretations 1 and 2 have different views about [topic] as [overall difference]. Interpretation 1 suggests… [quote]. Whereas, Interpretation 2 argues… [quote]."</p>
+  <p><strong>3(c):</strong> "Interpretations 1 and 2 give different views because they have given weight to different sources. The author of Interpretation 1 will have studied sources like Source [B/C], which… This supports Interpretation 1 because… Whereas, the author of Interpretation 2 will have studied sources like Source [B/C], which…"</p>
+</div>`
+        },
+        {
+            title: "Common Mistakes and How to Avoid Them",
+            tag: "Misconceptions",
+            content: `<p>Certain errors consistently prevent students from achieving full marks on 3(b) and 3(c). Understanding these helps you avoid the same pitfalls.</p>
+<ul>
+  <li><strong>Confusing 3(b) and 3(c):</strong> 3(b) asks WHAT the difference is; 3(c) asks WHY. Repeating your 3(b) answer in 3(c) earns zero marks.</li>
+  <li><strong>Skipping quotes:</strong> Without short quotes or clear summaries from each interpretation, you are capped at 2 marks.</li>
+  <li><strong>Referring to provenance in 3(c):</strong> Saying "Interpretation 1 was written in 1996 so the historian had more time to research" gains no marks. Focus on content and sources.</li>
+  <li><strong>Using Source A in 3(c):</strong> Source A is for Question 3(a) only. Using it in 3(c) scores zero for that point.</li>
+  <li><strong>Picking a minor detail as the "main" difference:</strong> Identify the overall argument of each interpretation, not a small supporting detail.</li>
+</ul>`
+        }
+    ];
+
+    // ─────────────────────────────────────────────
+    // ARRAY 2: mcqData
+    // ─────────────────────────────────────────────
+    const mcqData = [
+        {
+            q: "Question 3(b) on Edexcel Paper 3 is worth how many marks?",
+            opts: ["2 marks", "4 marks", "8 marks", "12 marks"],
+            ans: 1,
+            explain: "Correct: B — 4 marks. Question 3(b) asks you to explain the main difference between two interpretations and is worth 4 marks. You should spend no more than 5 minutes on it. A (2 marks) and C (8 marks) are wrong mark allocations. D (12 marks) is the mark allocation for the 'Explain Why' question."
+        },
+        {
+            q: "In Question 3(b), what is the most common reason students are capped at 2 marks rather than achieving full marks?",
+            opts: [
+                "Writing too much",
+                "Using Source A in their answer",
+                "Failing to include quotes or clear summaries from both interpretations",
+                "Explaining why the interpretations are different"
+            ],
+            ans: 2,
+            explain: "Correct: C — failing to include quotes or clear summaries from both interpretations. Without evidence from each interpretation, the examiner cannot award full marks as the analysis is unsupported. A is incorrect — length is not the issue. B relates to a 3(c) error. D is actually what 3(c) asks for, not 3(b)."
+        },
+        {
+            q: "In Question 3(c), which source should you NEVER use in your answer?",
+            opts: ["Source A", "Source B", "Source C", "Both Source B and Source C"],
+            ans: 0,
+            explain: "Correct: A — Source A. Source A is used for Question 3(a) only. If you use it in 3(c), you will receive no marks for that point. Sources B and C are the sources you may use in Question 3(c) to explain why the interpretations differ."
+        },
+        {
+            q: "A student writes in their 3(c) answer: 'The interpretations are different because Interpretation 1 was written in 1996 and is therefore more reliable.' What error have they made?",
+            opts: [
+                "They have focused on the wrong interpretation",
+                "They have discussed provenance, which earns no marks in 3(c)",
+                "They have confused 3(b) and 3(c)",
+                "They have failed to include a quote"
+            ],
+            ans: 1,
+            explain: "Correct: B — they have discussed provenance (the date and reliability of the source), which earns no marks in 3(c). Question 3(c) requires you to explain differences based on the content and emphasis of the interpretations and sources, not when or by whom they were written."
+        },
+        {
+            q: "Interpretation 1 argues that Germans largely conformed with the Nazi regime and joined the Party in huge numbers. Interpretation 2 argues many Germans refused to salute, told jokes about Hitler, and listened to foreign radio. What is the main difference?",
+            opts: [
+                "Interpretation 1 focuses on economics; Interpretation 2 focuses on politics",
+                "Interpretation 1 emphasises compliance; Interpretation 2 emphasises resistance",
+                "Interpretation 1 covers 1933–36; Interpretation 2 covers 1936–39",
+                "Interpretation 1 uses statistics; Interpretation 2 uses personal accounts"
+            ],
+            ans: 1,
+            explain: "Correct: B — Interpretation 1 emphasises compliance and conformity; Interpretation 2 emphasises resistance and non-conformity. This is the core content difference. A is wrong — neither interpretation is primarily economic. C introduces time periods not stated. D describes source types, not the main interpretive difference."
+        },
+        {
+            q: "In a Q3(c) answer using Sources B and C, what is the correct structural approach?",
+            opts: [
+                "Explain what Interpretation 1 says, then what Interpretation 2 says",
+                "State the historians used different sources, link Source B or C to Interpretation 1, then link the remaining source to Interpretation 2",
+                "Summarise Sources B and C, then decide which is more useful",
+                "Identify the provenance of each source and explain how this affected the historians"
+            ],
+            ans: 1,
+            explain: "Correct: B — state that the historians gave weight to different sources, match Source B or C to Interpretation 1, then match the other source to Interpretation 2, linking each to the interpretation's argument. A describes a 3(b) structure. C describes Q3(a) utility. D discusses provenance, which earns no marks in 3(c)."
+        },
+        {
+            q: "Interpretation 1 states Hitler became Chancellor because von Papen and Hindenburg handed power to him through elite political deals. Interpretation 2 states Hitler had a mass movement of 800,000 party members and 13 million voters behind him. The main difference is about:",
+            opts: [
+                "The role of propaganda vs. the role of elections",
+                "Elite political decisions vs. mass popular support as the key cause",
+                "Whether Hitler deserved to become Chancellor",
+                "The role of the economy vs. the role of the military"
+            ],
+            ans: 1,
+            explain: "Correct: B — Interpretation 1 focuses on elite political decisions (Hindenburg/von Papen), while Interpretation 2 focuses on mass popular support as the key reason Hitler became Chancellor. A (propaganda vs. elections) is not the focus of either interpretation. C introduces a moral judgement not in the interpretations. D (economy vs. military) does not reflect either interpretation's argument."
+        },
+        {
+            q: "Which of the following best explains WHY two interpretations about Nazi women's policy might differ?",
+            opts: [
+                "One historian is more reliable than the other",
+                "One historian focused on early policy measures (removing women from jobs); the other focused on the later economic reality (women re-entering work due to labour shortages)",
+                "One interpretation was written before 1945 and one after",
+                "The historians come from different countries"
+            ],
+            ans: 1,
+            explain: "Correct: B — one historian may have focused on the ideological policy of the early years (removing women from professions), while the other emphasised the later economic reality (labour shortages meant women returned to work). This is a legitimate 3(c) answer about different source emphasis. A and D discuss reliability/nationality (provenance), which earns no marks. C discusses dates of publication, also provenance."
+        },
+        {
+            q: "A student writes for Q3(b): 'Interpretation 1 says the Weimar Republic faced challenges from the Left and Right. Interpretation 2 says hyperinflation was a challenge.' What mark would this most likely receive?",
+            opts: [
+                "Full marks — it covers both interpretations",
+                "2 marks — it summarises but does not explain the main difference or use quotes",
+                "0 marks — it does not mention the interpretations by name",
+                "4 marks — it correctly identifies what each interpretation argues"
+            ],
+            ans: 1,
+            explain: "Correct: B — 2 marks. The answer mentions both interpretations, which is a starting point, but does not clearly explain the main difference between them and includes no quotes or clear textual reference. To reach 3–4 marks, the student needs to identify the core difference and support it with evidence from each interpretation."
+        },
+        {
+            q: "In Q3(c), a student writes: 'The interpretations differ because they have given weight to different sources. Interpretation 1 will have looked at sources showing political opposition (like Source B showing the Kapp Putsch). Interpretation 2 will have focused on sources showing economic collapse (like Source C on hyperinflation).' This answer is likely to receive:",
+            opts: [
+                "0 marks — it discusses provenance",
+                "2 marks — it only covers one interpretation",
+                "Full marks — it correctly links each interpretation to a different source and explains how the source supports the interpretation's argument",
+                "2 marks — it repeats the 3(b) answer"
+            ],
+            ans: 2,
+            explain: "Correct: C — this is a well-structured 3(c) answer. It opens with the key reason (different sources), links each interpretation to a specific source, and explains how the source leads to that interpretation's viewpoint. It does not discuss provenance, does not repeat the 3(b) difference, and uses both sources effectively."
+        },
+        {
+            q: "Which of these is a valid reason to give in Q3(c) for why two interpretations are different?",
+            opts: [
+                "One historian is biased because they are German",
+                "The interpretations were written in different decades so reliability varies",
+                "The authors have focused on different types of evidence — one on political events, the other on economic data",
+                "Interpretation 1 is longer so it contains more information"
+            ],
+            ans: 2,
+            explain: "Correct: C — explaining that the authors focused on different types of evidence (political vs. economic) is a valid, content-based reason for diverging interpretations. A introduces nationalist bias (provenance). B discusses date/reliability (provenance). D is irrelevant — length has no bearing on historical interpretation."
+        },
+        {
+            q: "The phrase 'In' (abbreviated) used in mark schemes for Q3(b) and Q3(c) stands for:",
+            opts: [
+                "Introduction — a sentence introducing the topic",
+                "Inference — reading between the lines of a source",
+                "Interpretation — using content from one or both interpretations to support the answer",
+                "Incorrect — marking the errors in a student's answer"
+            ],
+            ans: 2,
+            explain: "Correct: C — in Edexcel mark schemes for comparing interpretations questions, '(In)' indicates a mark has been earned for using content from one or both interpretations. Each (In) annotation in a model answer marks where the student has referred to interpretations effectively."
+        }
+    ];
+
+    // ─────────────────────────────────────────────
+    // ARRAY 3: matchData
+    // ─────────────────────────────────────────────
+    const matchData = [
+        { term: "Interpretation", def: "A historian's or writer's point of view about a historical event, person or time period, based on the evidence they chose to emphasise." },
+        { term: "Question 3(b)", def: "The 4-mark question that asks you to explain the MAIN DIFFERENCE in content between Interpretation 1 and Interpretation 2." },
+        { term: "Question 3(c)", def: "The 4-mark question that asks you to suggest one reason WHY the interpretations are different, using Sources B and/or C." },
+        { term: "Provenance", def: "Information about who wrote a source, when and why — NOT relevant to Q3(c) and earns no marks if used there." },
+        { term: "Source A", def: "The source used for Question 3(a) only; using it in Q3(c) earns no marks." },
+        { term: "Sources B and C", def: "The sources you MAY use in Q3(c) to explain why the interpretations differ; one typically supports Interpretation 1, the other supports Interpretation 2." },
+        { term: "Level Response", def: "A marking method where the examiner reads the whole answer and awards a level (not a mark per point); each point does not automatically equal one mark." },
+        { term: "Elite politics", def: "The explanation that Hitler became Chancellor due to the decisions of a small number of powerful individuals such as Hindenburg and von Papen." },
+        { term: "Mass support", def: "The explanation that Hitler became Chancellor because of widespread popular backing, including millions of voters and hundreds of thousands of party members." },
+        { term: "Conformity", def: "The interpretation that German people broadly accepted and supported the Nazi regime, evidenced by rapid growth in Nazi Party membership after 1933." },
+        { term: "Resistance", def: "The interpretation that many Germans did not fully accept the Nazi regime, evidenced by refusal to salute, telling anti-Hitler jokes, and listening to foreign radio." },
+        { term: "Different emphasis", def: "A valid reason for interpretations differing: the authors chose to focus on different aspects or evidence within the same broad topic." }
+    ];
+
+    // ─────────────────────────────────────────────
+    // ARRAY 4: fibData  /  ARRAY 5: fibWords
+    // ─────────────────────────────────────────────
+    const fibData = [
+        {
+            display: "Question 3(b) asks you to explain the _____ between Interpretation 1 and Interpretation 2 and is worth _____ marks.",
+            blanks: { B1: "main difference", B2: "four" }
+        },
+        {
+            display: "Question 3(c) asks you to suggest one reason _____ the interpretations are different, and you _____ use Sources B and C to help.",
+            blanks: { B1: "why", B2: "may" }
+        },
+        {
+            display: "To achieve full marks on 3(b), you must include a short _____ or clear summary from each _____.",
+            blanks: { B1: "quote", B2: "interpretation" }
+        },
+        {
+            display: "In 3(c), you must never discuss the _____ of a source, as this will earn you no _____.",
+            blanks: { B1: "provenance", B2: "marks" }
+        },
+        {
+            display: "The most common structure for 3(c) is to state that the historians have given weight to different _____, then link each interpretation to _____ or C.",
+            blanks: { B1: "sources", B2: "Source B" }
+        },
+        {
+            display: "Interpretation 1 about Hitler's rise argues that power was handed to him through _____ politics, with _____ persuading Hindenburg to appoint Hitler.",
+            blanks: { B1: "elite", B2: "von Papen" }
+        },
+        {
+            display: "Interpretation 2 about Hitler's rise argues that _____ support was the key factor, with 13 million _____ backing the Nazi Party.",
+            blanks: { B1: "mass", B2: "voters" }
+        },
+        {
+            display: "When interpretations differ on Nazi women's policy, one view is that women's _____ actually increased due to labour shortages, while the other argues that by 1939 very few women were in _____ work.",
+            blanks: { B1: "employment", B2: "full-time" }
+        },
+        {
+            display: "In 3(c), the _____ will read the whole answer and decide which level the answer matches best; each _____ made does not automatically equal one mark.",
+            blanks: { B1: "examiner", B2: "point" }
+        },
+        {
+            display: "You should never use Source _____ in your 3(c) answer because it is reserved for Question _____.",
+            blanks: { B1: "A", B2: "3(a)" }
+        }
+    ];
+
+    const fibWords = [
+        // Correct answers
+        "main difference", "four", "why", "may", "quote", "interpretation",
+        "provenance", "marks", "sources", "Source B", "elite", "von Papen",
+        "mass", "voters", "employment", "full-time", "examiner", "point", "A", "3(a)",
+        // Plausible distractors
+        "similarity", "two", "how", "must", "paraphrase", "source",
+        "reliability", "levels", "arguments", "Source A", "popular", "Hindenburg",
+        "economic", "party members", "participation", "part-time", "teacher", "sentence",
+        "B", "3(b)", "eight", "cannot", "summary"
+    ];
+
+    // ─────────────────────────────────────────────
+    // ARRAY 6: tfData
+    // ─────────────────────────────────────────────
+    const tfData = [
+        {
+            statement: "Question 3(b) asks you to explain WHY two interpretations are different.",
+            answer: false,
+            explanation: "FALSE. Question 3(b) asks you to explain WHAT the main difference is between the two interpretations. Question 3(c) is the question that asks you to explain WHY the interpretations are different. Confusing these two tasks is one of the most common errors students make."
+        },
+        {
+            statement: "You can achieve full marks on Question 3(c) without using Sources B or C.",
+            answer: true,
+            explanation: "TRUE. The question says you 'may' use Sources B and C — this means it is optional, not compulsory. Full marks can be achieved by explaining why the interpretations differ using a well-reasoned explanation about different emphasis or focus. However, using the sources is generally the easiest way to structure a strong answer."
+        },
+        {
+            statement: "To achieve full marks on Question 3(b), you must include evidence (quotes or clear summaries) from BOTH interpretations.",
+            answer: true,
+            explanation: "TRUE. The mark scheme requires you to reference both interpretations with supporting evidence. If you only quote from one interpretation, you are capped at a maximum of 2 marks. Both interpretations must be used."
+        },
+        {
+            statement: "You can use Source A in your Question 3(c) answer to help explain why the interpretations are different.",
+            answer: false,
+            explanation: "FALSE. Source A is for Question 3(a) only. If you use Source A in your 3(c) answer, you will receive no marks for that point. Only Sources B and C may be used in Question 3(c)."
+        },
+        {
+            statement: "Discussing the provenance of an interpretation (e.g. who wrote it and when) is a valid way to explain why interpretations differ in Question 3(c).",
+            answer: false,
+            explanation: "FALSE. Provenance — such as when or by whom the interpretation was written — earns no marks in Question 3(c). The examiner only awards marks for explanations based on the content and emphasis of the interpretations and their relationship to Sources B or C."
+        },
+        {
+            statement: "In Edexcel mark schemes for Q3(b) and Q3(c), '(In)' marks show where a student has used content from one of the interpretations.",
+            answer: true,
+            explanation: "TRUE. The '(In)' annotation in model answers marks each point where the student has referenced the content of an interpretation. These are the key moments in the answer that earn marks; each (In) represents the student using interpretive content effectively."
+        },
+        {
+            statement: "An interpretation written by a historian in 1996 is always more reliable than one written in 2015 because it is older.",
+            answer: false,
+            explanation: "FALSE. The date of publication does not determine reliability. More importantly, you should not make judgements about reliability in Questions 3(b) or 3(c) at all — that type of analysis belongs in other question types. Interpretations differ because of what evidence was emphasised, not because of when they were written."
+        },
+        {
+            statement: "In Q3(c), one valid reason for interpretations differing is that the authors focused on different types of historical evidence or sources.",
+            answer: true,
+            explanation: "TRUE. This is one of the two main acceptable reasons for 3(c): different sources used (e.g. one author focused on political sources, another on economic ones). The other valid reason is that authors focused on different time periods or aspects of the same topic."
+        },
+        {
+            statement: "Question 3(b) and 3(c) both use the same pair of Interpretations 1 and 2.",
+            answer: true,
+            explanation: "TRUE. The same two interpretations are used across Questions 3(b), 3(c) and 3(d). You read the interpretations once and apply them to all three questions. This is why it is important to identify the core argument of each interpretation when you first read them."
+        },
+        {
+            statement: "A student who writes 'Interpretation 1 argues that German women's employment increased; Interpretation 2 says fewer women worked by 1939' has written a complete full-mark 3(b) answer.",
+            answer: false,
+            explanation: "FALSE. This answer identifies what each interpretation says but does not structure it as a clear comparison. A full-mark answer must state the main difference as an overarching point, use short quotes from each interpretation to support the comparison, and use contrast language to link the two views together."
+        }
+    ];
+
+    // ─────────────────────────────────────────────
+    // ARRAY 7: miscData
+    // ─────────────────────────────────────────────
+    const miscData = [
+        {
+            wrong: "In Q3(c), students explain WHY an interpretation is reliable or unreliable based on who wrote it and when.",
+            correct: "Provenance (who wrote it, when, and for what purpose) earns ZERO marks in Q3(c). The examiner only awards marks for explaining differences based on the CONTENT and emphasis of the interpretations — specifically, what different sources or aspects of the topic each author chose to focus on. Save provenance analysis for utility questions (Q3a)."
+        },
+        {
+            wrong: "Students repeat their Q3(b) answer in Q3(c), just restating what each interpretation says rather than explaining why they say different things.",
+            correct: "Q3(b) asks WHAT the difference is; Q3(c) asks WHY the difference exists. If the examiner spots that you have just re-described the content of each interpretation, they will award zero marks for that section. Your 3(c) answer must go a step further — explaining the reason the historians reached different conclusions (e.g. different sources consulted, different aspects emphasised)."
+        },
+        {
+            wrong: "Students use Source A in their Q3(c) answer because they think any source can be used.",
+            correct: "Source A is designated for Question 3(a) only. Using it in Q3(c) earns no marks. Only Sources B and C may be used. As a practical tip: when you turn to the sources booklet for 3(c), cover Source A so you are not tempted to use it."
+        },
+        {
+            wrong: "Students only reference one interpretation in their Q3(b) answer, assuming this is enough to show understanding.",
+            correct: "Full marks for Q3(b) require you to reference BOTH interpretations with evidence (quotes or clear summaries). If you only discuss one interpretation, the mark scheme caps you at a maximum of 2 marks. The question itself says 'using details from both interpretations' — this is not optional, it is the instruction."
+        },
+        {
+            wrong: "Students pick a small detail as 'the main difference' rather than identifying the overall argument of each interpretation.",
+            correct: "The 'main difference' should be the core argument — the overall interpretive position — of each historian. For example, if one argues Hitler rose through elite politics and the other through mass support, that is the main difference. Picking a minor supporting detail (e.g. 'one mentions Hindenburg') misses the bigger picture and limits your mark."
+        },
+        {
+            wrong: "Students think they must use Sources B and C in Q3(c), and panic if the sources seem hard to connect to the interpretations.",
+            correct: "Sources B and C are optional in Q3(c). The question says 'you may use'. You can achieve full marks with a well-structured explanation about different emphasis or focus — without quoting the sources at all. However, if the sources are clearly linked to each interpretation, using them is the most reliable method and the safest exam strategy."
+        },
+        {
+            wrong: "Students write long introductions in Q3(b) and Q3(c) before getting to the actual comparison, wasting time in a 5-minute question.",
+            correct: "Both 3(b) and 3(c) are worth 4 marks each and should take no more than 5 minutes. There is no time for extended introductions. Start your answer directly with the main difference (3b) or the reason for the difference (3c). A focused 4–6 sentence answer is enough for full marks — prioritise content over length."
+        }
+    ];
+
+    // ─────────────────────────────────────────────
+    // ARRAY 8: examTips
+    // ─────────────────────────────────────────────
+    const examTips = [
+        {
+            type: "Q3(b) — Explain the Main Difference, 4 marks",
+            title: "WHAT: Identify, Quote, Compare",
+            content: `<p>This question tests your ability to identify the core interpretive difference between two historians' views and support your comparison with textual evidence from each.</p>
+<p><strong>The Formula:</strong></p>
+<ul>
+  <li><strong>Step 1 — State the main difference:</strong> Begin with an overarching sentence identifying what the two interpretations disagree about (e.g. extent of support, cause of an event, success of a policy).</li>
+  <li><strong>Step 2 — Explain Interpretation 1's view</strong> with a short direct quote (under ~15 words) from the interpretation.</li>
+  <li><strong>Step 3 — Contrast with Interpretation 2's view</strong> using a short quote, linked with 'whereas' or 'in contrast'.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "Interpretation 1 talks about how Hitler had political support from Hindenburg. Interpretation 2 talks about how Hitler had lots of voters."</p>
+<p><strong>✅ Strong Answer:</strong> "Interpretations 1 and 2 differ on the key reason Hitler became Chancellor. Interpretation 1 argues power was handed to him through elite political decisions, stating it 'was handed to him by the men who controlled Germany'. Whereas Interpretation 2 argues that mass popular support was the key factor, claiming Hitler had '800,000 party members and 13 million voters' behind him."</p>
+<p><strong>Sentence Starter:</strong> "Interpretations 1 and 2 have different views about [topic] as they differ on [overall point of disagreement]. Interpretation 1 argues… [quote]. Whereas, Interpretation 2 argues… [quote]."</p>`,
+            pills: ["AO1", "AO2"]
+        },
+        {
+            type: "Q3(c) — Suggest One Reason Why Different, 4 marks",
+            title: "WHY: Sources, Emphasis, or Focus",
+            content: `<p>This question tests your ability to explain the reason behind the interpretive difference — not what the difference is (3b), but why historians reached different conclusions.</p>
+<p><strong>The Formula (using Sources B/C):</strong></p>
+<ul>
+  <li><strong>Step 1:</strong> State the historians differ because they gave weight to different sources (or had different emphasis/focus).</li>
+  <li><strong>Step 2:</strong> Link Interpretation 1 to Source B or C — explain what that source shows and how it supports Int 1's argument.</li>
+  <li><strong>Step 3:</strong> "Whereas" — link Interpretation 2 to the other source — explain what it shows and how it supports Int 2's argument.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "They are different because Interpretation 1 was written in 1996 and Interpretation 2 was written in 2001, so the historian had more time to research."</p>
+<p><strong>✅ Strong Answer:</strong> "The interpretations differ because they have given weight to different sources. The author of Interpretation 2 will have studied sources like Source B, which shows the enthusiasm of huge crowds at Nazi rallies. This supports Interpretation 2's view that 'mass support' drove Hitler to power. Whereas, the author of Interpretation 1 will have studied sources like Source C, which records the behind-the-scenes political negotiations of von Papen and Hindenburg, supporting Interpretation 1's claim that power was handed to Hitler through elite politics."</p>
+<p><strong>Sentence Starter:</strong> "The interpretations give different views because they have given weight to different sources. The author of Interpretation 1 will have studied sources like Source [B/C], which… This supports Interpretation 1 because… Whereas, Interpretation 2 will have studied sources like Source [B/C], which…"</p>`,
+            pills: ["AO3", "AO4"]
+        },
+        {
+            type: "Time Management — 5 minutes per question",
+            title: "Speed & Precision: No Wasted Sentences",
+            content: `<p>Both 3(b) and 3(c) are worth only 4 marks each and should take <strong>no more than 5 minutes per question</strong>. Writing too much on these questions steals time from higher-mark questions (especially the 16-mark Q3d).</p>
+<p><strong>Target Length:</strong></p>
+<ul>
+  <li><strong>3(b):</strong> 3–5 sentences. One sentence identifying the difference, two sentences (one per interpretation) with quotes.</li>
+  <li><strong>3(c):</strong> 4–6 sentences. One sentence on the reason, then one paragraph per interpretation linking to a source.</li>
+</ul>
+<p><strong>❌ Weak Approach:</strong> "In this essay I am going to compare Interpretations 1 and 2 about German recovery in the 1920s. The first thing to note is that historians often disagree…"</p>
+<p><strong>✅ Strong Approach:</strong> Start your answer in sentence one. "Interpretations 1 and 2 differ on…" — go straight to the comparison. No introduction needed.</p>
+<p><strong>Sentence Starter:</strong> Begin directly: "Interpretations 1 and 2 differ on…" / "The interpretations give different views because…"</p>`,
+            pills: ["AO1", "AO2"]
+        },
+        {
+            type: "Identifying the Main Difference — Reading Skill",
+            title: "Find the Core Argument, Not a Detail",
+            content: `<p>Many students lose marks in 3(b) by picking a minor detail as the 'main' difference. The skill is to identify the <strong>overall interpretive position</strong> of each historian — what they are fundamentally arguing about the topic.</p>
+<p><strong>How to identify the core argument:</strong></p>
+<ul>
+  <li><strong>Step 1:</strong> Ask "What is Interpretation 1's overall verdict?" (e.g. Germans broadly supported the Nazis / the policy was successful / political elites decided Hitler's fate).</li>
+  <li><strong>Step 2:</strong> Ask "What is Interpretation 2's overall verdict?" — it will be a contrasting position.</li>
+  <li><strong>Step 3:</strong> Express the difference as an overarching theme: "The interpretations differ on the <em>extent of</em> / <em>reasons for</em> / <em>success of</em>…"</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "Interpretation 1 mentions Hindenburg whereas Interpretation 2 mentions party members." (Minor details, no overarching difference stated.)</p>
+<p><strong>✅ Strong Answer:</strong> "Interpretations 1 and 2 differ on the main reason Hitler became Chancellor — Interpretation 1 emphasises elite political decisions, while Interpretation 2 emphasises the importance of mass popular support."</p>
+<p><strong>Sentence Starter:</strong> "The main difference between the interpretations is their view on [the key point of disagreement]…"</p>`,
+            pills: ["AO2", "AO3"]
+        }
+    ];
+
+    // ─────────────────────────────────────────────
+    // ARRAY 9: flashcards
+    // ─────────────────────────────────────────────
+    const flashcards = [
+        { term: "What does Q3(b) ask you to do?", def: "Explain the MAIN DIFFERENCE in content between Interpretation 1 and Interpretation 2. Worth 4 marks. Spend no more than 5 minutes. You must reference both interpretations with quotes or clear summaries." },
+        { term: "What does Q3(c) ask you to do?", def: "Suggest ONE REASON WHY the interpretations are different. Worth 4 marks. You may (but don't have to) use Sources B and C. Do NOT repeat your 3(b) answer. Do NOT discuss provenance." },
+        { term: "What is provenance, and why is it banned in Q3(c)?", def: "Provenance refers to who wrote a source, when, and why. It earns ZERO marks in Q3(c). The question requires content-based explanations — what evidence or emphasis the historian chose — not when/why they wrote it." },
+        { term: "Which sources can you use in Q3(c)?", def: "Sources B and C only. Source A is for Question 3(a) and earns no marks in 3(c). Using Sources B/C is optional — full marks are available without them." },
+        { term: "What is the best opening sentence for a Q3(b) answer?", def: "State the main interpretive difference directly: 'Interpretations 1 and 2 differ on [the key point of disagreement], as one argues [position A] while the other argues [position B].'" },
+        { term: "What is the best opening sentence for a Q3(c) answer?", def: "'The interpretations give different views because they have given weight to different sources (or focused on different aspects of the topic).' Then link each interpretation to a specific source or type of evidence." },
+        { term: "What are the two main valid reasons for Q3(c)?", def: "1. The authors gave weight to different sources (e.g. one used political sources, the other economic). 2. The authors chose to emphasise different time periods or different aspects of the same topic." },
+        { term: "What is the 'In' annotation in Edexcel mark schemes?", def: "It stands for 'Interpretation'. Each (In) mark is awarded when the student uses content from one of the interpretations to support their answer. These are the marks you earn in Q3(b) and Q3(c)." },
+        { term: "What happened in the 2022 exam (Hitler becoming Chancellor)?", def: "Interpretation 1 (Turner) argued Hitler was handed power by elite figures — Hindenburg and von Papen. Interpretation 2 (Kershaw) argued mass popular support (13 million voters, 800,000 members) was the key factor. Source B (Speer/rallies) supported Int 2; Source C (Ribbentrop diary) supported Int 1." },
+        { term: "What was the main difference in the 2019 exam (Nazi women's policy)?", def: "Interpretation 1 (Hite & Hinton) argued Nazi women's policy was not successful — the number of women in work actually increased due to labour shortages. Interpretation 2 (History Learning Site) argued the policy was successful — by 1939, very few women were in full-time work." },
+        { term: "What was the main difference in the 2020 exam (support for Nazi regime)?", def: "Interpretation 1 (Epstein) argued many Germans did NOT conform — they refused to salute, told jokes about Hitler, listened to foreign radio. Interpretation 2 (Gellately) argued Germans clearly conformed — 4 million joined the Nazi Party 1933–39." },
+        { term: "When matching Sources B/C to interpretations in Q3(c), what is the key rule?", def: "One source will support Interpretation 1's argument; the other source will support Interpretation 2's argument. Match each source to the interpretation with the same viewpoint, then use a quote from the source to show the connection. Never use Source A." }
+    ];
+
+    // ─────────────────────────────────────────────
+    // ARRAY 10: examQuestions
+    // ─────────────────────────────────────────────
+    const examQuestions = [
+        {
+            num: "Q1",
+            marks: 1,
+            type: "mcq",
+            caseStudy: "",
+            question: "Which question on Edexcel Paper 3 asks you to explain the MAIN DIFFERENCE between two interpretations?",
+            options: [
+                "Question 3(a)",
+                "Question 3(b)",
+                "Question 3(c)",
+                "Question 3(d)"
+            ],
+            answer: 1,
+            hint: "Think about what each sub-question asks: 3(a) is inference, 3(b) is comparison, 3(c) is why different, 3(d) is extended judgement.",
+            starter: "The correct answer is...",
+            markScheme: `<div class="marks-section">
+<h5>Answer: B — Question 3(b) — 1 mark</h5>
+<p><strong>B: Q3(b) is correct</strong> because it specifically asks 'What is the main difference between these views?' and requires you to identify and explain the difference using details from both interpretations.</p>
+<ul>
+  <li><strong>Why A is wrong:</strong> Q3(a) asks you to give two things you can infer from a source — it is an inference question, not a comparison question.</li>
+  <li><strong>Why C is wrong:</strong> Q3(c) asks you to suggest a reason WHY the interpretations are different — that is a different task.</li>
+  <li><strong>Why D is wrong:</strong> Q3(d) is the 16-mark extended writing question asking how far you agree with one of the interpretations.</li>
+</ul>
+</div>`,
+            modelAnswer: ""
+        },
+        {
+            num: "Q2",
+            marks: 4,
+            type: "written",
+            caseStudy: `Interpretation 1: From Weimar and Nazi Germany by J Hite and C Hinton, published in 2000.
+
+"The Nazis' attempts to drive women back into the home were not particularly successful. In fact, the number of women in all types of jobs increased, mainly due to the work opportunities created by the economic recovery. By 1936, more workers were needed in agriculture and industry in Germany and by 1939 this shortage of workers was a serious problem. This led to more women returning to work. Overall, the Nazis took a cautious approach to the employment of women and only a few women were actually forced out of jobs."
+
+Interpretation 2: From The History Learning Site, a history website.
+
+"Hitler was very clear that women should bring up children at home while their husbands worked. Schools taught girls from a young age that all good German women should get married and have children. Women were not expected to work in Nazi Germany. Within months of Hitler coming to power, many female doctors and civil servants were sacked, followed by female teachers and lawyers. By 1939, very few women were in full-time work."`,
+            question: "Study Interpretations 1 and 2. They give different views about Nazi policies towards women. What is the main difference between these views? Explain your answer, using details from both interpretations. [4 marks]",
+            hint: "Don't just describe each interpretation separately. Start by identifying the overall disagreement (successful vs. unsuccessful policy), then quote from each to support your comparison.",
+            starter: "Interpretations 1 and 2 have different views about Nazi policies towards women as they differ about how successful the policies were...\n\nInterpretation 1 argues that the Nazi policies were not successful because...\n\nWhereas, Interpretation 2 argues that the policies were successful because...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (Level Response)</h5>
+<p>The examiner reads the whole answer and awards a level, not a mark per point.</p>
+<ul>
+  <li><strong>Level 2 (3–4 marks):</strong> Identifies the main difference clearly AND supports with evidence (quotes/summaries) from both interpretations.</li>
+  <li><strong>Level 1 (1–2 marks):</strong> Only describes what each interpretation says without clearly explaining the difference, OR only references one interpretation.</li>
+</ul>
+<p><strong>The main difference to identify:</strong> Whether Nazi women's policies were SUCCESSFUL (Int 2) or UNSUCCESSFUL (Int 1).</p>
+<p><strong>Acceptable evidence from Interpretation 1:</strong> "the number of women in all types of jobs increased"; "only a few women were actually forced out of jobs"; shortage of workers drove women back to work.</p>
+<p><strong>Acceptable evidence from Interpretation 2:</strong> "very few women were in full-time work" by 1939; female doctors, civil servants, teachers and lawyers were sacked; schools taught girls to marry and have children.</p>
+<p><strong>Do NOT award:</strong> Answers that only list facts about Nazi women's policy without referencing the interpretations; answers that discuss provenance.</p>
+<p><strong>Examiner's Comment:</strong> Strong answers identify the overall interpretive difference (policy success vs. failure) and support it with quotes from both interpretations using contrast language such as 'whereas'. Weaker answers simply summarise each interpretation without comparing them.</p>
+</div>`,
+            modelAnswer: "Interpretations 1 and 2 have different views about Nazi policies towards women as they differ about how successful those policies were. Interpretation 1 argues that the Nazi attempt to drive women out of the workforce was not successful, stating that 'the number of women in all types of jobs increased' due to labour shortages created by economic recovery. Whereas, Interpretation 2 argues that the Nazi policies were successful, claiming that 'by 1939, very few women were in full-time work' as women across professions — doctors, civil servants, teachers and lawyers — were sacked from their jobs."
+        },
+        {
+            num: "Q3",
+            marks: 4,
+            type: "written",
+            caseStudy: `Interpretation 1: From Hitler's Thirty Days to Power by H A Turner, published in 1996.
+
+"In January 1933, Hitler did not seize power; it was handed to him by the men who controlled Germany. The Nazi Party had suffered huge losses in the Reichstag elections of November 1932 and it was starting to fall apart by January 1933. Hindenburg began to mistrust Chancellor von Schleicher. Meanwhile, von Papen managed to overcome the elderly President Hindenburg's doubts about Hitler and persuaded him to appoint Hitler as Chancellor. Hitler was supported by less than half the German population when he was appointed Chancellor by President Hindenburg."
+
+Interpretation 2: From Hitler by I Kershaw, published in 1991.
+
+"It was an extraordinary achievement by the Nazis to win the votes of a third of the German people between 1929 and 1932. By 1932, Hitler was in charge of a massive movement of 800,000 Party members and 13 million voters were generally prepared to place their trust in him. Nazi propaganda suggested that victory was inevitable. Mass support gave Hitler a key to unlocking the door to power. No other party leader had anything like Hitler's support from the German population."`,
+            question: "Study Interpretations 1 and 2. They give different views about why Hitler became Chancellor in 1933. Suggest one reason why Interpretations 1 and 2 give different views. You may use Sources B and C to help explain your answer. [4 marks]",
+            hint: "Remember: Q3(c) asks WHY, not WHAT. Do NOT repeat the difference — explain the reason behind it. Link each interpretation to a source that supports its argument.",
+            starter: "The interpretations give different views about why Hitler became Chancellor because they have given weight to different sources...\n\nThe author of Interpretation 1 will have studied sources like Source [B/C], which... This supports Interpretation 1 because...\n\nWhereas, the author of Interpretation 2 will have studied sources like Source [B/C], which... This supports Interpretation 2 because...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (Level Response)</h5>
+<p>The examiner reads the whole answer and awards a level, not a mark per point.</p>
+<ul>
+  <li><strong>Level 2 (3–4 marks):</strong> Gives a clear reason WHY the interpretations differ AND links each interpretation to supporting evidence (ideally from Sources B/C) with explanation.</li>
+  <li><strong>Level 1 (1–2 marks):</strong> Offers a vague reason without clear links, or only explains one interpretation.</li>
+  <li><strong>0 marks:</strong> Repeats the 3(b) difference; discusses provenance.</li>
+</ul>
+<p><strong>Acceptable reasons:</strong></p>
+<ul>
+  <li>Different sources consulted: Source B (Speer's description of packed election rallies) supports Interpretation 2 (mass support). Source C (Ribbentrop diary showing von Papen/Hindenburg negotiations) supports Interpretation 1 (elite politics).</li>
+  <li>Different emphasis: Int 1 focuses on elite political decision-making; Int 2 focuses on electoral politics and mass mobilisation.</li>
+</ul>
+<p><strong>Do NOT award:</strong> "Because Interpretation 1 was written in 1996 and Interpretation 2 in 1991" — this is provenance and earns zero marks. Do not award answers that repeat what the difference is rather than why it exists.</p>
+<p><strong>Examiner's Comment:</strong> The most common error is students repeating their 3(b) answer here. The examiner will award zero if the answer simply describes the difference again without explaining the reason behind it.</p>
+</div>`,
+            modelAnswer: "The interpretations give different views about why Hitler became Chancellor in 1933 because they have given weight to different sources. The author of Interpretation 2 will have studied sources like Source B, which describes Albert Speer's account of huge crowds at Nazi election rallies in July 1932, with people waiting hours for Hitler to arrive. This supports Interpretation 2's claim that Hitler had 'mass support' from 13 million voters who placed their trust in him. Whereas, the author of Interpretation 1 will have studied sources like Source C — the diary of Joachim von Ribbentrop — which records the private behind-the-scenes discussions between von Papen and Hindenburg in January 1933. This supports Interpretation 1's argument that power was handed to Hitler by elite political figures, rather than won through popular support."
+        },
+        {
+            num: "Q4",
+            marks: 4,
+            type: "written",
+            caseStudy: `Interpretation 1: From Nazi Germany: confronting the myths by C Epstein, published in 2015.
+
+"During the Third Reich, many Germans did not conform with the Nazi regime. This was shown by the fact that some people left the Nazi Party and others refused to give the 'Heil Hitler' greeting and salute. Other people protested against Nazi control of schools and churches. Some Germans told jokes about the Führer, while others listened to foreign radio stations or danced to American swing music. Widespread complaining among the German people showed that they did not always fully support the Nazi regime."
+
+Interpretation 2: From Backing Hitler: Consent and Coercion in Nazi Germany by R Gellately, published in 2001.
+
+"From 1933 onwards, the German people clearly conformed with the Nazi regime and became devoted to Hitler. Hundreds of thousands of Germans from different classes joined the Nazi Party. In fact, so many people tried to join in 1933 that the Party struggled to cope with the numbers. In the years 1933–39, the Nazi Party gained four million new members. A flood of people also joined other Nazi organisations. The increase in support for the Nazis suggests that the majority of the German people found it easy to support the Nazi dictatorship."`,
+            question: "Study Interpretations 1 and 2. They give different views about the extent of support for the Nazi regime in the years 1933–39. What is the main difference between these views? Explain your answer, using details from both interpretations. [4 marks]",
+            hint: "The core disagreement is about whether Germans conformed with or resisted the Nazi regime. Identify this as the main difference, then quote specific evidence from each interpretation to support your comparison.",
+            starter: "Interpretations 1 and 2 have different views about the extent of support for the Nazi regime in the years 1933–39, as one claims there was widespread conformity and the other shows significant non-conformity...\n\nInterpretation 1 suggests that many Germans did NOT conform because...\n\nWhereas, Interpretation 2 argues that Germans clearly DID conform because...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (Level Response)</h5>
+<p>The examiner reads the whole answer and awards a level, not a mark per point.</p>
+<ul>
+  <li><strong>Level 2 (3–4 marks):</strong> Clearly identifies the main difference (conformity vs. non-conformity / resistance) AND quotes or clearly references evidence from BOTH interpretations.</li>
+  <li><strong>Level 1 (1–2 marks):</strong> Only describes one interpretation, or identifies the difference but without evidence from both.</li>
+</ul>
+<p><strong>The main difference to identify:</strong> Whether Germans broadly conformed with (Int 2) or resisted/did not fully conform with (Int 1) the Nazi regime.</p>
+<p><strong>Acceptable evidence from Interpretation 1:</strong> "many Germans did not conform"; refused to salute; told jokes about Hitler; listened to foreign radio; protested against Nazi control of schools and churches.</p>
+<p><strong>Acceptable evidence from Interpretation 2:</strong> "German people clearly conformed"; 4 million new party members 1933–39; people tried to join in such numbers the Party struggled to cope; "flood of people" joined Nazi organisations.</p>
+<p><strong>Do NOT award:</strong> Answers that don't compare but just list what each says; answers that discuss provenance.</p>
+<p><strong>Examiner's Comment:</strong> Students who score well identify the interpretive tension (conformity vs. resistance) as the overarching difference, not just individual examples. Both interpretations must be evidenced.</p>
+</div>`,
+            modelAnswer: "Interpretations 1 and 2 have different views about the extent of support for the Nazi regime in the years 1933–39, as one argues there was a lack of conformity while the other shows widespread support. Interpretation 1 states that 'many Germans did not conform' with the regime, evidenced by people refusing to give the 'Heil Hitler' salute, telling jokes about the Führer, and listening to foreign radio stations. Whereas, Interpretation 2 argues that 'the German people clearly conformed with the Nazi regime', pointing to the fact that the Nazi Party gained 'four million new members' between 1933 and 1939, with so many people trying to join that the Party 'struggled to cope with the numbers'."
+        },
+        {
+            num: "Q5",
+            marks: 4,
+            type: "written",
+            caseStudy: `Interpretation 1: From The Weimar Republic, 1918–24 by M. Rathbone, published in 2013.
+
+"Some democratic parties did support the Weimar Republic. However, powerful political groups on both the Left and the Right refused to accept the existence of the Weimar Republic. They were prepared to destroy it by force and replace it with their own form of government. They took action against the Republic very soon after it was created. This made it difficult for the new government to maintain order and govern Germany."
+
+Interpretation 2: From Alpha History, a history website.
+
+"The hyperinflation which happened in 1923 forced the Weimar government to fear for its own existence. After the French had occupied the Ruhr, the industrial workers had gone on strike. The Weimar government supported the strikers by printing more paper money in order to pay them. As the strike continued, the government could not find a solution and simply printed even more money. This ruined the economy. People talked openly about removing the government by a popular revolution or a military putsch."`,
+            question: "Study Interpretations 1 and 2. They give different views about the challenges facing the Weimar Republic in the years 1919–1923. Suggest one reason why Interpretations 1 and 2 give different views. You may use Sources B and C to help explain your answer. [4 marks]",
+            hint: "Think about what type of evidence (political vs. economic) each interpretation focuses on. Which source would support the idea of political threats? Which would support the economic/hyperinflation argument?",
+            starter: "The interpretations give different views about the challenges facing the Weimar Republic because they are looking at two different perspectives...\n\nThe author of Interpretation 1 will have studied sources showing political threats, such as Source [B/C] which...\n\nWhereas, the author of Interpretation 2 will have focused on sources showing the economic threat, such as Source [B/C] which...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (Level Response)</h5>
+<p>The examiner reads the whole answer and awards a level, not a mark per point.</p>
+<ul>
+  <li><strong>Level 2 (3–4 marks):</strong> Provides a clear reason WHY they differ AND links each interpretation to specific source content with explanation.</li>
+  <li><strong>Level 1 (1–2 marks):</strong> Vague reason, only covers one interpretation, or repeats the 3(b) answer.</li>
+</ul>
+<p><strong>Acceptable reasons:</strong></p>
+<ul>
+  <li>Different sources: Interpretation 1 aligns with sources showing political threats (e.g. Kapp Putsch photograph); Interpretation 2 aligns with sources showing economic consequences of hyperinflation.</li>
+  <li>Different emphasis: Interpretation 1 emphasises political (Left/Right) threats from the outset 1919–23; Interpretation 2 emphasises the specific 1923 economic crisis and its consequences for public trust.</li>
+  <li>Different time focus: Interpretation 1 looks at the broader 1919–23 period of political instability; Interpretation 2 focuses specifically on the 1923 hyperinflation crisis.</li>
+</ul>
+<p><strong>Do NOT award:</strong> Answers discussing provenance (publication dates, who wrote it); answers that simply restate the difference.</p>
+<p><strong>Examiner's Comment:</strong> Successful answers explain the reason behind the divergence — typically that one author focused on political sources and the other on economic evidence — rather than simply repeating what each interpretation says.</p>
+</div>`,
+            modelAnswer: "Interpretations 1 and 2 give different views about the challenges facing the Weimar Republic because they are looking at different types of historical evidence. The author of Interpretation 1 will have studied sources like Source B, which shows Freikorps soldiers occupying Berlin during the Kapp Putsch of 1920. This source supports Interpretation 1's argument that political extremists on the Left and Right were 'prepared to destroy' the Republic by force from the very beginning. Whereas, the author of Interpretation 2 will have focused on sources like Source C, where a factory worker describes how wages were worthless by 1923, with money 'not worth the paper it was printed on' and how people 'didn't trust the government anymore'. This economic evidence supports Interpretation 2's argument that hyperinflation in 1923 was the central challenge that 'ruined the economy' and threatened the Republic's existence."
+        },
+        {
+            num: "Q6",
+            marks: 4,
+            type: "written",
+            caseStudy: `Interpretation 1: From Germany: The Third Reich 1933–45 by G Layton, published in 1992.
+
+"After the Munich Putsch, Hitler realised that he had to make the Nazi Party capable of gaining power by winning elections. In 1926, he re-established his control over the Nazi Party. The Nazi Party was reorganised. New groups were created to attract support, like the Hitler Youth. The Party was taking shape and its membership was increasing. In the 1928 election the Nazis gained votes in rural areas. They had also started to target the middle classes with their propaganda."
+
+Interpretation 2: From Spartacus Education, a history website.
+
+"The Weimar government brought inflation under control and the economy began to improve. Because of this, the German people started to believe in the democratic system and were not interested in Hitler's ideas. Hitler claimed he was no longer trying to start a revolution and said he was willing to compete with other political parties in democratic elections. However, this policy of taking part in elections was unsuccessful. The Nazi Party won 14 seats in the December 1924 election. In the 1928 election they only won 12 seats; less than 3% of the people voted for the Nazi Party."`,
+            question: "Study Interpretations 1 and 2. They give different views about support for the Nazi Party in the years 1924–28. What is the main difference between these views? Explain your answer, using details from both interpretations. [4 marks]",
+            hint: "One interpretation focuses on the Nazis actively building support; the other focuses on the Nazis failing to gain significant support in elections. Identify this overall difference, then use specific quotes to back it up.",
+            starter: "Interpretations 1 and 2 have different views about support for the Nazi Party in the years 1924–28 as they claim the Nazis had different levels of support during this period...\n\nInterpretation 1 suggests the Nazi Party was successfully building support by...\n\nWhereas, Interpretation 2 argues the Nazis had very little support because...",
+            markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (Level Response)</h5>
+<p>The examiner reads the whole answer and awards a level, not a mark per point.</p>
+<ul>
+  <li><strong>Level 2 (3–4 marks):</strong> Identifies the main difference (growing support through organisation vs. electoral failure/limited popular support) AND quotes from both interpretations.</li>
+  <li><strong>Level 1 (1–2 marks):</strong> Describes one or both without comparing; no quotes; vague difference identified.</li>
+</ul>
+<p><strong>The main difference to identify:</strong> Whether the Nazis were successfully building support (Int 1 — methods and membership) or had very limited support (Int 2 — electoral failure, less than 3% of votes).</p>
+<p><strong>Acceptable evidence from Interpretation 1:</strong> New groups created to attract support, like the "Hitler Youth"; targeting "middle classes" with "propaganda"; membership increasing; votes gained in "rural areas".</p>
+<p><strong>Acceptable evidence from Interpretation 2:</strong> "only won 12 seats" in 1928; "less than 3% of the people voted for the Nazi Party"; people "not interested in Hitler's ideas"; Weimar economic recovery undermined Nazi appeal.</p>
+<p><strong>Do NOT award:</strong> Answers without quotes from both; answers that only repeat one interpretation's content.</p>
+<p><strong>Examiner's Comment:</strong> Students should note that both interpretations can actually be accurate — the Nazis were internally reorganising (Int 1) but electorally weak (Int 2). Strong students recognise this as different emphases rather than one simply being 'right'.</p>
+</div>`,
+            modelAnswer: "Interpretations 1 and 2 have different views about support for the Nazi Party in the years 1924–28 as they claim the Nazis had different levels of support during this period. Interpretation 1 argues that the Nazi Party was growing and building support, with Hitler reorganising the Party and creating new groups like the 'Hitler Youth' to attract members, while also targeting 'the middle classes with their propaganda' in rural areas. Whereas, Interpretation 2 argues that the Nazi Party had very little support during this period — it won only '12 seats' in the 1928 election with 'less than 3% of the people' voting for the Nazis, as the German public were not interested in Hitler's ideas due to Weimar economic recovery."
+        }
+    ];
+
+    
+        const pageMeta = {
+                badge: "Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany",
+                title: "Q3b & Q3c · Comparing Interpretations",
+                subtitle: "Interactive revision guide · Interpretation comparison skills + full exam practice"
+            };
+
+</script>
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

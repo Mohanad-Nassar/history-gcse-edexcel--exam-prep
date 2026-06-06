@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 1 — The Weimar Republic 1918–1929 · Interactive Study Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="stylesheet.css">
+    
+
+</head>
+
+<body>
+
+  <header>
+    <div>
+      <div class="badge">Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany</div>
+      <h1>Topic 1 · The Weimar Republic 1918–1929</h1>
+      <p>Interactive revision guide · All key content + full exam practice</p>
+    </div>
+    <a href="index.html" class="home-link">← 🏡 Home</a>
+  </header>
+
+  <nav class="tab-bar" id="tabBar">
+    <button class="tab-btn active" onclick="switchTab('learn',this)">📚 Key Learning</button>
+    <button class="tab-btn" onclick="switchTab('mcq',this)">❓ MCQ Quiz</button>
+    <button class="tab-btn" onclick="switchTab('matching',this)">🔗 Matching</button>
+    <button class="tab-btn" onclick="switchTab('fib',this)">✏️ Fill the Blanks</button>
+    <button class="tab-btn" onclick="switchTab('misconceptions',this)">⚠️ Misconceptions</button>
+    <button class="tab-btn" onclick="switchTab('examtips',this)">🎯 Exam Tips</button>
+    <button class="tab-btn" onclick="switchTab('flashcards',this)">🃏 Flashcards</button>
+    <button class="tab-btn" onclick="switchTab('truefalse',this)">✅ True / False</button>
+    <button class="tab-btn" onclick="switchTab('exampractice',this)">📝 Exam Practice</button>
+  </nav>
+
+  <main>
+
+    <!-- ═══════════════════════ KEY LEARNING ═══════════════════════ -->
+    <div class="tab-panel active" id="tab-learn">
+      <h2 class="section-title">Key Learning Topics</h2>
+      <p class="section-sub">Click any card to expand detailed notes.</p>
+      <div class="topic-grid" id="topicGrid"></div>
+    </div>
+
+    <!-- ═══════════════════════ MCQ ═══════════════════════ -->
+    <div class="tab-panel" id="tab-mcq">
+      <h2 class="section-title">Multiple Choice Questions</h2>
+      <p class="section-sub">Select an answer to reveal instant feedback.</p>
+      <div class="score-bar">
+        <div>
+          <div class="score-num" id="mcqScore">0</div>
+          <div style="font-size:12px;color:var(--mid)">correct answers</div>
+        </div>
+        <div style="font-size:13px;color:var(--mid)">out of <strong id="mcqTotal">0</strong> attempted</div>
+        <button class="reset-btn" onclick="resetMCQ()">RESET</button>
+      </div>
+      <div class="quiz-wrap" id="mcqWrap"></div>
+    </div>
+
+    <!-- ═══════════════════════ MATCHING ═══════════════════════ -->
+    <div class="tab-panel" id="tab-matching">
+      <h2 class="section-title">Matching Activity</h2>
+      <p class="section-sub">Click a term on the left, then click the matching definition on the right.</p>
+      <div class="score-bar">
+        <div>
+          <div class="score-num" id="matchScore">0</div>
+          <div style="font-size:12px;color:var(--mid)">matched</div>
+        </div>
+        <div style="font-size:13px;color:var(--mid)">out of <strong id="matchTotal">0</strong></div>
+        <button class="reset-btn" onclick="resetMatch()">RESET</button>
+      </div>
+      <div class="match-grid">
+        <div>
+          <div class="match-label">TERMS</div>
+          <div class="match-col" id="matchLeft"></div>
+        </div>
+        <div>
+          <div class="match-label">DEFINITIONS</div>
+          <div class="match-col" id="matchRight"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════ FILL IN BLANKS ═══════════════════════ -->
+    <div class="tab-panel" id="tab-fib">
+      <h2 class="section-title">Fill in the Blanks</h2>
+      <p class="section-sub">Choose the correct word from each dropdown. Wrong answers reset — try again!</p>
+      <div class="score-bar">
+        <div>
+          <div class="score-num" id="fibScore">0</div>
+          <div style="font-size:12px;color:var(--mid)">correct</div>
+        </div>
+        <div style="font-size:13px;color:var(--mid)">of <strong id="fibTotal">0</strong> blanks</div>
+        <button class="reset-btn" onclick="resetFIB()">RESET</button>
+      </div>
+      <div class="fib-wrap" id="fibWrap"></div>
+    </div>
+
+    <!-- ═══════════════════════ MISCONCEPTIONS ═══════════════════════ -->
+    <div class="tab-panel" id="tab-misconceptions">
+      <h2 class="section-title">Common Misconceptions</h2>
+      <p class="section-sub">What students often think — and what examiners actually want.</p>
+      <div class="misc-list" id="miscList"></div>
+    </div>
+
+    <!-- ═══════════════════════ EXAM TIPS ═══════════════════════ -->
+    <div class="tab-panel" id="tab-examtips">
+      <h2 class="section-title">Exam Questions &amp; Tips</h2>
+      <p class="section-sub">Most repeated question types and mark-scheme structures from real papers.</p>
+      <div class="tips-grid" id="tipsGrid"></div>
+    </div>
+
+    <!-- ═══════════════════════ FLASHCARDS ═══════════════════════ -->
+    <div class="tab-panel" id="tab-flashcards">
+      <h2 class="section-title">Flashcards</h2>
+      <p class="section-sub">Test yourself! Flip the card and rate your knowledge.</p>
+      <div class="fc-container">
+        <div class="score-bar" id="fcScoreBar" style="display:none;margin-bottom:20px">
+          <div>
+            <div class="score-num" id="fcKnown" style="color:#2d7a4f">0</div>
+            <div style="font-size:12px;color:var(--mid)">known</div>
+          </div>
+          <div>
+            <div class="score-num" id="fcUnknown" style="color:#c84b31">0</div>
+            <div style="font-size:12px;color:var(--mid)">learning</div>
+          </div>
+          <div style="font-size:13px;color:var(--mid)">out of <strong id="fcTotalTrack">0</strong></div>
+          <button class="reset-btn" onclick="resetFlashcards()">RESET</button>
+        </div>
+        <div id="fcActiveArea">
+          <div class="fc-progress" id="fcProgress">Card 1 of 0</div>
+          <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="fc-inner">
+              <div class="fc-front">
+                <div class="fc-label">KEY TERM</div>
+                <div class="fc-term" id="fcTerm"></div>
+              </div>
+              <div class="fc-back">
+                <div class="fc-def" id="fcDef"></div>
+              </div>
+            </div>
+          </div>
+          <p class="fc-hint">👆 Click card to flip</p>
+          <div class="fc-nav" id="fcNavDefault">
+            <button class="fc-btn outline" onclick="prevCard()">← Prev</button>
+            <button class="fc-btn outline" onclick="flipCard()">Flip</button>
+            <button class="fc-btn" onclick="nextCard()">Next →</button>
+          </div>
+          <div class="fc-nav" id="fcNavAssess" style="display:none;gap:15px">
+            <button class="fc-btn outline" style="border-color:#c84b31;color:#c84b31;flex:1" onclick="markCard(false)">❌
+              Still Learning</button>
+            <button class="fc-btn" style="background:#2d7a4f;border-color:#2d7a4f;flex:1" onclick="markCard(true)">✅ Got
+              It</button>
+          </div>
+        </div>
+        <div id="fcSummaryArea" style="display:none;text-align:center;padding:40px 20px">
+          <h3 style="font-family:'Playfair Display',serif;color:var(--accent2);font-size:24px;margin-bottom:12px">
+            Session Complete! 🎉</h3>
+          <p style="margin:15px 0;color:var(--text-dim)">You knew <strong id="fcSummaryKnown"
+              style="color:var(--accent2)">0</strong> out of <strong id="fcSummaryTotal"
+              style="color:var(--accent2)">0</strong> cards.</p>
+          <div style="margin-top:25px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap">
+            <button class="fc-btn" id="btnReviewWrong" onclick="reviewWrong()"
+              style="background:#c84b31;border-color:#c84b31">Review Incorrect</button>
+            <button class="fc-btn outline" onclick="resetFlashcards()">Practice All Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════ TRUE / FALSE ═══════════════════════ -->
+    <div class="tab-panel" id="tab-truefalse">
+      <h2 class="section-title">True or False?</h2>
+      <p class="section-sub">Test your knowledge with these statements.</p>
+      <div class="score-bar">
+        <div>
+          <div class="score-num" id="tfScore">0</div>
+          <div style="font-size:12px;color:var(--mid)">correct</div>
+        </div>
+        <div style="font-size:13px;color:var(--mid)">of <strong id="tfTotal">0</strong> answered</div>
+        <button class="reset-btn" onclick="resetTF()">RESET</button>
+      </div>
+      <div class="tf-wrap" id="tfWrap"></div>
+    </div>
+
+    <!-- ═══════════════════════ EXAM PRACTICE ═══════════════════════ -->
+    <div class="tab-panel" id="tab-exampractice">
+      <h2 class="section-title">Exam Practice Questions</h2>
+      <p class="section-sub">Full exam questions with mark schemes. Use <strong>Hint</strong>, <strong>Sentence
+          Starter</strong> and <strong>Submit &amp; See Mark Scheme</strong> for each question.</p>
+      <div class="ep-list" id="epList"></div>
+    </div>
+
+  </main>
+
+<script>
+
+  /* ══════════════════════════════════════════════
+     PAGE METADATA — Q1 Give Two Things You Can Infer
+  ══════════════════════════════════════════════ */
+
+    const pageMeta = {
+      badge: "Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany",
+      title: "Exam Skills · Q1: Give Two Things You Can Infer",
+      subtitle: "Interactive revision guide · 4-mark source inference question · Full exam practice"
+    };
+
+    /* ── Apply metadata on load ── */
+    document.addEventListener('DOMContentLoaded', () => {
+      const badgeEl = document.querySelector('.badge');
+      const h1El = document.querySelector('header h1');
+      const subEl = document.querySelector('header p');
+      const titleEl = document.querySelector('title');
+
+      if (badgeEl) badgeEl.innerHTML = pageMeta.badge;
+      if (h1El) h1El.textContent = pageMeta.title;
+      if (subEl) subEl.textContent = pageMeta.subtitle;
+      if (titleEl) titleEl.textContent = pageMeta.title.replace(/&amp;/g, '&');
+    });
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 1 · topics  (📚 Key Learning)
+    ══════════════════════════════════════════════ */
+
+    const topics = [
+      {
+        title: "What Is the Q1 'Give Two Things You Can Infer' Question?",
+        tag: "Core Concept",
+        content: `<p>Question 1 on Edexcel GCSE History Paper 3 (Weimar &amp; Nazi Germany) asks you to make <strong>two inferences</strong> from Source A. It is worth <strong>4 marks</strong> and should take <strong>no more than 5 minutes</strong>.</p>
+<ul>
+  <li><strong>Structure:</strong> The answer space is divided into four guided sections — two inferences, each supported by a detail from the source.</li>
+  <li><strong>Marks:</strong> 1 mark per inference + 1 mark per supporting detail = 4 marks total.</li>
+  <li><strong>Source A:</strong> Always found on the first page of the answer booklet — do NOT use Sources B or C, which are for Section B.</li>
+</ul>
+<div class="formula-box">
+  <strong>The 4-Mark Formula:</strong><br>
+  Inference (i) → 1 mark &nbsp;|&nbsp; Supporting detail (i) → 1 mark<br>
+  Inference (ii) → 1 mark &nbsp;|&nbsp; Supporting detail (ii) → 1 mark
+</div>`
+      },
+      {
+        title: "What Is an Inference? (And How to Make One)",
+        tag: "Key Skill",
+        content: `<p>An <strong>inference</strong> is an <em>educated guess</em> based on evidence — it goes <strong>beyond what is directly stated</strong> in the source. You must read between the lines.</p>
+<p>Use the three-step 'I Notice / I Know / I Think' method:</p>
+<ul>
+  <li><strong>I notice</strong> — What does the source show or say? (the evidence)</li>
+  <li><strong>I already know</strong> — What contextual knowledge can you apply?</li>
+  <li><strong>Now I am thinking…</strong> — Combine both to form your inference statement.</li>
+</ul>
+<div class="case-study-box">
+  <h4>Worked Example — Source about Gestapo (Rhineland, July 1938)</h4>
+  <p><em>"In a café, a 64-year-old woman remarked: 'Mussolini has more political sense in one of his boots than Hitler has in his brain.' The remark was overheard and five minutes later the woman was arrested by the Gestapo, who had been alerted by telephone."</em></p>
+  <p><strong>✅ Valid inference:</strong> "It was dangerous to voice your opinion in Nazi Germany." → Supported by: "The remark was overheard and five minutes later the woman was arrested by the Gestapo."</p>
+  <p><strong>✅ Valid inference:</strong> "Ordinary people reported disloyalty to the Nazis." → Supported by: "the Gestapo, who had been alerted by telephone."</p>
+  <p><strong>❌ Not an inference:</strong> "A woman was arrested." — This is just copying the source, not reading beyond it.</p>
+</div>`
+      },
+      {
+        title: "Types of Source A You May Encounter",
+        tag: "Source Types",
+        content: `<p>Source A can take several forms. Your strategy for finding supporting details changes depending on the source type.</p>
+<div class="two-col">
+  <div>
+    <div class="col-head">Written Sources</div>
+    <div class="pro-item"><strong>Book extracts, speeches, letters, diary entries, newspaper reports</strong> — use a direct <em>quotation</em> in speech marks to support your inference. Keep it short and focused.</div>
+    <div class="pro-item">Example: "The Nazis have succeeded with their propaganda" supports an inference about the success of the 1936 Olympics.</div>
+  </div>
+  <div>
+    <div class="col-head">Visual Sources</div>
+    <div class="con-item"><strong>Photographs, political cartoons, posters</strong> — describe a specific detail you can see. Do not just say "the image shows." Be precise about what part of the image supports your inference.</div>
+    <div class="con-item">Example: "All members are wearing their full uniform neatly" supports an inference about Hitler Youth discipline.</div>
+  </div>
+</div>
+<p>Past Paper 3 Source A topics have included: Berlin Olympics 1936; early Nazi Party; Kristallnacht; Reichstag Fire; Hitler Youth; education in Nazi Germany; Hitler's support in the early 1920s; Jewish boycott of April 1933.</p>`
+      },
+      {
+        title: "The Answer Structure — How to Write It Up",
+        tag: "Exam Technique",
+        content: `<p>The answer booklet gives you a <strong>pre-structured table</strong> with four boxes. Fill each one precisely.</p>
+<ul>
+  <li><strong>Box 1 — "What I can infer" (i):</strong> Write your first inference in one clear sentence. It must go beyond the source.</li>
+  <li><strong>Box 2 — "Details in the source that tell me this" (i):</strong> Give a direct quote (written source) or a description of a visible detail (visual source).</li>
+  <li><strong>Box 3 — "What I can infer" (ii):</strong> A <em>different</em> inference — do not repeat your first point in different words.</li>
+  <li><strong>Box 4 — "Details in the source that tell me this" (ii):</strong> A different quote or description — it must link clearly to inference (ii).</li>
+</ul>
+<div class="case-study-box">
+  <h4>Annotation Tip Before You Write</h4>
+  <p>Before filling in the table: underline the topic in the question, read the source fully twice, and annotate it with any contextual knowledge you can connect. This prevents you from just copying the source.</p>
+</div>`
+      },
+      {
+        title: "Common Errors That Cost Marks",
+        tag: "Pitfalls",
+        content: `<p>These four errors are the most common reasons students score 2 out of 4 instead of full marks:</p>
+<ul>
+  <li><strong>Copying the source:</strong> Writing out what the source directly states is NOT an inference. You must go beyond it and draw a conclusion.</li>
+  <li><strong>No supporting detail:</strong> Writing two inferences without evidence from the source caps you at 2 marks maximum.</li>
+  <li><strong>Writing more than two inferences:</strong> The examiner only marks the first two. Extra inferences waste time and gain nothing.</li>
+  <li><strong>Vague inference:</strong> "Jews were treated badly" is too vague — it scores nothing without development into a precise point supported by source detail.</li>
+</ul>
+<div class="two-col">
+  <div>
+    <div class="col-head">❌ Weak Response</div>
+    <div class="con-item">Inference: "The Nazis treated Jews badly." Detail: "Jews were being targeted." — vague, and the detail is not actually from the source.</div>
+  </div>
+  <div>
+    <div class="col-head">✅ Strong Response</div>
+    <div class="pro-item">Inference: "The boycott of Jewish shops was organised and officially supported by the Nazi regime." Detail: "The photograph shows SA pickets deliberately blocking the entrance, carrying political slogans such as 'Germans! Protect yourselves! Don't buy from Jews!'"</div>
+  </div>
+</div>`
+      },
+      {
+        title: "Using Contextual Knowledge to Strengthen Inferences",
+        tag: "Analysis",
+        content: `<p>You are not expected to use contextual knowledge in this question, but knowing the historical context helps you move from surface reading to genuine inference. Your own knowledge lets you interpret what the source implies.</p>
+<ul>
+  <li><strong>Ernst Röhm source (1928):</strong> Knowing that the Nazi Party changed its name in 1920 helps you infer that early growth was driven by personal networks before mass appeal.</li>
+  <li><strong>Kristallnacht source (1938):</strong> Knowing it was a nationwide pogrom helps you infer that the violence was organised state policy, not spontaneous mob violence.</li>
+  <li><strong>Reichstag Fire source (1933):</strong> Knowing the Nazis used it to pass the Decree for the Protection of People and State helps you infer they had prepared contingency plans in advance.</li>
+</ul>
+<div class="case-study-box">
+  <h4>Key Principle</h4>
+  <p>Context helps you identify <em>what</em> to infer — but your evidence must always be a detail <em>from the source itself</em>. Never cite knowledge as your source evidence. The examiner awards marks only for details taken directly from Source A.</p>
+</div>`
+      }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 2 · mcqData  (❓ MCQ Quiz)
+    ══════════════════════════════════════════════ */
+
+    const mcqData = [
+      {
+        q: "How many marks is Question 1 ('Give two things you can infer') worth on Edexcel Paper 3?",
+        opts: ["2 marks", "4 marks", "6 marks", "8 marks"],
+        ans: 1,
+        explain: "Correct: B. The question is worth 4 marks — 1 mark for each inference and 1 mark for each supporting detail from the source. A is wrong (only 2 marks would mean no support detail needed). C and D are far too high for this quick-fire question type."
+      },
+      {
+        q: "What is the maximum recommended time to spend on Question 1 in the exam?",
+        opts: ["2 minutes", "10 minutes", "5 minutes", "15 minutes"],
+        ans: 2,
+        explain: "Correct: C. No more than 5 minutes should be spent on Q1. A is too rushed — you need time to read the source properly. B and D are far too long and would eat into time needed for the 12-mark, 8-mark and 16-mark questions."
+      },
+      {
+        q: "Which of the following best describes a valid inference from a source?",
+        opts: [
+          "A direct copy of a sentence from the source",
+          "A conclusion that goes beyond what is directly stated, supported by source evidence",
+          "A general statement about the time period using your own knowledge only",
+          "A summary of everything the source mentions"
+        ],
+        ans: 1,
+        explain: "Correct: B. An inference is an educated guess that reads beyond the surface of the source. A is wrong — copying the source scores 0 for the inference mark. C is wrong — you must base inferences on the source, not knowledge alone. D is wrong — summarising is not inferring."
+      },
+      {
+        q: "Where will you find Source A in the Edexcel Paper 3 exam?",
+        opts: [
+          "In the insert booklet alongside Sources B and C",
+          "On the front cover of the exam paper",
+          "On the first page of the answer booklet",
+          "Printed separately on a resource sheet"
+        ],
+        ans: 2,
+        explain: "Correct: C. Source A is always on the first page of the answer booklet. A is wrong — Sources B and C are in the insert booklet and are for Section B only. B and D are incorrect — these locations do not reflect the actual exam format."
+      },
+      {
+        q: "A student writes: 'The Berlin Olympics 1936 was a success.' What is wrong with this as an inference?",
+        opts: [
+          "It is too long and should be shorter",
+          "It directly copies the question and does not read beyond the source",
+          "It is factually incorrect",
+          "It refers to the wrong source"
+        ],
+        ans: 1,
+        explain: "Correct: B. This is not an inference — it simply restates the question topic. A valid inference must go beyond the surface content, e.g. 'The Nazis used the Olympics to strengthen their international image.' A, C, and D are not the core problem with this answer."
+      },
+      {
+        q: "A student writes two excellent inferences but provides no supporting details from the source. What is the maximum mark they can receive?",
+        opts: ["4 marks", "3 marks", "2 marks", "0 marks"],
+        ans: 2,
+        explain: "Correct: C. Without source evidence, the student can earn at most 2 marks (1 per inference). The supporting detail from the source is worth 1 mark each — skipping it costs half the total marks available."
+      },
+      {
+        q: "Source A is a photograph of Hitler Youth members in uniform. Which of the following is the best supported inference?",
+        opts: [
+          "The Nazis were a political party",
+          "The Hitler Youth was popular with all young Germans",
+          "The Hitler Youth enforced a sense of discipline and conformity among its members",
+          "All German boys were forced to join the Hitler Youth by 1939"
+        ],
+        ans: 2,
+        explain: "Correct: C. This inference reads beyond the image and is supportable by describing visible details (e.g. members standing in straight lines, wearing matching uniforms). A is far too general. B cannot be inferred from one photograph. D introduces specific historical knowledge that goes beyond what is inferable from the source itself."
+      },
+      {
+        q: "Which of the following supporting details would score the inference mark for a written source?",
+        opts: [
+          "A paraphrase of the whole source in your own words",
+          "A direct quotation from the source in speech marks",
+          "A contextual fact you have memorised about the period",
+          "A reference to Sources B or C from the insert booklet"
+        ],
+        ans: 1,
+        explain: "Correct: B. For written sources, you should use a direct quotation in speech marks to support your inference. A is not precise enough — paraphrasing the whole source is not evidence for one specific inference. C uses knowledge instead of the source. D refers to the wrong sources entirely."
+      },
+      {
+        q: "How many inferences should you write for Question 1?",
+        opts: [
+          "One — focus on quality over quantity",
+          "Two — exactly as the question instructs",
+          "Three or four — more inferences means more marks",
+          "As many as possible to show wider knowledge"
+        ],
+        ans: 1,
+        explain: "Correct: B. Write exactly two inferences — one for each part of the structured answer table. A would leave 2 marks on the table. C and D are wrong: the examiner only marks the first two inferences — writing extra wastes time and gains no additional marks."
+      },
+      {
+        q: "The 2024 Q1 exam asked students to infer about which topic in Weimar and Nazi Germany?",
+        opts: [
+          "Education in Nazi Germany",
+          "The treatment of Jews during Kristallnacht",
+          "How Hitler increased support for the Nazi Party in the early 1920s",
+          "The success of the Berlin Olympic Games in 1936"
+        ],
+        ans: 2,
+        explain: "Correct: C. The 2024 exam focused on how Hitler built Nazi Party support in the early 1920s. A was the 2023 topic. B was the 2020 topic. D was the 2018 topic. Knowing past topics can help you revise but remember the topic changes each year."
+      },
+      {
+        q: "When using a visual source (e.g. a photograph), how should you provide supporting evidence for your inference?",
+        opts: [
+          "Copy a caption from beneath the image",
+          "Quote dialogue spoken by people in the image",
+          "Describe a specific visible detail from the image",
+          "Write the date the photograph was taken"
+        ],
+        ans: 2,
+        explain: "Correct: C. For visual sources, you must describe a specific detail you can observe in the image — e.g. 'Members of the Hitler Youth are all standing in a straight line.' A is unreliable as a source of evidence. B is rarely possible. D alone is not a supporting detail for an inference."
+      },
+      {
+        q: "Which of the following inferences about Kristallnacht (November 1938) is best supported by source evidence about 'Two old men had their walking sticks broken by Nazis'?",
+        opts: [
+          "The Nazis destroyed Jewish synagogues across Germany",
+          "The treatment of Jewish people during Kristallnacht was cruel and targeted the vulnerable",
+          "Kristallnacht was planned secretly by the SS",
+          "Jewish businesses suffered significant economic damage"
+        ],
+        ans: 1,
+        explain: "Correct: B. The detail about elderly men having their walking sticks broken specifically supports an inference about cruelty targeting vulnerable individuals. A requires different evidence (about synagogues). C cannot be inferred from this detail. D requires evidence about economic damage to businesses."
+      }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 3 · matchData  (🔗 Matching)
+    ══════════════════════════════════════════════ */
+
+    const matchData = [
+      { term: "Inference", def: "An educated guess that goes beyond what is directly stated in a source, supported by evidence." },
+      { term: "Source A", def: "The source used for Question 1, always found on the first page of the Paper 3 answer booklet." },
+      { term: "Supporting detail", def: "A quotation (written source) or description of a visible feature (visual source) used to justify an inference." },
+      { term: "Section A", def: "The part of Paper 3 that contains Q1 (inference) and Q2 (explain why), covering Weimar &amp; Nazi Germany." },
+      { term: "Section B", def: "The part of Paper 3 that uses Sources B and C for the 8-mark usefulness question and interpretations questions." },
+      { term: "4 marks", def: "The total mark allocation for Q1: 1 mark per inference + 1 mark per supporting detail, for two inferences." },
+      { term: "5 minutes", def: "The recommended maximum time to spend answering Question 1 in the exam." },
+      { term: "Visual source", def: "A photograph, political cartoon, or poster — evidence must be a description of what is visible." },
+      { term: "Written source", def: "An extract from a book, speech, letter, or diary — evidence must be a direct quotation in speech marks." },
+      { term: "Copying the source", def: "Repeating what the source directly states without drawing a conclusion — this does NOT count as an inference." },
+      { term: "Contextual knowledge", def: "Your own historical knowledge about the period — useful for forming inferences but cannot replace source evidence." },
+      { term: "Two inferences", def: "The exact number required by Q1 — writing more gains no extra marks; the examiner only marks the first two." }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 4 · fibData  (✏️ Fill in the Blanks)
+       ARRAY 5 · fibWords
+    ══════════════════════════════════════════════ */
+
+    const fibData = [
+      {
+        display: "Question 1 on Edexcel Paper 3 is worth _____ marks and tests your ability to make _____ from Source A.",
+        blanks: { B1: "four", B2: "inferences" }
+      },
+      {
+        display: "An inference is an _____ guess — it must go beyond what is _____ stated in the source.",
+        blanks: { B1: "educated", B2: "directly" }
+      },
+      {
+        display: "For a written source, supporting evidence must be a direct _____ from the source placed in _____ marks.",
+        blanks: { B1: "quotation", B2: "speech" }
+      },
+      {
+        display: "For a visual source such as a photograph, the supporting detail should be a _____ of a specific visible _____.",
+        blanks: { B1: "description", B2: "detail" }
+      },
+      {
+        display: "Source A is always found on the first page of the _____ booklet, not in the _____ booklet.",
+        blanks: { B1: "answer", B2: "insert" }
+      },
+      {
+        display: "The maximum recommended time for Q1 is _____ minutes because the longer questions need more _____ for planning.",
+        blanks: { B1: "five", B2: "time" }
+      },
+      {
+        display: "If a student writes two inferences but provides no source _____, the maximum mark awarded is _____.",
+        blanks: { B1: "evidence", B2: "two" }
+      },
+      {
+        display: "The 2020 exam Q1 asked students to infer about the treatment of Jewish people during '_____', while the 2022 question focused on the _____ Youth.",
+        blanks: { B1: "Kristallnacht", B2: "Hitler" }
+      },
+      {
+        display: "Writing more than two inferences is a common _____ — the examiner only marks the first _____ you write.",
+        blanks: { B1: "error", B2: "two" }
+      },
+      {
+        display: "The three-step inference method begins with 'I _____', then 'I already know', and finally 'Now I am _____'.",
+        blanks: { B1: "notice", B2: "thinking" }
+      }
+    ];
+
+    const fibWords = [
+      // Correct answers
+      "four", "inferences", "educated", "directly", "quotation", "speech",
+      "description", "detail", "answer", "insert", "five", "time",
+      "evidence", "two", "Kristallnacht", "Hitler", "error", "notice", "thinking",
+      // Plausible distractors
+      "six", "three", "eight", "summarise", "paraphrase", "implied", "obviously",
+      "paragraph", "inverted commas", "explanation", "analysis", "booklet",
+      "resource", "ten", "mistake", "feeling", "knowing", "Olympic", "Reichstag"
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 6 · tfData  (✅ True / False)
+    ══════════════════════════════════════════════ */
+
+    const tfData = [
+      {
+        statement: "Question 1 on Edexcel Paper 3 is worth 6 marks.",
+        answer: false,
+        explanation: "FALSE. Q1 is worth 4 marks — 1 mark for each inference and 1 mark for each supporting detail. Six marks applies to other question types on the paper."
+      },
+      {
+        statement: "An inference must go beyond what is directly stated in the source.",
+        answer: true,
+        explanation: "TRUE. An inference is an educated guess that reads between the lines. Simply copying out what the source says is not an inference and would score 0 for that mark."
+      },
+      {
+        statement: "You should write three or four inferences for Q1 to demonstrate wider knowledge.",
+        answer: false,
+        explanation: "FALSE. You must write exactly two inferences. The examiner only marks the first two. Writing extra inferences wastes time and gains no additional marks."
+      },
+      {
+        statement: "For a written source, your supporting detail should be a direct quotation placed in speech marks.",
+        answer: true,
+        explanation: "TRUE. Using a direct quote in speech marks clearly shows the examiner exactly which part of the source you are using as evidence. Keep quotes short and focused on the most relevant phrase."
+      },
+      {
+        statement: "Source A for Q1 is found in the insert booklet alongside Sources B and C.",
+        answer: false,
+        explanation: "FALSE. Source A is on the first page of the answer booklet. Sources B and C are in the insert booklet and are for Section B questions only. A common student error is confusing these."
+      },
+      {
+        statement: "Describing a visible detail from a photograph is an acceptable form of supporting evidence for Q1.",
+        answer: true,
+        explanation: "TRUE. For visual sources, you must describe what you can see — for example, 'Members are all wearing their full uniform neatly.' You cannot quote from a photograph, so description is the required approach."
+      },
+      {
+        statement: "You are allowed to use contextual knowledge as the supporting evidence for your inference.",
+        answer: false,
+        explanation: "FALSE. Supporting evidence must come directly from Source A — either a quotation or a visible detail. Your contextual knowledge can help you form the inference, but the evidence box must reference the source itself, not information you have memorised."
+      },
+      {
+        statement: "The 2023 Q1 examination question focused on education in Nazi Germany.",
+        answer: true,
+        explanation: "TRUE. The 2023 exam asked students to infer about education in Nazi Germany from a source by Marianne Gärtner (Growing up in Nazi Germany, 1987). Past topics in this question have also included the Hitler Youth, Kristallnacht, and the Reichstag Fire."
+      },
+      {
+        statement: "If a student makes one excellent inference with full source support but no second inference, they can still score 4 marks.",
+        answer: false,
+        explanation: "FALSE. Q1 requires two inferences, each with supporting evidence. A single inference scores a maximum of 2 marks, however well developed it is. Both inferences must be present to access full marks."
+      },
+      {
+        statement: "A vague statement such as 'Jews were treated badly' is a valid inference for full marks.",
+        answer: false,
+        explanation: "FALSE. 'Jews were treated badly' is far too vague. A valid inference must make a specific, developed point — for example, 'The boycott of Jewish shops was officially organised by the Nazi regime.' Vague answers score 0 for the inference mark."
+      }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 7 · miscData  (⚠️ Common Misconceptions)
+    ══════════════════════════════════════════════ */
+
+    const miscData = [
+      {
+        wrong: "An inference is just a summary of what the source says.",
+        correct: "An inference must go BEYOND the source — it is a conclusion you draw from the evidence. Simply restating or summarising the source scores 0 for the inference mark. Ask yourself: what does this detail imply or suggest? That conclusion is your inference."
+      },
+      {
+        wrong: "You can use your own historical knowledge as the supporting detail in the evidence box.",
+        correct: "The evidence box must contain a detail from Source A — either a direct quotation (for a written source) or a description of something visible (for a visual source). Your own knowledge helps you form the inference, but it cannot substitute for evidence drawn from the source itself."
+      },
+      {
+        wrong: "Writing three or four inferences will score more marks.",
+        correct: "The examiner only marks the first two inferences. Any additional inferences are ignored and the time spent writing them is wasted. Stick to exactly two, but make each one precise and fully supported."
+      },
+      {
+        wrong: "Any detail from the source counts as evidence for any inference.",
+        correct: "Your supporting detail must clearly and logically link to the inference it supports. A mismatch — using a quote about propaganda to support an inference about economic policy, for example — will cost you the evidence mark. Each inference needs its own matching detail."
+      },
+      {
+        wrong: "Source A is found in the insert booklet with Sources B and C.",
+        correct: "Source A is always on the first page of the answer booklet. Sources B and C are in the separate insert booklet and are used only for the Section B questions (usefulness and interpretations). Using the wrong source is a serious exam error."
+      },
+      {
+        wrong: "A vague inference like 'life was hard for Jews' is acceptable if the student adds a source quote.",
+        correct: "Even with a quote attached, a vague inference scores 0 for the inference mark. Examiners expect a specific, developed point that clearly reads beyond the source. 'The persecution of Jews was systematic and officially enforced by the Nazi state' is the kind of precise inference that earns the mark."
+      },
+      {
+        wrong: "You should write as much as possible in the inference and evidence boxes to show knowledge.",
+        correct: "Q1 rewards precision, not length. The inference box needs one clear sentence going beyond the source. The evidence box needs one short, well-chosen quote or description. Over-writing wastes the 5-minute target time and risks including irrelevant material. Quality over quantity every time."
+      }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 8 · examTips  (🎯 Exam Tips)
+    ══════════════════════════════════════════════ */
+
+    const examTips = [
+      {
+        type: "Q1 — Give Two Things You Can Infer — 4 marks",
+        title: "The Inference Formula: Spot → Go Beyond → Evidence",
+        content: `<p>Q1 tests your ability to read between the lines of a source. The examiner rewards inferences that go beyond the surface content and are supported by precise source evidence.</p>
+<p><strong>The 3-Step Method:</strong></p>
+<ul>
+  <li><strong>Step 1 — Spot:</strong> Read the source carefully. Underline the topic word in the question. Annotate the source with any contextual knowledge.</li>
+  <li><strong>Step 2 — Go Beyond:</strong> Ask "What does this suggest? What can I conclude?" — your answer to that question is your inference.</li>
+  <li><strong>Step 3 — Evidence:</strong> Find the specific quote or visible detail in the source that triggered your inference. Keep it short and targeted.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> "The Nazis were successful." — No supporting detail, far too vague, not an inference from the source.</p>
+<p><strong>✅ Strong Answer:</strong> "What I can infer: The Nazis used the 1936 Olympics as a propaganda tool to improve Germany's international image. Details in the source that tell me this: 'The Nazis have succeeded with their propaganda.'"</p>
+<p><strong>Sentence Starter:</strong> "What I can infer: [Your specific conclusion that goes beyond the source]..."</p>`,
+        pills: ["AO3"]
+      },
+      {
+        type: "Q1 — Written Source Evidence — 4 marks",
+        title: "Using Quotations Precisely for Written Sources",
+        content: `<p>When Source A is a written source (diary, speech, extract, letter), your evidence must be a direct quotation placed in speech marks. The shorter and more targeted the quote, the better.</p>
+<p><strong>The Formula:</strong></p>
+<ul>
+  <li><strong>Step 1:</strong> Write your inference in one sentence that goes beyond the source.</li>
+  <li><strong>Step 2:</strong> Return to the source and find the phrase that most directly supports what you inferred.</li>
+  <li><strong>Step 3:</strong> Copy it exactly, in speech marks — do not paraphrase the evidence box.</li>
+  <li><strong>Step 4:</strong> Check: does the quote logically connect to your inference? If not, revise one or both.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> Evidence: "The source talks about propaganda and visitors." — Not a quote, too vague, no speech marks.</p>
+<p><strong>✅ Strong Answer:</strong> Evidence: "the Nazis have put on a good show for the general visitors" — short, precise, directly in speech marks.</p>
+<p><strong>Sentence Starter:</strong> "Details in the source that tell me this: '...'"</p>`,
+        pills: ["AO3"]
+      },
+      {
+        type: "Q1 — Visual Source Evidence — 4 marks",
+        title: "Describing Visual Details for Photographs & Cartoons",
+        content: `<p>When Source A is a photograph, political cartoon, or poster, you cannot quote it. Instead, describe a specific part of the image that supports your inference.</p>
+<p><strong>The Formula:</strong></p>
+<ul>
+  <li><strong>Step 1:</strong> Study the image carefully — consider foreground, background, clothing, body language, signs, symbols.</li>
+  <li><strong>Step 2:</strong> Write your inference first.</li>
+  <li><strong>Step 3:</strong> Identify one specific, describable detail that supports it.</li>
+  <li><strong>Step 4:</strong> Write it as a description of what you can see — be precise about where in the image and what it shows.</li>
+</ul>
+<p><strong>❌ Weak Answer:</strong> Evidence: "You can see some soldiers in the image." — Too vague, does not specify what about them supports the inference.</p>
+<p><strong>✅ Strong Answer:</strong> Evidence: "Despite being children, all members of the Hitler Youth are standing in a straight, orderly line, suggesting military discipline has been instilled in them." </p>
+<p><strong>Sentence Starter:</strong> "Details in the source that tell me this: [describe the specific visual detail you can see]..."</p>`,
+        pills: ["AO3"]
+      },
+      {
+        type: "Q1 — Time Management & Exam Strategy — 4 marks",
+        title: "5 Minutes, 4 Marks — Get In and Get Out",
+        content: `<p>Q1 is the shortest question on Paper 3. Spending more than 5 minutes on it is one of the most common strategic errors students make — it eats into the time needed for the 12-mark, 8-mark, and 16-mark questions.</p>
+<p><strong>The Formula:</strong></p>
+<ul>
+  <li><strong>Step 1:</strong> Read the question and underline the topic (30 seconds).</li>
+  <li><strong>Step 2:</strong> Read Source A twice and annotate (1 minute).</li>
+  <li><strong>Step 3:</strong> Write Inference (i) + Evidence (i) (1.5 minutes).</li>
+  <li><strong>Step 4:</strong> Write Inference (ii) + Evidence (ii) (1.5 minutes).</li>
+  <li><strong>Step 5:</strong> Check: are both inferences different? Is evidence from the source? (30 seconds).</li>
+</ul>
+<p><strong>❌ Weak Strategy:</strong> Spending 10–12 minutes on Q1 writing three inferences and a long explanation of each.</p>
+<p><strong>✅ Strong Strategy:</strong> Two precise inferences, two targeted pieces of evidence, done in 5 minutes. Move on.</p>
+<p><strong>Sentence Starter:</strong> Plan: "Inference 1 = [X]. Quote/detail = [Y]. Inference 2 = [A]. Quote/detail = [B]." — mentally map this before writing.</p>`,
+        pills: ["AO3"]
+      }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 9 · flashcards  (🃏 Flashcards)
+    ══════════════════════════════════════════════ */
+
+    const flashcards = [
+      {
+        term: "What is an inference?",
+        def: "An educated guess that goes beyond what is directly stated in a source. It is a conclusion you draw by reading between the lines, supported by specific evidence from the source."
+      },
+      {
+        term: "How many marks is Q1 worth and how many inferences are required?",
+        def: "4 marks total. You must write exactly two inferences, each supported by one piece of evidence from Source A: 1 mark per inference + 1 mark per supporting detail."
+      },
+      {
+        term: "Where is Source A found in the Paper 3 exam?",
+        def: "On the first page of the answer booklet. Do NOT use Sources B or C from the insert booklet — those are for Section B only."
+      },
+      {
+        term: "What is the maximum recommended time for Q1?",
+        def: "No more than 5 minutes. Spending longer takes time away from the higher-mark questions (12, 8, and 16 marks)."
+      },
+      {
+        term: "How do you provide evidence for a WRITTEN source?",
+        def: "Use a direct quotation placed in speech marks. Keep it short and focused — one precise phrase is better than copying out several sentences."
+      },
+      {
+        term: "How do you provide evidence for a VISUAL source?",
+        def: "Describe a specific visible detail from the image — e.g. 'All members are wearing their full uniform neatly.' You cannot quote a photograph, so describe what you see."
+      },
+      {
+        term: "What happens if you write only inferences with no source evidence?",
+        def: "You are capped at 2 marks maximum. The evidence mark (1 per inference) requires a specific detail from Source A. Ignoring this loses half the total marks available."
+      },
+      {
+        term: "What happens if you write three or four inferences?",
+        def: "The examiner only marks the first two. Extra inferences are ignored completely and waste valuable exam time. Always write exactly two."
+      },
+      {
+        term: "Name three types of source that may appear as Source A in Q1.",
+        def: "Written sources: diary entries, book extracts, speeches, newspaper reports, letters. Visual sources: photographs, political cartoons, posters."
+      },
+      {
+        term: "What is the 3-step inference method?",
+        def: "Step 1 — I notice (what does the source show/say?). Step 2 — I already know (what historical context is relevant?). Step 3 — Now I am thinking... (combine both into your inference statement)."
+      },
+      {
+        term: "Give an example of a strong Q1 inference about Kristallnacht.",
+        def: "Inference: 'The acts of violence during Kristallnacht were organised in advance by the Nazi state.' Evidence: 'The Nazis had a register to check that all the Jews in the town were there.'"
+      },
+      {
+        term: "Give an example of a strong Q1 inference about the Reichstag Fire.",
+        def: "Inference: 'The Nazis immediately used the Reichstag Fire to justify action against political opponents.' Evidence: 'He shouted uncontrollably: There will be no mercy. Every Communist official must be shot wherever he is found.'"
+      },
+      {
+        term: "What past exam topics has Q1 covered? (2018–2024)",
+        def: "2018: Berlin Olympics 1936. 2019: Early Nazi Party development. 2020: Kristallnacht. 2021: Nazi reaction to Reichstag Fire. 2022: Hitler Youth. 2023: Education in Nazi Germany. 2024: Hitler increasing support in the early 1920s."
+      }
+    ];
+
+
+    /* ══════════════════════════════════════════════
+       ARRAY 10 · examQuestions  (📝 Exam Practice)
+    ══════════════════════════════════════════════ */
+
+    const examQuestions = [
+      {
+        num: "Q1",
+        marks: 4,
+        type: "written",
+        caseStudy: `Source A: From Berlin Diary by William L. Shirer. Shirer was an American journalist living in Berlin at the time of the Olympic Games. He wrote this diary entry in August 1936.
+
+"The Olympic Games finally came to an end today. Hitler and the others showed up this afternoon for the final ceremony, which continued until well after dark. The Nazis have succeeded with their propaganda. First, the Nazis have run the games on an extravagant scale never before experienced, and this has appealed to the athletes. Second, the Nazis have put on a good show for the general visitors, especially those who are big businessmen."`,
+        question: "Give two things you can infer from Source A about the success of the Berlin Olympic Games in 1936. Complete the table below to explain your answer. [4 marks]",
+        hint: "Think about what the source implies about the Nazis' overall goals, not just what it directly tells you. What does 'succeeded with their propaganda' suggest about their intentions?",
+        starter: "(i) What I can infer: [Write a conclusion that goes beyond the source — what does it suggest or imply?]\n\nDetails in the source that tell me this: '[Insert a short, precise quotation]'\n\n(ii) What I can infer: [A different inference — do not repeat your first point]\n\nDetails in the source that tell me this: '[Insert a different quotation]'",
+        markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (AO3: Source analysis)</h5>
+<ul>
+  <li><strong>Inference (i) — 1 mark:</strong> Any valid inference that goes beyond the source, e.g. the Nazis used the Olympics to strengthen their international image; the Olympics served as a successful propaganda exercise for the Nazi regime.</li>
+  <li><strong>Evidence (i) — 1 mark:</strong> Supported by a direct quotation, e.g. "The Nazis have succeeded with their propaganda" / "the Nazis have run the games on an extravagant scale never before experienced."</li>
+  <li><strong>Inference (ii) — 1 mark:</strong> A different valid inference, e.g. the Olympics helped the Nazis gain favour with wealthy and influential international visitors; the games projected an image of German efficiency and prestige.</li>
+  <li><strong>Evidence (ii) — 1 mark:</strong> Supported by a different quotation, e.g. "the Nazis have put on a good show for the general visitors, especially those who are big businessmen."</li>
+</ul>
+<p><strong>Acceptable inferences also include:</strong></p>
+<ul>
+  <li>The 1936 Olympics were on a grander scale than any previous Games.</li>
+  <li>The Nazis used the Olympics to cultivate positive relationships with international business figures.</li>
+</ul>
+<p><strong>Do NOT award:</strong> Simply copying "the Nazis succeeded" without drawing a specific conclusion; stating a general fact about the Olympics without reading beyond the source.</p>
+<p><strong>Examiner's Comment:</strong> Students who score well identify what the source implies rather than repeats. The strongest answers focus on the propaganda purpose of the Olympics rather than just noting that they were "a success."</p>
+</div>`,
+        modelAnswer: "(i) What I can infer: The Nazis deliberately used the 1936 Berlin Olympics as a propaganda exercise to create a positive international image of Nazi Germany.\n\nDetails in the source that tell me this: 'The Nazis have succeeded with their propaganda.'\n\n(ii) What I can infer: The Berlin Olympics helped the Nazis build favourable relationships with wealthy and influential international businesspeople.\n\nDetails in the source that tell me this: 'the Nazis have put on a good show for the general visitors, especially those who are big businessmen.'"
+      },
+      {
+        num: "Q2",
+        marks: 4,
+        type: "written",
+        caseStudy: `Source A: From The Memoirs of Ernst Röhm, published in 1928. Röhm was an early member of the Nazi Party and a close associate of Hitler.
+
+"I introduced all my army friends to the German Workers' Party. This was how we built up the movement in the early days.
+
+In February 1920, the Party presented its policies to the public for the first time in the Twenty-Five Point Programme. From that day on, the Party membership began to increase so much that we had to move the meetings to much larger venues.
+
+After overcoming his opponents within the Party in 1921, Adolf Hitler was elected the first leader of the renamed National Socialist German Workers' Party."`,
+        question: "Give two things you can infer from Source A about the early development of the Nazi Party. Complete the table below to explain your answer. [4 marks]",
+        hint: "Consider what Röhm's role tells you about the social background of early Nazi supporters, and what the change of venue for meetings tells you about growth of the movement.",
+        starter: "(i) What I can infer: [Think about where early members came from and what this suggests]\n\nDetails in the source that tell me this: '[Short quotation]'\n\n(ii) What I can infer: [Think about what the Twenty-Five Point Programme achieved]\n\nDetails in the source that tell me this: '[Different quotation]'",
+        markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (AO3: Source analysis)</h5>
+<ul>
+  <li><strong>Inference (i) — 1 mark:</strong> e.g. The early Nazi Party drew much of its initial support from the German military; the Party's early growth relied on personal networks rather than mass appeal.</li>
+  <li><strong>Evidence (i) — 1 mark:</strong> "I introduced all my army friends to the German Workers' Party. This was how we built up the movement in the early days."</li>
+  <li><strong>Inference (ii) — 1 mark:</strong> e.g. The publication of the Twenty-Five Point Programme dramatically accelerated the Nazi Party's membership and popularity; the Party's public policies were a turning point in its growth.</li>
+  <li><strong>Evidence (ii) — 1 mark:</strong> "From that day on, the Party membership began to increase so much that we had to move the meetings to much larger venues."</li>
+</ul>
+<p><strong>Also acceptable:</strong> Hitler had to fight for control of the Party — "After overcoming his opponents within the Party in 1921"; The Party went through a deliberate name change to broaden its appeal.</p>
+<p><strong>Do NOT award:</strong> "The Party grew" without specific inference; using knowledge about the Beer Hall Putsch (not referenced in the source).</p>
+<p><strong>Examiner's Comment:</strong> The strongest answers use Röhm's social background (army) to make a precise inference about the class/profession of early members, rather than just noting the Party "got bigger."</p>
+</div>`,
+        modelAnswer: "(i) What I can infer: The early Nazi Party relied on personal contacts from the German army for its initial membership, suggesting its early support base was rooted in military circles rather than the broader public.\n\nDetails in the source that tell me this: 'I introduced all my army friends to the German Workers' Party. This was how we built up the movement in the early days.'\n\n(ii) What I can infer: The publication of the Twenty-Five Point Programme in 1920 was a major turning point that caused a rapid surge in Nazi Party membership.\n\nDetails in the source that tell me this: 'From that day on, the Party membership began to increase so much that we had to move the meetings to much larger venues.'"
+      },
+      {
+        num: "Q3",
+        marks: 4,
+        type: "written",
+        caseStudy: `Source A: From an interview published in a British newspaper, November 1938. The Jewish woman interviewed was from England and had recently visited Germany. Here she is describing her experience of Kristallnacht.
+
+"At 2:30 in the morning Nazis in uniform broke down the door of the house where I was staying. We were ordered to get dressed quickly with the bedroom door open.
+
+We were marched through the streets. Nazis were knocking down the synagogue and all the Jewish shops had been broken into.
+
+In the town square, Jewish people were lined up and were made to stand for over three hours. Two old men had their walking sticks broken by Nazis. The Nazis had a register to check that all the Jews in the town were there."`,
+        question: "Give two things you can infer from Source A about the treatment of Jewish people during Kristallnacht. Complete the table below to explain your answer. [4 marks]",
+        hint: "Think about what the presence of a register and the co-ordinated raids on homes, synagogues and shops tells you about the nature of the violence. Was it spontaneous or planned?",
+        starter: "(i) What I can infer: [Think about whether the violence appears to have been organised]\n\nDetails in the source that tell me this: '[Quote about the register or the raids]'\n\n(ii) What I can infer: [Think about how Jewish people were treated personally — dignity, physical harm]\n\nDetails in the source that tell me this: '[A different, specific quotation]'",
+        markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (AO3: Source analysis)</h5>
+<ul>
+  <li><strong>Inference (i) — 1 mark:</strong> e.g. The persecution of Jews during Kristallnacht was pre-planned and organised rather than a spontaneous outbreak of violence; the Nazis had prepared lists of Jews in advance.</li>
+  <li><strong>Evidence (i) — 1 mark:</strong> "The Nazis had a register to check that all the Jews in the town were there."</li>
+  <li><strong>Inference (ii) — 1 mark:</strong> e.g. Jewish people were deliberately humiliated and treated with cruelty during Kristallnacht; even the elderly and vulnerable were targeted.</li>
+  <li><strong>Evidence (ii) — 1 mark:</strong> "Two old men had their walking sticks broken by Nazis."</li>
+</ul>
+<p><strong>Also acceptable:</strong> Jews were publicly separated from German society — "marched through the streets"; Jewish religious and commercial life was deliberately destroyed — "knocking down the synagogue and all the Jewish shops had been broken into."</p>
+<p><strong>Do NOT award:</strong> "Jews were treated badly" — too vague; repeating the same inference in different words for inference (ii).</p>
+<p><strong>Examiner's Comment:</strong> Students who identify the organised and systematic nature of Kristallnacht (using the register as evidence) demonstrate the strongest inferential thinking on this question.</p>
+</div>`,
+        modelAnswer: "(i) What I can infer: The violence during Kristallnacht was systematically organised by the Nazi state rather than being a spontaneous event — the Nazis had prepared lists of Jewish residents in advance.\n\nDetails in the source that tell me this: 'The Nazis had a register to check that all the Jews in the town were there.'\n\n(ii) What I can infer: Jewish people were subjected to deliberate cruelty and humiliation during Kristallnacht, with even elderly and vulnerable individuals being targeted.\n\nDetails in the source that tell me this: 'Two old men had their walking sticks broken by Nazis.'"
+      },
+      {
+        num: "Q4",
+        marks: 4,
+        type: "written",
+        caseStudy: `Source A: From a description of the Reichstag Fire written by Rudolf Diels. At the time of the Reichstag Fire, Diels was a senior policeman in Berlin.
+
+"The Reichstag was still burning when I arrived. Hitler stood on a balcony staring into the flames. He shouted uncontrollably: 'There will be no mercy. Every Communist official must be shot wherever he is found.'
+
+I ordered a radio message to be sent out, putting the police on a state of alert. The police already had lists of people to arrest, which had been prepared for such an emergency.
+
+When I returned to police headquarters later that night it was buzzing with activity. Some suspects were already being brought in under arrest."`,
+        question: "Give two things you can infer from Source A about how the Nazis reacted to the Reichstag Fire. Complete the table below to explain your answer. [4 marks]",
+        hint: "Look at how quickly arrests were made and whether the police had prepared materials in advance. What does this suggest about whether the Nazis were surprised by the fire?",
+        starter: "(i) What I can infer: [Think about Hitler's emotional response and what it tells you about the Nazis' intentions]\n\nDetails in the source that tell me this: '[Quote about Hitler's reaction]'\n\n(ii) What I can infer: [Think about the police having lists ready — what does this imply?]\n\nDetails in the source that tell me this: '[Different quote about the police response]'",
+        markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (AO3: Source analysis)</h5>
+<ul>
+  <li><strong>Inference (i) — 1 mark:</strong> e.g. Hitler immediately used the Reichstag Fire to justify the persecution of Communists; Hitler reacted to the fire with fury and a desire for revenge against political opponents.</li>
+  <li><strong>Evidence (i) — 1 mark:</strong> "He shouted uncontrollably: 'There will be no mercy. Every Communist official must be shot wherever he is found.'"</li>
+  <li><strong>Inference (ii) — 1 mark:</strong> e.g. The Nazis had prepared contingency plans before the Reichstag Fire, suggesting they may have anticipated or planned such an event; the police response was too quick and organised to be improvised.</li>
+  <li><strong>Evidence (ii) — 1 mark:</strong> "The police already had lists of people to arrest, which had been prepared for such an emergency."</li>
+</ul>
+<p><strong>Also acceptable:</strong> The Nazis moved very quickly to make arrests — "Some suspects were already being brought in under arrest"; Hitler's leadership style was characterised by extreme, uncompromising responses.</p>
+<p><strong>Do NOT award:</strong> "Hitler was angry" without development; inferring the Nazis started the fire (this is a matter of historical debate and not clearly supported by this source alone).</p>
+<p><strong>Examiner's Comment:</strong> The strongest answers infer that the existence of pre-prepared arrest lists suggests the Nazis had either planned for, or even orchestrated, the fire — this reads significantly beyond what the source directly states.</p>
+</div>`,
+        modelAnswer: "(i) What I can infer: Hitler immediately exploited the Reichstag Fire as an opportunity to justify violent action against the Communist Party.\n\nDetails in the source that tell me this: 'He shouted uncontrollably: There will be no mercy. Every Communist official must be shot wherever he is found.'\n\n(ii) What I can infer: The Nazis had made preparations for an event like the Reichstag Fire in advance, suggesting they may have anticipated or even orchestrated it.\n\nDetails in the source that tell me this: 'The police already had lists of people to arrest, which had been prepared for such an emergency.'"
+      },
+      {
+        num: "Q5",
+        marks: 1,
+        type: "mcq",
+        caseStudy: "",
+        question: "Which of the following is the correct structure for answering Q1 on Edexcel Paper 3?",
+        options: [
+          "Write one detailed inference with a long explanation using own knowledge",
+          "Write two inferences each supported by a quotation or visible detail from Source A",
+          "Write three inferences without evidence to show breadth of knowledge",
+          "Write a paragraph summarising the main points of the source"
+        ],
+        answer: 1,
+        hint: "Think about the mark allocation — 4 marks, 4 boxes, two of each type.",
+        starter: "The correct answer is...",
+        markScheme: `<div class="marks-section">
+<h5>Answer: B — 1 mark</h5>
+<p><strong>B: Two inferences, each supported by evidence from the source, is the correct structure.</strong></p>
+<ul>
+  <li><strong>Why A is wrong:</strong> Q1 requires two inferences, not one. Using only own knowledge for evidence would also lose marks.</li>
+  <li><strong>Why C is wrong:</strong> Three inferences waste time and the examiner only marks the first two. Evidence is also required for each.</li>
+  <li><strong>Why D is wrong:</strong> A summary of the source is not what Q1 asks for — it asks for inferences that go beyond the source.</li>
+</ul>
+</div>`,
+        modelAnswer: ""
+      },
+      {
+        num: "Q6",
+        marks: 4,
+        type: "written",
+        caseStudy: `Source A: From Growing up in Nazi Germany by Marianne Gärtner, published in 1987. Gärtner grew up in Berlin during the 1920s and 1930s.
+
+"In line with Nazi educational policies, there had been a lot of changes in schools after the Nazis came to power in 1933. Some changes had hardly been noticed, others had been introduced with a lot of publicity.
+
+My neatly-dressed, well-behaved school friends did not question the new books, the new songs, the new curriculum, or the new rules.
+
+The number of Physical Training lessons was increased while the number of lessons for Religious Education and other subjects was reduced."`,
+        question: "Give two things you can infer from Source A about education in Nazi Germany. Complete the table below to explain your answer. [4 marks]",
+        hint: "Consider what the students' lack of questioning tells you about the success of Nazi indoctrination. Also think about what the shift in lesson time from Religion to Physical Training suggests about Nazi priorities.",
+        starter: "(i) What I can infer: [Think about what the students' behaviour implies about how successfully the Nazis controlled education]\n\nDetails in the source that tell me this: '[Quote about students' behaviour]'\n\n(ii) What I can infer: [Think about what the change in lesson allocation tells you about Nazi ideology and goals]\n\nDetails in the source that tell me this: '[Different quote about the curriculum changes]'",
+        markScheme: `<div class="marks-section">
+<h5>Mark Allocation — 4 marks (AO3: Source analysis)</h5>
+<ul>
+  <li><strong>Inference (i) — 1 mark:</strong> e.g. Nazi changes to education were so thorough that many students accepted them without question; the Nazis successfully used education as a tool of indoctrination and social control.</li>
+  <li><strong>Evidence (i) — 1 mark:</strong> "My neatly-dressed, well-behaved school friends did not question the new books, the new songs, the new curriculum, or the new rules."</li>
+  <li><strong>Inference (ii) — 1 mark:</strong> e.g. The Nazis deliberately shifted education away from traditional and religious subjects towards physical and military preparation, reflecting their ideological priorities; the Nazis wanted to produce physically fit soldiers rather than educated thinkers.</li>
+  <li><strong>Evidence (ii) — 1 mark:</strong> "The number of Physical Training lessons was increased while the number of lessons for Religious Education and other subjects was reduced."</li>
+</ul>
+<p><strong>Also acceptable:</strong> Some Nazi educational changes were introduced quietly while others were publicised — "Some changes had hardly been noticed, others had been introduced with a lot of publicity"; The Nazis wanted the public to be aware of certain aspects of their educational programme.</p>
+<p><strong>Do NOT award:</strong> "The Nazis changed education" — too vague; repeating both inferences about curriculum without drawing different conclusions.</p>
+<p><strong>Examiner's Comment:</strong> Students who use the detail about Physical Training replacing Religious Education to infer about Nazi ideological priorities (e.g. militarism, rejection of Christianity, racial fitness) demonstrate the strongest level of inference on this question.</p>
+</div>`,
+        modelAnswer: "(i) What I can infer: The Nazis successfully used education as a tool of indoctrination — students accepted major changes to the curriculum without resistance, suggesting the regime had effectively controlled what young people thought.\n\nDetails in the source that tell me this: 'My neatly-dressed, well-behaved school friends did not question the new books, the new songs, the new curriculum, or the new rules.'\n\n(ii) What I can infer: The Nazis deliberately deprioritised traditional and religious subjects in favour of physical training, reflecting their ideological goals of producing physically fit soldiers loyal to the Nazi state rather than the Church.\n\nDetails in the source that tell me this: 'The number of Physical Training lessons was increased while the number of lessons for Religious Education and other subjects was reduced.'"
+      }
+    ];
+</script>
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>

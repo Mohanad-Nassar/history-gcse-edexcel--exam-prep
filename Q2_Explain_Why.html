@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 1 — The Weimar Republic 1918–1929 · Interactive Study Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="stylesheet.css">
+
+
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <div class="badge">Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany</div>
+            <h1>Topic 1 · The Weimar Republic 1918–1929</h1>
+            <p>Interactive revision guide · All key content + full exam practice</p>
+        </div>
+        <a href="index.html" class="home-link">← 🏡 Home</a>
+    </header>
+
+    <nav class="tab-bar" id="tabBar">
+        <button class="tab-btn active" onclick="switchTab('learn',this)">📚 Key Learning</button>
+        <button class="tab-btn" onclick="switchTab('mcq',this)">❓ MCQ Quiz</button>
+        <button class="tab-btn" onclick="switchTab('matching',this)">🔗 Matching</button>
+        <button class="tab-btn" onclick="switchTab('fib',this)">✏️ Fill the Blanks</button>
+        <button class="tab-btn" onclick="switchTab('misconceptions',this)">⚠️ Misconceptions</button>
+        <button class="tab-btn" onclick="switchTab('examtips',this)">🎯 Exam Tips</button>
+        <button class="tab-btn" onclick="switchTab('flashcards',this)">🃏 Flashcards</button>
+        <button class="tab-btn" onclick="switchTab('truefalse',this)">✅ True / False</button>
+        <button class="tab-btn" onclick="switchTab('exampractice',this)">📝 Exam Practice</button>
+    </nav>
+
+    <main>
+
+        <!-- ═══════════════════════ KEY LEARNING ═══════════════════════ -->
+        <div class="tab-panel active" id="tab-learn">
+            <h2 class="section-title">Key Learning Topics</h2>
+            <p class="section-sub">Click any card to expand detailed notes.</p>
+            <div class="topic-grid" id="topicGrid"></div>
+        </div>
+
+        <!-- ═══════════════════════ MCQ ═══════════════════════ -->
+        <div class="tab-panel" id="tab-mcq">
+            <h2 class="section-title">Multiple Choice Questions</h2>
+            <p class="section-sub">Select an answer to reveal instant feedback.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="mcqScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct answers</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">out of <strong id="mcqTotal">0</strong> attempted</div>
+                <button class="reset-btn" onclick="resetMCQ()">RESET</button>
+            </div>
+            <div class="quiz-wrap" id="mcqWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ MATCHING ═══════════════════════ -->
+        <div class="tab-panel" id="tab-matching">
+            <h2 class="section-title">Matching Activity</h2>
+            <p class="section-sub">Click a term on the left, then click the matching definition on the right.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="matchScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">matched</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">out of <strong id="matchTotal">0</strong></div>
+                <button class="reset-btn" onclick="resetMatch()">RESET</button>
+            </div>
+            <div class="match-grid">
+                <div>
+                    <div class="match-label">TERMS</div>
+                    <div class="match-col" id="matchLeft"></div>
+                </div>
+                <div>
+                    <div class="match-label">DEFINITIONS</div>
+                    <div class="match-col" id="matchRight"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════ FILL IN BLANKS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-fib">
+            <h2 class="section-title">Fill in the Blanks</h2>
+            <p class="section-sub">Choose the correct word from each dropdown. Wrong answers reset — try again!</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="fibScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">of <strong id="fibTotal">0</strong> blanks</div>
+                <button class="reset-btn" onclick="resetFIB()">RESET</button>
+            </div>
+            <div class="fib-wrap" id="fibWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ MISCONCEPTIONS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-misconceptions">
+            <h2 class="section-title">Common Misconceptions</h2>
+            <p class="section-sub">What students often think — and what examiners actually want.</p>
+            <div class="misc-list" id="miscList"></div>
+        </div>
+
+        <!-- ═══════════════════════ EXAM TIPS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-examtips">
+            <h2 class="section-title">Exam Questions &amp; Tips</h2>
+            <p class="section-sub">Most repeated question types and mark-scheme structures from real papers.</p>
+            <div class="tips-grid" id="tipsGrid"></div>
+        </div>
+
+        <!-- ═══════════════════════ FLASHCARDS ═══════════════════════ -->
+        <div class="tab-panel" id="tab-flashcards">
+            <h2 class="section-title">Flashcards</h2>
+            <p class="section-sub">Test yourself! Flip the card and rate your knowledge.</p>
+            <div class="fc-container">
+                <div class="score-bar" id="fcScoreBar" style="display:none;margin-bottom:20px">
+                    <div>
+                        <div class="score-num" id="fcKnown" style="color:#2d7a4f">0</div>
+                        <div style="font-size:12px;color:var(--mid)">known</div>
+                    </div>
+                    <div>
+                        <div class="score-num" id="fcUnknown" style="color:#c84b31">0</div>
+                        <div style="font-size:12px;color:var(--mid)">learning</div>
+                    </div>
+                    <div style="font-size:13px;color:var(--mid)">out of <strong id="fcTotalTrack">0</strong></div>
+                    <button class="reset-btn" onclick="resetFlashcards()">RESET</button>
+                </div>
+                <div id="fcActiveArea">
+                    <div class="fc-progress" id="fcProgress">Card 1 of 0</div>
+                    <div class="flashcard" id="flashcard" onclick="flipCard()">
+                        <div class="fc-inner">
+                            <div class="fc-front">
+                                <div class="fc-label">KEY TERM</div>
+                                <div class="fc-term" id="fcTerm"></div>
+                            </div>
+                            <div class="fc-back">
+                                <div class="fc-def" id="fcDef"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fc-hint">👆 Click card to flip</p>
+                    <div class="fc-nav" id="fcNavDefault">
+                        <button class="fc-btn outline" onclick="prevCard()">← Prev</button>
+                        <button class="fc-btn outline" onclick="flipCard()">Flip</button>
+                        <button class="fc-btn" onclick="nextCard()">Next →</button>
+                    </div>
+                    <div class="fc-nav" id="fcNavAssess" style="display:none;gap:15px">
+                        <button class="fc-btn outline" style="border-color:#c84b31;color:#c84b31;flex:1"
+                            onclick="markCard(false)">❌
+                            Still Learning</button>
+                        <button class="fc-btn" style="background:#2d7a4f;border-color:#2d7a4f;flex:1"
+                            onclick="markCard(true)">✅ Got
+                            It</button>
+                    </div>
+                </div>
+                <div id="fcSummaryArea" style="display:none;text-align:center;padding:40px 20px">
+                    <h3
+                        style="font-family:'Playfair Display',serif;color:var(--accent2);font-size:24px;margin-bottom:12px">
+                        Session Complete! 🎉</h3>
+                    <p style="margin:15px 0;color:var(--text-dim)">You knew <strong id="fcSummaryKnown"
+                            style="color:var(--accent2)">0</strong> out of <strong id="fcSummaryTotal"
+                            style="color:var(--accent2)">0</strong> cards.</p>
+                    <div style="margin-top:25px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap">
+                        <button class="fc-btn" id="btnReviewWrong" onclick="reviewWrong()"
+                            style="background:#c84b31;border-color:#c84b31">Review Incorrect</button>
+                        <button class="fc-btn outline" onclick="resetFlashcards()">Practice All Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════ TRUE / FALSE ═══════════════════════ -->
+        <div class="tab-panel" id="tab-truefalse">
+            <h2 class="section-title">True or False?</h2>
+            <p class="section-sub">Test your knowledge with these statements.</p>
+            <div class="score-bar">
+                <div>
+                    <div class="score-num" id="tfScore">0</div>
+                    <div style="font-size:12px;color:var(--mid)">correct</div>
+                </div>
+                <div style="font-size:13px;color:var(--mid)">of <strong id="tfTotal">0</strong> answered</div>
+                <button class="reset-btn" onclick="resetTF()">RESET</button>
+            </div>
+            <div class="tf-wrap" id="tfWrap"></div>
+        </div>
+
+        <!-- ═══════════════════════ EXAM PRACTICE ═══════════════════════ -->
+        <div class="tab-panel" id="tab-exampractice">
+            <h2 class="section-title">Exam Practice Questions</h2>
+            <p class="section-sub">Full exam questions with mark schemes. Use <strong>Hint</strong>, <strong>Sentence
+                    Starter</strong> and <strong>Submit &amp; See Mark Scheme</strong> for each question.</p>
+            <div class="ep-list" id="epList"></div>
+        </div>
+
+    </main>
+    <script>
+
+        /* ══════════════════════════════════════════════
+           PAGE METADATA — update this for each topic
+        ══════════════════════════════════════════════ */
+
+        const pageMeta = {
+            badge: "Edexcel GCSE History · Paper 3 — Weimar &amp; Nazi Germany",
+            title: "Q2 · Explain Why — 12 Marks",
+            subtitle: "Interactive revision guide · Master the 'Explain Why' question"
+        };
+
+        /* ── Apply metadata on load ── */
+        document.addEventListener('DOMContentLoaded', () => {
+            const badgeEl = document.querySelector('.badge');
+            const h1El = document.querySelector('header h1');
+            const subEl = document.querySelector('header p');
+            const titleEl = document.querySelector('title');
+
+            if (badgeEl) badgeEl.innerHTML = pageMeta.badge;
+            if (h1El) h1El.textContent = pageMeta.title;
+            if (subEl) subEl.textContent = pageMeta.subtitle;
+            if (titleEl) titleEl.textContent = pageMeta.title.replace(/&amp;/g, '&');
+        });
+
+        /* ══════════════════════════════════════════════
+           ARRAY 1 · topics  (Key Learning cards)
+        ══════════════════════════════════════════════ */
+
+        const topics = [
+        {
+                title: "Recent Changes to Question 2 Format",
+                tag: "Exam Structure",
+                content: `<p>Students will now be given a choice of two 'explain why...' questions to answer. This is to give students more opportunity to show their knowledge and improve the overall balance of content assessed on this paper.</p>
+    <ul>
+      <li><strong>Format:</strong> You must answer EITHER Question 2(a) OR Question 2(b).</li>
+      <li><strong>Mark Scheme:</strong> The mark scheme requirements are unchanged. An identical generic mark scheme is simply repeated for Q2a and Q2b.</li>
+    </ul>
+    <div class="case-study-box">
+      <h4>Example Layout</h4>
+      <p><strong>EITHER</strong><br>
+      2 (a) Explain why there was opposition in Germany to the Treaty of Versailles (1919). (12)</p>
+      <p><strong>OR</strong><br>
+      (b) Explain why Hitler was able to create a dictatorship in the period February 1933 to August 1934. (12)</p>
+    </div>`
+            },
+            {
+                title: "What is Question 2 and How is it Marked?",
+                tag: "Exam Structure",
+                content: `<p>Question 2 is the <strong>12-mark 'Explain Why' question</strong> on Paper 3. Since 2024, you are given a <strong>choice of two questions</strong> (2a or 2b) and must answer <strong>one only</strong>. The question asks you to analytically explain the causes or consequences of a named event, development or theme.</p>
+    <ul>
+      <li><strong>Marks:</strong> 12 marks total — 6 for Knowledge (K), 6 for Second-Order Concepts (SOC).</li>
+      <li><strong>Time:</strong> No more than 20 minutes — 5 minutes planning, 10–15 minutes writing.</li>
+      <li><strong>Stimulus points:</strong> You are given two bullet-point prompts. You <em>may</em> use them, but you <strong>must</strong> also bring in your own knowledge.</li>
+      <li><strong>Level 4 (9–12 marks):</strong> Requires THREE distinct areas of knowledge — using only the two stimulus points caps you at Level 3 (maximum 8 marks).</li>
+    </ul>
+    <div class="case-study-box">
+      <h4>Example Question Format</h4>
+      <p><strong>Explain why the Nazis were able to reduce unemployment in Germany in the years 1933–39. (12)</strong><br>
+      You may use the following in your answer: <em>rearmament · autobahns</em><br>
+      You must also use information of your own.</p>
+    </div>`
+            },
+            {
+                title: "Second-Order Concepts (SOC) — The Key to 9–12 Marks",
+                tag: "Core Concept",
+                content: `<p>Second-order concepts are the <strong>thinking tools historians use</strong> to analyse the past. Q2 always tests one of these concepts — most commonly <strong>cause and consequence</strong>. Simply listing facts without applying the concept caps you at Level 2 (maximum 3 marks).</p>
+    <ul>
+      <li><strong>Cause and Consequence:</strong> Why did something happen? What were the results? This is the most common SOC in Q2.</li>
+      <li><strong>Change and Continuity:</strong> What changed over time? What stayed the same?</li>
+      <li><strong>Similarities and Differences:</strong> How were things alike or different?</li>
+      <li><strong>Historical Significance:</strong> Why does this event matter in the long run?</li>
+    </ul>
+    <div class="formula-box">
+      SOC Application Formula:<br>
+      "Therefore, [factor] caused [outcome] because it [explain the mechanism/chain of events]."
+    </div>
+    <p>For every piece of evidence (K), you must follow it with a SOC sentence that explains <em>how</em> and <em>why</em> it caused the development in the question — not just what happened.</p>`
+            },
+            {
+                title: "The PEEL Paragraph Structure",
+                tag: "Exam Technique",
+                content: `<p>Every paragraph in your Q2 answer should follow the <strong>PEEL structure</strong>. You need <strong>three PEEL paragraphs</strong> to access Level 4. Each paragraph covers one distinct factor.</p>
+    <ul>
+      <li><strong>P — Point:</strong> State the factor/reason clearly in one sentence. This answers the 'why' directly.</li>
+      <li><strong>E — Evidence (K):</strong> Provide specific, accurate factual detail. Include dates, statistics, named individuals, events, or laws. Use <em>multiple</em> pieces of evidence from within the time period stated in the question.</li>
+      <li><strong>E — Explain (SOC):</strong> Explain how your evidence caused or resulted in the development in the question. This is your second-order concept application — the examiner's most important mark-scoring element.</li>
+      <li><strong>L — Link:</strong> Link back to the question using key words from it to close the paragraph.</li>
+    </ul>
+    <div class="case-study-box">
+      <h4>PEEL in Action — Nazi Unemployment (1933–39)</h4>
+      <p><strong>P:</strong> One way the Nazis reduced unemployment was through rearmament.<br>
+      <strong>E (K):</strong> Hitler announced conscription in 1935, and spending on armaments rose from 3.5 billion marks in 1933 to 26 billion marks by 1939, creating 1.4 million soldiers by 1939.<br>
+      <strong>E (SOC):</strong> This reduced unemployment because it not only put young men into the armed forces directly, but also generated millions of factory jobs producing weapons, uniforms and vehicles — creating a ripple effect across the whole economy.<br>
+      <strong>L:</strong> Therefore, rearmament was a significant cause of falling unemployment, addressing the crisis from multiple directions simultaneously.</p>
+    </div>`
+            },
+            {
+                title: "The Mark Scheme — Level Descriptors Explained",
+                tag: "Mark Scheme",
+                content: `<p>Q2 uses a <strong>levels-based mark scheme</strong>. The examiner reads your whole answer and places it in the best-fitting level. Individual points are not counted — it is the overall quality of your explanation that matters.</p>
+    <div class="two-col">
+      <div>
+        <div class="col-head">What earns Knowledge marks (K) — up to 6</div>
+        <div class="pro-item">Specific dates, statistics and figures</div>
+        <div class="pro-item">Named individuals, events, laws and organisations</div>
+        <div class="pro-item">Detail from WITHIN the stated time period</div>
+        <div class="pro-item">Three or more distinct areas of own knowledge</div>
+        <div class="con-item">Vague statements ("the economy got worse")</div>
+        <div class="con-item">Only repeating the two stimulus points given</div>
+        <div class="con-item">Knowledge outside the stated date range</div>
+      </div>
+      <div>
+        <div class="col-head">What earns SOC marks — up to 6</div>
+        <div class="pro-item">Explicit cause-and-effect chains ("This caused X because...")</div>
+        <div class="pro-item">Explaining the mechanism behind your evidence</div>
+        <div class="pro-item">Linking each paragraph back to the question</div>
+        <div class="pro-item">Sustained, analytical explanation (not description)</div>
+        <div class="con-item">Describing what happened without saying why it mattered</div>
+        <div class="con-item">Generic phrases ("this shows it was important")</div>
+        <div class="con-item">Repeating the same point in different words</div>
+      </div>
+    </div>
+    <ul>
+      <li><strong>Level 4 (9–12):</strong> Three factors, strong K and clear SOC throughout.</li>
+      <li><strong>Level 3 (5–8):</strong> Two factors well explained, or three factors with weak SOC.</li>
+      <li><strong>Level 2 (3–4):</strong> Describes events, limited or no SOC.</li>
+      <li><strong>Level 1 (1–2):</strong> Simple, generalised statements only.</li>
+    </ul>`
+            },
+            {
+                title: "How to Plan Your Answer in 5 Minutes",
+                tag: "Exam Technique",
+                content: `<p>Spending 5 minutes on a focused plan before you write <strong>significantly improves answer quality</strong>. Students who plan consistently write more focused, better-linked paragraphs. Here is a reliable planning method for Q2.</p>
+    <ul>
+      <li><strong>Step 1 — Choose your question:</strong> Read both 2a and 2b. Pick the one you know most about. Mark it with an X in the box.</li>
+      <li><strong>Step 2 — Identify three factors:</strong> Write three distinct reasons/causes. Use the two stimulus points as a starting point, then add one of your own. Make sure all three fall within the date range given.</li>
+      <li><strong>Step 3 — Evidence dump:</strong> Next to each factor, jot 2–3 pieces of specific evidence (dates, figures, names, laws).</li>
+      <li><strong>Step 4 — SOC note:</strong> Write a brief note on how each factor caused/led to the development. This forces you to think analytically before you write.</li>
+    </ul>
+    <div class="formula-box">
+      5-Minute Plan Template:<br>
+      Factor 1: [Name] → Evidence: [specific detail] → SOC: [how it caused the outcome]<br>
+      Factor 2: [Name] → Evidence: [specific detail] → SOC: [how it caused the outcome]<br>
+      Factor 3 (OWN): [Name] → Evidence: [specific detail] → SOC: [how it caused the outcome]
+    </div>
+    <div class="case-study-box">
+      <h4>Past Q2 Topics (Edexcel Paper 3, Weimar &amp; Nazi Germany)</h4>
+      <p>2018: Reduction of unemployment · 2019: Nazi police state · 2020: Economic recovery 1924–29 · 2021: Weimar Republic unpopularity 1919–23 · 2022: Nazi use of propaganda · 2023: Reorganisation of the Nazi Party 1924–28 · 2024: Instability in Germany 1918–23</p>
+    </div>`
+            },
+            {
+                title: "Key Topics: Weimar Republic Instability (1919–23)",
+                tag: "Topic Knowledge",
+                content: `<p>This is one of the most commonly examined Q2 topics. You need to be able to explain <strong>why</strong> the Weimar Republic was unstable or unpopular — not just describe the problems.</p>
+    <ul>
+      <li><strong>Treaty of Versailles (1919):</strong> £6.6 billion reparations, War Guilt Clause, loss of 13% land and 10% population. Politicians who signed it were called 'November Criminals' — fuelling resentment and the 'stab in the back' myth.</li>
+      <li><strong>Proportional Representation:</strong> PR meant no party ever won a majority → coalition governments → slow decision-making → frequent collapses. There were 9 different governments between 1919 and 1923.</li>
+      <li><strong>Left and Right-Wing Revolts:</strong> Spartacist Uprising (January 1919) — communist revolt crushed by Freikorps. Kapp Putsch (March 1920) — right-wing nationalist attempt to overthrow government, defeated by a general strike.</li>
+      <li><strong>French Invasion of the Ruhr (1923):</strong> France seized Germany's industrial heartland after Germany defaulted on coal reparations. Government printed money to pay striking workers → hyperinflation.</li>
+      <li><strong>Hyperinflation (1923):</strong> By November 1923 the mark was worthless. A loaf of bread cost 200 billion marks. Middle-class savings were wiped out.</li>
+    </ul>
+    <div class="case-study-box">
+      <h4>Article 48 — Hidden Danger</h4>
+      <p>The Weimar Constitution's Article 48 allowed the President to rule by emergency decree without the Reichstag — used 136 times between 1919 and 1932. It undermined democratic norms and was later exploited by Hitler after 1933.</p>
+    </div>`
+            },
+            {
+                title: "Key Topics: Nazi Germany (1933–39)",
+                tag: "Topic Knowledge",
+                content: `<p>The most frequently examined Nazi Germany Q2 topics focus on <strong>how</strong> and <strong>why</strong> the Nazis achieved specific goals — unemployment, control, propaganda. Always explain the mechanism.</p>
+    <ul>
+      <li><strong>Reducing Unemployment:</strong> Rearmament (conscription 1935; spending rose from 3.5bn to 26bn marks by 1939), Autobahn scheme (80,000 workers by 1935; 3,500 km completed by 1938), RAD National Labour Service (422,000 members by 1935; compulsory for men aged 18–25).</li>
+      <li><strong>Police State:</strong> Gestapo (secret police in plain clothes; created constant surveillance), concentration camps (Dachau opened 1933; publicised to create fear), People's Court (trials in secret; no jury; no appeal; 534 executed 1934–39).</li>
+      <li><strong>Propaganda:</strong> Newspapers (1,600 closed 1935; journalists briefed on approved content), Nuremberg Rallies (200,000 at 1934 rally; filmed as Triumph of the Will), People's Receiver radio (35 Reichsmarks; could not tune to foreign stations).</li>
+      <li><strong>Reorganisation of the Nazi Party (1924–28):</strong> Munich Putsch failure taught Hitler to gain power legally. Bamberg Conference 1926 removed socialist wing. New regional Gaue structure created loyalty. SS established for total personal loyalty to Hitler.</li>
+    </ul>
+    <div class="case-study-box">
+      <h4>Important: Fiddled Unemployment Figures</h4>
+      <p>Official Nazi unemployment figures are misleading — women, Jews (stripped of citizenship 1935) and those doing unpaid work were excluded from the count. The examiner rewards students who acknowledge this nuance as their 'third own knowledge point.'</p>
+    </div>`
+            }
+        ];
+
+        /* ══════════════════════════════════════════════
+           ARRAY 2 · mcqData  (Multiple Choice Quiz)
+        ══════════════════════════════════════════════ */
+
+        const mcqData = [
+            {
+                q: "Q2 on Edexcel Paper 3 is worth how many marks?",
+                opts: ["4 marks", "8 marks", "12 marks", "16 marks"],
+                ans: 2,
+                explain: "Correct: C — 12 marks. Q2 is the 'Explain Why' question worth 12 marks, split equally between Knowledge (6 marks) and Second-Order Concepts (6 marks). A is wrong (4 marks = Q1 inference question). B is wrong (8 marks = Q3 source utility question). D is wrong (16 marks = Q5 interpretation essay)."
+            },
+            {
+                q: "To access Level 4 (9–12 marks) on Q2, a student must discuss at least how many distinct areas of knowledge?",
+                opts: ["One", "Two", "Three", "Four"],
+                ans: 2,
+                explain: "Correct: C — Three. Using only the two stimulus points provided caps a student at a maximum of 8 marks (Level 3). To reach Level 4, students must include at least one piece of their own knowledge beyond the stimulus, giving three distinct factors in total. A and B are insufficient for Level 4. D is unnecessary."
+            },
+            {
+                q: "Which second-order concept is most commonly tested in the Q2 'Explain Why' question?",
+                opts: ["Change and continuity", "Cause and consequence", "Similarities and differences", "Historical significance"],
+                ans: 1,
+                explain: "Correct: B — Cause and consequence. 'Explain Why' questions directly test students' ability to identify and explain causes and their consequences. A, C and D are valid second-order concepts but are tested more often in other question types such as the interpretation essay."
+            },
+            {
+                q: "Since 2024, how does the format of Q2 differ from previous years?",
+                opts: [
+                    "It is now worth 16 marks instead of 12",
+                    "Students must answer both 2a and 2b",
+                    "Students now have a choice of two questions and answer one",
+                    "The stimulus points have been removed"
+                ],
+                ans: 2,
+                explain: "Correct: C — Students now have a choice of two questions (2a or 2b) and must answer one. Before 2024 there was no choice. A is wrong — it remains 12 marks. B is wrong — answering both earns no extra credit. D is wrong — two stimulus points are still provided."
+            },
+            {
+                q: "What does the 'L' in the PEEL paragraph structure stand for?",
+                opts: ["List more evidence", "Link back to the question", "Label the second-order concept", "Lead with a new factor"],
+                ans: 1,
+                explain: "Correct: B — Link back to the question. After explaining the significance using SOC, students must close the paragraph by referring back to the exact wording of the question. This shows sustained focus and earns higher marks. A, C and D do not accurately reflect the PEEL model."
+            },
+            {
+                q: "Which of the following would NOT be credited as own knowledge in a Q2 answer about reducing Nazi unemployment (1933–39)?",
+                opts: [
+                    "The RAD had 422,000 members by 1935",
+                    "Armament spending rose to 26 billion marks by 1939",
+                    "Hitler became Chancellor in January 1933",
+                    "The autobahn scheme employed 80,000 workers by 1935"
+                ],
+                ans: 2,
+                explain: "Correct: C — 'Hitler became Chancellor in January 1933' is background context, not a factor explaining how unemployment was reduced. Examiners credit specific evidence that explains the mechanism of unemployment reduction. A, B and D are all directly relevant statistics about specific schemes that reduced unemployment."
+            },
+            {
+                q: "The Weimar Constitution's proportional representation system caused political instability mainly because it:",
+                opts: [
+                    "Gave the President unlimited emergency powers",
+                    "Prevented women from voting",
+                    "Made it almost impossible for one party to win a majority, leading to unstable coalitions",
+                    "Gave the army control over government appointments"
+                ],
+                ans: 2,
+                explain: "Correct: C — PR meant votes were allocated proportionally, so no party ever won over 50%, forcing coalition governments. Coalitions disagreed on policy and frequently collapsed, creating the instability. A refers to Article 48, a different constitutional flaw. B is wrong — the Weimar Constitution gave women the vote. D is incorrect."
+            },
+            {
+                q: "By November 1923, what had happened to the German mark as a result of hyperinflation?",
+                opts: [
+                    "It had doubled in value against the dollar",
+                    "It had become virtually worthless",
+                    "It had been replaced by the Rentenmark in April 1923",
+                    "It had stabilised due to the Dawes Plan"
+                ],
+                ans: 1,
+                explain: "Correct: B — By November 1923 the mark was effectively worthless; a loaf of bread cost 200 billion marks. This was the peak of the hyperinflation crisis triggered by the government printing money during the French occupation of the Ruhr. A is wrong. C is wrong — the Rentenmark was introduced in November 1923 (not April). D is wrong — the Dawes Plan came in 1924, after the crisis."
+            },
+            {
+                q: "Which of the following is the most accurate description of the Gestapo's role in creating a Nazi police state?",
+                opts: [
+                    "They organised the Nuremberg rallies to boost public support",
+                    "They wore plain clothes, tapped phones and sent suspects to concentration camps without trial",
+                    "They controlled all newspapers and radio broadcasts",
+                    "They ran the Reich Labour Service for unemployed young men"
+                ],
+                ans: 1,
+                explain: "Correct: B — The Gestapo were the secret police who operated in plain clothes, monitored citizens, intercepted communications and could send people directly to concentration camps without going through normal legal processes. A describes the role of Goebbels' propaganda ministry. C also relates to propaganda, not the Gestapo. D describes the RAD."
+            },
+            {
+                q: "The Bamberg Conference of 1926 was significant to the reorganisation of the Nazi Party because it:",
+                opts: [
+                    "Launched the autobahn construction programme",
+                    "Established the SA as the main paramilitary force",
+                    "Allowed Hitler to remove the socialist wing and assert nationalist direction",
+                    "Introduced proportional representation into party elections"
+                ],
+                ans: 2,
+                explain: "Correct: C — At Bamberg, Hitler confronted the left-wing 'socialist' faction led by Gregor Strasser, labelled them 'communists' and redefined the NSDAP as a right-wing nationalist party. This gave the party ideological clarity and strengthened Hitler's personal control. A relates to Nazi economic policy post-1933. B is incorrect — the SA predated 1926. D is unrelated to the conference."
+            },
+            {
+                q: "The Dawes Plan of 1924 helped Germany's economic recovery primarily by:",
+                opts: [
+                    "Cancelling all German reparations payments permanently",
+                    "Reducing annual reparations to £50 million and guaranteeing US bank loans to German industry",
+                    "Withdrawing French troops from the Ruhr immediately and returning coalfields",
+                    "Introducing the Rentenmark to replace the worthless mark"
+                ],
+                ans: 1,
+                explain: "Correct: B — The Dawes Plan, created by American banker Charles G. Dawes, temporarily reduced reparation payments to £50 million per year and secured $25 billion in US loans to German industry between 1924 and 1930, boosting industrial output by 50% by 1928. A is wrong — reparations were not cancelled. C is partially true but not the Plan's main function. D describes Stresemann's Rentenmark, introduced November 1923."
+            },
+            {
+                q: "Which of the following would most likely cap a student's Q2 mark at Level 2 (3–4 marks)?",
+                opts: [
+                    "Writing three PEEL paragraphs with specific statistics in each",
+                    "Using only the two stimulus points and describing them without explaining their significance",
+                    "Including one piece of own knowledge alongside the two stimulus points",
+                    "Applying cause and consequence analysis in all three paragraphs"
+                ],
+                ans: 1,
+                explain: "Correct: B — Describing events without applying second-order concepts and relying only on the two stimulus points places an answer firmly in Level 2. The mark scheme explicitly states that using only the stimulus points without SOC analysis cannot score above Level 2–3. A, C and D all describe techniques that would push toward Level 3–4."
+            }
+        ];
+
+        /* ══════════════════════════════════════════════
+           ARRAY 3 · matchData  (Keyword Matching)
+        ══════════════════════════════════════════════ */
+
+        const matchData = [
+            { term: "Second-Order Concept (SOC)", def: "A thinking tool historians use to analyse the past, such as cause and consequence or change and continuity." },
+            { term: "PEEL", def: "A paragraph structure for Q2: Point, Evidence, Explain (using SOC), Link back to question." },
+            { term: "Level 4 (Q2)", def: "The highest mark band (9–12 marks), requiring three distinct areas of knowledge with sustained SOC analysis." },
+            { term: "Stimulus points", def: "Two bullet-point prompts given in the question that students may use, but must also go beyond to access Level 4." },
+            { term: "Rearmament", def: "Hitler's policy of rebuilding the German military; armament spending rose from 3.5bn to 26bn marks between 1933 and 1939." },
+            { term: "RAD (Reichsarbeitsdienst)", def: "The National Labour Service, made compulsory for unemployed men aged 18–25 from 1935; had 422,000 members by 1935." },
+            { term: "Proportional Representation", def: "A voting system where seats are allocated by share of votes; used in Weimar Germany and caused repeated coalition governments." },
+            { term: "Hyperinflation", def: "The economic crisis of 1923 in which Germany's currency became worthless after the government printed too much money during the French occupation of the Ruhr." },
+            { term: "People's Court (Volksgerichtshof)", def: "A Nazi court set up to try cases of treason; trials were held in secret, with no jury, no right of appeal, and judges loyal to the Nazi Party." },
+            { term: "The Dawes Plan (1924)", def: "An American-led plan that reduced annual reparations to £50 million and secured US bank loans of $25 billion for German industry." },
+            { term: "Bamberg Conference (1926)", def: "A Nazi Party meeting at which Hitler confronted the socialist wing, labelled them enemies, and reasserted the nationalist direction of the NSDAP." },
+            { term: "Article 48", def: "A clause in the Weimar Constitution allowing the President to rule by emergency decree without the Reichstag; used 136 times by 1932." },
+            { term: "The Gestapo", def: "The Nazi secret police who operated in plain clothes, tapped phones, monitored citizens, and could send suspects directly to concentration camps." },
+            { term: "Rentenmark", def: "A new stable currency introduced by Stresemann in November 1923 to end hyperinflation; one Rentenmark equalled one trillion old marks." },
+            { term: "Kapp Putsch (1920)", def: "A right-wing nationalist attempt to overthrow the Weimar government, led by Wolfgang Kapp; it failed when German workers staged a general strike." }
+        ];
+
+        /* ══════════════════════════════════════════════
+           ARRAY 4 · fibData  (Fill in the Blanks)
+           ARRAY 5 · fibWords (Word Bank)
+        ══════════════════════════════════════════════ */
+
+        const fibData = [
+            {
+                display: "Q2 on Edexcel Paper 3 is marked out of _____, with _____ marks available for Knowledge.",
+                blanks: { B1: "12", B2: "6" }
+            },
+            {
+                display: "To access Level 4 on Q2, a student must discuss at least _____ distinct areas of knowledge, including information of their _____.",
+                blanks: { B1: "three", B2: "own" }
+            },
+            {
+                display: "The 'E' for 'Explain' in a PEEL paragraph requires the student to apply a _____ concept, most commonly cause and _____.",
+                blanks: { B1: "second-order", B2: "consequence" }
+            },
+            {
+                display: "The _____ was introduced by Stresemann in November 1923 to replace the worthless mark and end _____.",
+                blanks: { B1: "Rentenmark", B2: "hyperinflation" }
+            },
+            {
+                display: "By 1939, Nazi armament spending had risen to _____ billion marks, up from _____ billion marks in 1933.",
+                blanks: { B1: "26", B2: "3.5" }
+            },
+            {
+                display: "The RAD was made compulsory from 1935 for unemployed men aged _____ to _____ for a period of six months.",
+                blanks: { B1: "18", B2: "25" }
+            },
+            {
+                display: "The Weimar Republic used _____ representation, which meant no party ever won a majority, leading to unstable _____.",
+                blanks: { B1: "proportional", B2: "coalitions" }
+            },
+            {
+                display: "The Gestapo wore _____ clothes, which created a sense of constant _____ among the German population.",
+                blanks: { B1: "plain", B2: "surveillance" }
+            },
+            {
+                display: "At the _____ Conference in 1926, Hitler removed the socialist wing of the Nazi Party and redefined it as a _____ nationalist party.",
+                blanks: { B1: "Bamberg", B2: "right-wing" }
+            },
+            {
+                display: "The Dawes Plan reduced Germany's annual reparations to £_____ million and secured _____ billion dollars in American loans to German industry.",
+                blanks: { B1: "50", B2: "25" }
+            },
+            {
+                display: "In the 2024 exam, Question 2 asked students to explain why the Weimar Republic faced political _____ in the years _____.",
+                blanks: { B1: "instability", B2: "1919–23" }
+            },
+            {
+                display: "The People's Court was used to try cases of _____; between 1934 and 1939 it executed _____ political opponents.",
+                blanks: { B1: "treason", B2: "534" }
+            }
+        ];
+
+        const fibWords = [
+            /* Correct answers */
+            "12", "6", "three", "own", "second-order", "consequence",
+            "Rentenmark", "hyperinflation", "26", "3.5", "18", "25",
+            "proportional", "coalitions", "plain", "surveillance",
+            "Bamberg", "right-wing", "50", "25", "instability", "1919–23",
+            "treason", "534",
+            /* Plausible distractors */
+            "8", "16", "4", "two", "four", "first-order", "continuity",
+            "Petrenmark", "deflation", "30", "5", "16", "21",
+            "representative", "governments", "uniform", "monitoring",
+            "Munich", "left-wing", "100", "10", "corruption", "1918–22",
+            "sedition", "200", "Dawes", "Stresemann", "Weimar", "Article 48"
+        ];
+
+        /* ══════════════════════════════════════════════
+           ARRAY 6 · tfData  (True / False)
+        ══════════════════════════════════════════════ */
+
+        const tfData = [
+            {
+                statement: "Q2 on Edexcel Paper 3 has been a choice question since 2024, with students selecting either 2a or 2b.",
+                answer: true,
+                explanation: "TRUE. Since 2024, students are given two 12-mark questions and must choose one to answer. Previously there was no choice. You should clearly mark which question you are answering with an X in the box provided."
+            },
+            {
+                statement: "A student who writes detailed answers using only the two stimulus points provided can still achieve full marks (12/12) on Q2.",
+                answer: false,
+                explanation: "FALSE. Using only the two stimulus points provided caps a student at a maximum of 8 marks (Level 3). To access Level 4 (9–12 marks), students must discuss at least three areas of knowledge, meaning they must add at least one piece of their own knowledge beyond the prompts."
+            },
+            {
+                statement: "The Q2 mark scheme awards 6 marks for Knowledge (K) and 6 marks for Second-Order Concept analysis (SOC).",
+                answer: true,
+                explanation: "TRUE. The 12 marks are split equally. K marks are earned through specific, accurate factual detail. SOC marks are earned by analysing how and why the knowledge caused or resulted in the development in the question — not just describing what happened."
+            },
+            {
+                statement: "The Gestapo were easy to identify because they wore distinctive black uniforms when on duty.",
+                answer: false,
+                explanation: "FALSE. The Gestapo operated in plain clothes, not uniforms. This was a deliberate strategy — ordinary Germans could never be certain whether someone near them was a Gestapo agent, which created constant fear and self-censorship. This was central to how they maintained control."
+            },
+            {
+                statement: "The Dawes Plan of 1924 permanently cancelled Germany's reparation payments to end the economic crisis.",
+                answer: false,
+                explanation: "FALSE. The Dawes Plan did not cancel reparations. It temporarily reduced annual payments to £50 million and secured US bank loans for German industry. Reparations continued — the Young Plan of 1929 further reduced them. Reparations were only cancelled at the Lausanne Conference in 1932."
+            },
+            {
+                statement: "The Weimar Republic's use of proportional representation contributed to political instability because it led to frequent coalition governments.",
+                answer: true,
+                explanation: "TRUE. Under PR, no single party could win a majority, forcing multiple parties into coalition governments. These coalitions disagreed on policy and collapsed regularly — there were 9 different governments between 1919 and 1923 alone. This made effective decision-making extremely difficult."
+            },
+            {
+                statement: "Official Nazi unemployment statistics between 1933 and 1939 are fully reliable because they were compiled independently of government influence.",
+                answer: false,
+                explanation: "FALSE. Nazi unemployment statistics were manipulated. Women, Jewish people (stripped of citizenship in 1935), men in part-time work and those in RAD were excluded from the figures. The real level of unemployment was significantly higher than the official figures suggested. Examiners reward students who acknowledge this in extended answers."
+            },
+            {
+                statement: "By 1935, the autobahn construction programme had employed approximately 80,000 workers.",
+                answer: true,
+                explanation: "TRUE. The Autobahn project, personally launched by Hitler in 1933, aimed to build 7,000 miles of motorway and had directly employed around 80,000 workers by 1935. By 1938, 3,500 km had been completed. It also created indirect employment in supplying materials and transportation."
+            },
+            {
+                statement: "The Bamberg Conference of 1926 strengthened Gregor Strasser's socialist faction within the Nazi Party.",
+                answer: false,
+                explanation: "FALSE. The Bamberg Conference had the opposite effect. Hitler used it to publicly denounce the socialist wing, labelling them 'communists' and enemies of the Party. It was a key step in Hitler asserting personal control and redirecting the NSDAP as a right-wing nationalist movement."
+            },
+            {
+                statement: "The PEEL paragraph structure requires students to include specific factual evidence in the 'E for Evidence' section, not just general statements.",
+                answer: true,
+                explanation: "TRUE. The Evidence section of PEEL must include precise K — dates, statistics, named individuals, events or laws. Vague statements such as 'the economy was bad' or 'many people suffered' do not earn Knowledge marks. Examiners look for the kind of specific detail that demonstrates genuine understanding of the period."
+            }
+        ];
+
+        /* ══════════════════════════════════════════════
+           ARRAY 7 · miscData  (Common Misconceptions)
+        ══════════════════════════════════════════════ */
+
+        const miscData = [
+            {
+                wrong: "I only need to write about the two bullet points given in the question to get full marks.",
+                correct: "Using only the two stimulus points will cap you at a maximum of 8 marks (Level 3). The examiner expects you to add at least one additional piece of your own knowledge to reach Level 4. Think of the stimulus points as a floor, not a ceiling — they tell you the minimum, not the maximum."
+            },
+            {
+                wrong: "Q2 is marked on how many points I make — the more bullet points I include, the higher my score.",
+                correct: "Q2 uses a levels-based mark scheme. The examiner reads your whole answer and places it in the best-fitting level based on overall quality of explanation, not a count of individual points. Three well-explained, analytical paragraphs using PEEL will consistently outscore a list of ten underdeveloped facts."
+            },
+            {
+                wrong: "I can score well on Q2 by describing what happened in detail — for example, explaining all the events of the Kapp Putsch step by step.",
+                correct: "Description alone earns at best Level 2 (3–4 marks). Q2 specifically rewards analytical explanation — you must explain WHY events caused the development in the question using cause-and-consequence reasoning. Every paragraph needs a SOC sentence that links your evidence to the question's focus. 'Therefore, this caused... because...' is your key phrase."
+            },
+            {
+                wrong: "I answered both question 2a and 2b to show the examiner I know more and get extra marks.",
+                correct: "Answering both questions earns zero extra marks. The examiner will only mark your first answer — or may mark only one of the two. You will waste valuable time and potentially confuse your answer. Read both options, choose the one you know most about, mark it clearly with an X, and give it your full 20 minutes."
+            },
+            {
+                wrong: "The Nazi unemployment figures prove Hitler solved unemployment because they show it fell from 6 million to nearly zero.",
+                correct: "The official Nazi figures are misleading and unreliable. Women, Jewish citizens (who lost citizenship in 1935), part-time workers and RAD members were all excluded from the count. Examiners reward students who critically engage with evidence — noting that the figures were manipulated is a strong 'own knowledge' point that can push you from Level 3 into Level 4."
+            },
+            {
+                wrong: "I can use events from outside the date range in the question to add more detail to my answer.",
+                correct: "Evidence outside the stated date range will NOT be credited. If the question asks about 1919–23, information about the Dawes Plan (1924) will not earn marks. The examiner requires knowledge specifically from within the period stated. Always check the dates in the question and ensure every piece of evidence falls within that range."
+            },
+            {
+                wrong: "My SOC (second-order concept) analysis is complete if I write 'this is significant' or 'this shows it was important' at the end of a paragraph.",
+                correct: "Vague phrases like 'this was significant' or 'this shows it was important' earn no SOC marks. The examiner needs to see a specific explanation of the mechanism — HOW and WHY the factor caused the development in the question. Use a structured SOC sentence: 'Therefore, [factor] caused [outcome] because [chain of reasoning] which meant [consequence for the question focus].'"
+            }
+        ];
+
+        /* ══════════════════════════════════════════════
+           ARRAY 8 · examTips  (Exam Tips & Technique)
+        ══════════════════════════════════════════════ */
+
+        const examTips = [
+            {
+                type: "Q2 — Explain Why · 12 marks",
+                title: "The Golden Rule: Three Factors + SOC = Level 4",
+                content: `<p>Q2 rewards analytical explanation, not description. You need <strong>three distinct factors</strong>, each supported by specific K and followed by a SOC sentence that explains the cause-and-consequence chain. Use the stimulus points as a starting platform, but always add one factor of your own.</p>
+    <p><strong>The Formula (PEEL × 3):</strong></p>
+    <ul>
+      <li><strong>P — Point:</strong> State the factor clearly. ("One reason why... was...")</li>
+      <li><strong>E — Evidence (K):</strong> Give 2–3 precise pieces of specific knowledge — dates, figures, names, laws. This earns your K marks.</li>
+      <li><strong>E — Explain (SOC):</strong> Explain how this evidence caused the outcome. Use: "This caused [X] because... As a result... Therefore..."</li>
+      <li><strong>L — Link:</strong> Close by referencing the question's exact wording to show sustained focus.</li>
+    </ul>
+    <p><strong>❌ Weak Answer:</strong> "The Nazis used the Gestapo to create a police state. They were scary and people were afraid of them. This helped the Nazis stay in control."</p>
+    <p><strong>✅ Strong Answer:</strong> "The Gestapo were the Nazi secret police who operated in plain clothes, tapped phones and could send suspects directly to concentration camps without trial (K). This created a police state because ordinary citizens could never be certain whether someone near them was an undercover agent, which resulted in widespread self-censorship. Between 1934 and 1939, 534 people were executed by the People's Court (K). The constant fear of exposure prevented opposition from forming in the first place (SOC). Therefore, the Gestapo created a climate of terror that was central to how the Nazis maintained total social control."</p>
+    <p><strong>Sentence Starters:</strong><br>
+    "One reason why [X] was... [factor]."<br>
+    "Another reason why [X] was... [factor]."<br>
+    "A final reason why [X] was... [own knowledge factor]."</p>`,
+                pills: ["K", "SOC"]
+            },
+            {
+                type: "5-Minute Planning Strategy",
+                title: "Plan Before You Write — It Always Pays Off",
+                content: `<p>Spending 5 minutes planning <strong>before</strong> you write dramatically improves the quality of your answer. Students who plan write more focused paragraphs, avoid repetition and are more likely to include the three factors needed for Level 4.</p>
+    <p><strong>The Plan Formula:</strong></p>
+    <ul>
+      <li><strong>Step 1:</strong> Read both 2a and 2b. Choose the one you know most about. Mark it with an X.</li>
+      <li><strong>Step 2:</strong> Write down three factors — the two stimulus points plus one of your own. Label them F1, F2, F3.</li>
+      <li><strong>Step 3:</strong> Next to each factor, jot 2–3 pieces of specific evidence (a date, a figure, a named law).</li>
+      <li><strong>Step 4:</strong> Note your SOC link for each — how does this factor cause the outcome in the question?</li>
+    </ul>
+    <p><strong>❌ Weak Plan:</strong> "Write about propaganda, police state, economy"</p>
+    <p><strong>✅ Strong Plan:</strong> "F1: Gestapo (plain clothes, Dachau 1933, 534 executions 1934–39) → SOC: fear = self-censorship, no opposition. F2: Law courts (People's Court, no jury, no appeal) → SOC: no fair trial = compliance. F3 [OWN]: SS (set up by Hitler for personal loyalty, separate from SA) → SOC: internal party control = no rival power base."</p>
+    <p><strong>Sentence Starter:</strong> "In my plan: Factor 1 — [name]; Factor 2 — [name]; Factor 3 (own) — [name]."</p>`,
+                pills: ["K", "SOC"]
+            },
+            {
+                type: "Choosing Between 2a and 2b",
+                title: "Pick Your Question Wisely — Then Commit Fully",
+                content: `<p>Since 2024 you have a choice. The question you choose must be answered with three factors and full SOC analysis — so choose the one where you can recall the most <strong>specific evidence</strong>, not just the one with a topic you recognise.</p>
+    <p><strong>How to Choose in Under 60 Seconds:</strong></p>
+    <ul>
+      <li><strong>Step 1:</strong> Read both questions completely, including the stimulus points.</li>
+      <li><strong>Step 2:</strong> For each question, mentally list: can I name three factors? Can I recall specific dates, statistics or names for each?</li>
+      <li><strong>Step 3:</strong> Choose the question where you can answer YES to both. If both are equal, choose the one with stimulus points you know well.</li>
+      <li><strong>Step 4:</strong> Mark your choice with an X. Do not go back and answer the other one.</li>
+    </ul>
+    <p><strong>❌ Weak Approach:</strong> "I'll write a little about both to be safe and show the examiner I know it all."</p>
+    <p><strong>✅ Strong Approach:</strong> "I can recall rearmament statistics and RAD membership figures for Q2a, and I know a third factor (fiddled unemployment figures). I'll do 2a."</p>
+    <p><strong>Sentence Starter (in your answer):</strong> "One reason why [question focus] was [factor]..."</p>`,
+                pills: ["K", "SOC"]
+            },
+            {
+                type: "Writing Your SOC Sentences",
+                title: "From Description to Analysis — The SOC Upgrade",
+                content: `<p>The most common reason students do not reach Level 4 is insufficient SOC analysis. Describing events clearly earns K marks; <strong>explaining the consequences of those events</strong> earns SOC marks. Every paragraph needs both.</p>
+    <p><strong>The SOC Upgrade Formula:</strong></p>
+    <ul>
+      <li><strong>Step 1 — State the K (what happened):</strong> "The government printed too much money to pay Ruhr workers, causing the mark to become worthless by November 1923."</li>
+      <li><strong>Step 2 — SOC link (why this caused the development):</strong> "This caused the Weimar Republic to become deeply unpopular because the savings of the middle classes were wiped out overnight, creating mass resentment towards the government."</li>
+      <li><strong>Step 3 — Link to the question:</strong> "Therefore, hyperinflation was a significant cause of Weimar unpopularity as it directly undermined the financial security of millions of ordinary Germans."</li>
+    </ul>
+    <p><strong>❌ Weak SOC:</strong> "This shows that the hyperinflation crisis was significant and made things worse."</p>
+    <p><strong>✅ Strong SOC:</strong> "This caused widespread unpopularity because it destroyed middle-class savings, turned a key demographic against the Weimar Republic, and made them receptive to extremist promises of economic stability."</p>
+    <p><strong>SOC Sentence Starters:</strong><br>
+    "This caused [X] because..."<br>
+    "As a consequence, [Y] occurred, which meant..."<br>
+    "Therefore, [factor] was a significant cause of [question outcome] because..."</p>`,
+                pills: ["K", "SOC"]
+            }
+        ];
+
+        /* ══════════════════════════════════════════════
+           ARRAY 9 · flashcards
+        ══════════════════════════════════════════════ */
+
+        const flashcards = [
+            { term: "How many marks is Q2 worth, and how are they split?", def: "12 marks total — 6 marks for Knowledge (K) and 6 marks for Second-Order Concept analysis (SOC). Both halves are equally important." },
+            { term: "What is the minimum number of factors needed for Level 4 on Q2?", def: "Three distinct factors. Only two factors — even if well explained — caps the answer at Level 3 (maximum 8 marks). The third factor must be the student's own knowledge, beyond the two stimulus points." },
+            { term: "What does PEEL stand for in a Q2 paragraph?", def: "P — Point (state the factor). E — Evidence (specific K: dates, statistics, names). E — Explain (SOC: how this caused the outcome). L — Link (refer back to the question's exact wording)." },
+            { term: "What is a Second-Order Concept (SOC)?", def: "A thinking tool historians use to analyse the past. The most common in Q2 is cause and consequence. Others include change and continuity, similarities and differences, and historical significance." },
+            { term: "What is the key SOC sentence structure to use in Q2?", def: "'Therefore, [factor] caused [outcome] because [chain of reasoning], which meant [consequence for the question focus].' This structure explicitly earns SOC marks." },
+            { term: "Why were Nazi unemployment statistics unreliable?", def: "Women, Jewish people (stripped of citizenship 1935), part-time workers and RAD members were excluded from the figures. This means official statistics significantly underestimated real unemployment levels." },
+            { term: "What was the RAD and why did it reduce unemployment?", def: "The Reichsarbeitsdienst (National Labour Service), made compulsory for men aged 18–25 from 1935. It had 422,000 members by 1935. It gave young unemployed men paid work (roads, planting) and basic employment skills, helping them find permanent work after their six months." },
+            { term: "What was Article 48 of the Weimar Constitution?", def: "A clause allowing the President to pass laws by emergency decree without the Reichstag, bypassing normal democratic process. It was used 136 times by 1932 and was later exploited by Hitler after January 1933." },
+            { term: "What did the Dawes Plan (1924) do?", def: "Reduced Germany's annual reparations to £50 million and secured $25 billion in US bank loans for German industry between 1924 and 1930. This helped German industrial output rise 50% between 1923 and 1928." },
+            { term: "How did the Gestapo create a police state?", def: "The Gestapo (secret police) wore plain clothes, tapped phones, spied on citizens and sent suspects to concentration camps without trial. Their invisibility created constant fear and self-censorship — people never knew if they were being watched." },
+            { term: "Why did proportional representation create political instability in Weimar Germany?", def: "PR meant no single party ever won a majority, forcing coalition governments of multiple parties with conflicting aims. Coalitions frequently collapsed due to policy disagreements, requiring new elections and leading to short-lived governments — there were 9 different governments 1919–23." },
+            { term: "What was the significance of the Bamberg Conference (1926)?", def: "Hitler used it to remove the left-wing socialist faction (led by Strasser) from the NSDAP, labelling them 'communists'. This redefined the Nazi Party as a right-wing nationalist movement and strengthened Hitler's personal dominance over the party." },
+            { term: "What are the key dates for the autobahn scheme?", def: "Launched personally by Hitler in 1933, with a target of 7,000 miles. By 1935, 80,000 workers were employed. By 1938, 3,500 km had been completed. It also created indirect employment through improved transport networks." },
+            { term: "How much time should you spend on Q2 in the exam?", def: "No more than 20 minutes. Approximately 5 minutes planning (identify three factors, jot specific evidence, note your SOC link) and 10–15 minutes writing three full PEEL paragraphs." },
+            { term: "What common errors prevent students reaching Level 4 on Q2?", def: "1) Using only the two stimulus points (max 8 marks). 2) Describing events without SOC analysis (max 3–4 marks). 3) Including evidence outside the date range stated in the question (not credited). 4) Writing vague phrases like 'this was significant' instead of specific SOC chains." }
+        ];
+
+        /* ══════════════════════════════════════════════
+           ARRAY 10 · examQuestions  (Exam Practice)
+        ══════════════════════════════════════════════ */
+
+        const examQuestions = [
+        
+            {
+                num: "Q1",
+                marks: 12,
+                type: "written",
+                caseStudy: "",
+                question: "Explain why the Nazis were able to reduce unemployment in Germany in the years 1933–39. (12)\n\nYou may use the following in your answer:\n• rearmament\n• autobahns\nYou must also use information of your own.",
+                hint: "You have two stimulus points already. Your third factor must be your own — think about the RAD, the manipulation of statistics, or public works programmes. For each factor, ask yourself: HOW did this mechanically reduce unemployment? That explanation is your SOC.",
+                starter: "One way the Nazis reduced unemployment between 1933 and 1939 was through rearmament...\n\nAnother way the Nazis reduced unemployment was through the autobahn scheme...\n\nA final way the Nazis reduced unemployment was through [OWN KNOWLEDGE — e.g. the RAD / National Labour Service]...",
+                markScheme: `<div class="marks-section">
+    <h5>Mark Allocation — 12 marks (Level Response)</h5>
+    <p><strong>6 marks for Knowledge (K):</strong> Specific, accurate factual detail from within 1933–39. Examples include:</p>
+    <ul>
+      <li>Conscription announced 1935; 1.4 million in armed forces by 1939</li>
+      <li>Armament spending from 3.5bn marks (1933) to 26bn marks (1939)</li>
+      <li>Autobahn employed 80,000 workers by 1935; 3,500 km complete by 1938</li>
+      <li>RAD compulsory for men 18–25 from 1935; 422,000 members 1935</li>
+      <li>Unemployment figures exclude women, Jews, part-time workers</li>
+      <li>Berlin Olympic Stadium 1936 as a public works project</li>
+    </ul>
+    <p><strong>6 marks for SOC (Second-Order Concept — cause and consequence):</strong> Explanations of HOW each factor mechanically reduced unemployment and what consequences this had for Germany.</p>
+    <p><strong>Level 4 (9–12):</strong> Three factors, strong K throughout, sustained and specific SOC chains in each paragraph.</p>
+    <p><strong>Level 3 (5–8):</strong> Two factors explained with some SOC, OR three factors with limited SOC.</p>
+    <p><strong>Do NOT award SOC marks for:</strong> Statements such as "this was significant" or "this helped a lot" without a specific causal chain.</p>
+    <p><strong>Examiner's Comment:</strong> The strongest answers acknowledge that the statistics are misleading — that women and Jewish citizens were excluded from official figures. This shows genuine critical engagement with evidence and is a reliable Level 4 indicator.</p>
+    </div>`,
+                modelAnswer: "One way the Nazis reduced unemployment between 1933 and 1939 was through rearmament. Hitler announced conscription in 1935, ignoring the Treaty of Versailles which had limited the army to 100,000 soldiers. By 1939, there were around 1.4 million men in the German armed forces. Spending on armaments also rose dramatically from 3.5 billion marks in 1933 to 26 billion marks by 1939 (K). This reduced unemployment because it not only directly employed young men as soldiers, but created millions of additional jobs in munitions factories, producing weapons, vehicles and uniforms for the rapidly expanding army. The knock-on effect meant that steel, coal and engineering industries all required more workers (SOC). Therefore, rearmament caused a significant fall in unemployment by creating jobs across both the military and the industrial workforce.\n\nAnother way the Nazis reduced unemployment was through the autobahn construction scheme. Hitler personally launched the project in 1933, with the aim of building 7,000 miles of motorway. By 1935, 80,000 men had been employed to build the roads, and by 1938, 3,500 km had been completed (K). The autobahn reduced unemployment because the construction sites provided large numbers of unskilled labouring jobs for men who had struggled to find work during the Great Depression. Furthermore, once completed, the improved road network boosted the wider economy by enabling German industries to transport raw materials and manufactured goods more efficiently — creating further employment in logistics and delivery (SOC). Therefore, the autobahn was effective at reducing unemployment both directly through construction jobs and indirectly through economic growth.\n\nA final way the Nazis reduced unemployment was through the National Labour Service (RAD). Established in 1933 and made compulsory for unemployed men aged 18 to 25 from 1935, RAD enrolled 422,000 members by that year alone (K). Although wages were low and the work — such as road repairs and tree planting — was often unskilled, RAD was significant because it gave young men their first experience of employment, teaching them timekeeping and basic work skills. Crucially, it also removed hundreds of thousands from the official unemployment figures, making the government's statistics look dramatically better. This also helped many RAD participants find permanent employment afterwards, having gained a reference and a work record (SOC). Therefore, RAD was a major tool in reducing both real and official unemployment, particularly among the generation hit hardest by the Depression."
+            },
+            {
+                num: "Q2",
+                marks: 12,
+                type: "written",
+                caseStudy: "",
+                question: "Explain why the Weimar Republic was unpopular in the years 1919–23. (12)\n\nYou may use the following in your answer:\n• reparations\n• the Weimar Constitution\nYou must also use information of your own.",
+                hint: "The two stimulus points are reparations and the Constitution. Your third factor must be your own knowledge — strong options include hyperinflation, the French invasion of the Ruhr, the Kapp Putsch, or the Spartacist Uprising. Remember: every piece of evidence must fall within 1919–23.",
+                starter: "One reason why the Weimar Republic was unpopular between 1919 and 1923 was reparations...\n\nAnother reason why the Weimar Republic was unpopular was the Weimar Constitution...\n\nA final reason why the Weimar Republic was unpopular was [OWN KNOWLEDGE — e.g. hyperinflation / the Kapp Putsch]...",
+                markScheme: `<div class="marks-section">
+    <h5>Mark Allocation — 12 marks (Level Response)</h5>
+    <p><strong>Knowledge (K) — up to 6 marks. Acceptable examples:</strong></p>
+    <ul>
+      <li>Reparations set at £6.6 billion / 132 billion gold marks in 1921; War Guilt Clause</li>
+      <li>Politicians who signed called 'November Criminals'; 'stab in the back' myth</li>
+      <li>Proportional representation led to 9 governments 1919–23; Article 48 used to bypass Reichstag</li>
+      <li>Kapp Putsch March 1920 — right-wing nationalist attempt to overthrow government</li>
+      <li>Spartacist Uprising January 1919 — communist revolt; Rosa Luxemburg and Karl Liebknecht killed</li>
+      <li>French invasion of Ruhr 1923 after Germany defaulted on coal; government printed money; mark worthless by November 1923</li>
+    </ul>
+    <p><strong>SOC (cause and consequence) — up to 6 marks:</strong> Explanations of HOW each factor caused unpopularity — the mechanism, not just what happened.</p>
+    <p><strong>Do NOT award:</strong> Evidence from after 1923 (e.g. Dawes Plan, Stresemann's chancellorship is borderline — must be applied to the 1919–23 period only).</p>
+    <p><strong>Examiner's Comment:</strong> Many students describe the Treaty of Versailles accurately but fail to explain WHY its terms caused anger — e.g. they do not link the War Guilt Clause to the 'stab in the back' myth or explain how reparations caused economic pressure that fed into hyperinflation.</p>
+    </div>`,
+                modelAnswer: "One reason why the Weimar Republic was unpopular between 1919 and 1923 was the reparations imposed by the Treaty of Versailles. In signing the Treaty in 1919, the Weimar government accepted the War Guilt Clause, which stated Germany was solely responsible for the First World War, and agreed to pay £6.6 billion (132 billion gold marks) in reparations (K). This caused intense unpopularity because many Germans believed they did not deserve the blame for starting the war, and the financial burden made economic recovery impossible. The German public called the politicians who signed the Treaty 'November Criminals,' a label that spread the 'stab in the back' myth — the idea that Germany had not lost militarily but been betrayed by its own politicians. This united many Germans against the Weimar government from its very inception (SOC). Therefore, reparations created unpopularity by combining financial hardship with a powerful sense of national humiliation and political betrayal.\n\nAnother reason the Weimar Republic was unpopular was the weaknesses of its Constitution. Although the Constitution introduced universal suffrage for men and women over 21, its use of proportional representation meant no party ever won a majority. This resulted in coalition governments that disagreed on policy and frequently collapsed — there were 9 different governments between 1919 and 1923 alone (K). This caused unpopularity because ordinary Germans experienced constant political uncertainty, with governments unable to make the firm decisions needed to tackle the enormous problems facing the country. Article 48 — which allowed the President to rule by emergency decree — was also seen as undermining democratic principles and created fear of authoritarian rule (SOC). Therefore, the Constitution's structural flaws generated unpopularity by creating an unstable government that appeared incapable of governing effectively.\n\nA final reason for the Weimar Republic's unpopularity was the hyperinflation crisis of 1923. When France invaded the Ruhr in January 1923 after Germany failed to deliver coal reparations, the Weimar government called a general strike and continued to pay workers their wages while receiving no industrial output. To fund this, the government printed vast quantities of money, triggering catastrophic inflation. By November 1923, the mark was completely worthless — a loaf of bread cost 200 billion marks (K). This caused widespread anger because the middle classes saw a lifetime of savings become worthless overnight, while pensioners and those on fixed incomes faced poverty. The government's poor handling of the crisis — printing money rather than negotiating — made it look incompetent and reckless (SOC). Therefore, hyperinflation was a major cause of unpopularity as it directly destroyed the financial security of millions of Germans who had done nothing wrong."
+            },
+            {
+                num: "Q3",
+                marks: 12,
+                type: "written",
+                caseStudy: "",
+                question: "Explain why the Nazis were able to create a police state in the years 1933–39. (12)\n\nYou may use the following in your answer:\n• concentration camps\n• law courts\nYou must also use information of your own.",
+                hint: "The two stimulus points are concentration camps and law courts (People's Court). Your own knowledge point could be the Gestapo, the SS, the Enabling Act's role, emergency powers, or censorship. Focus each paragraph on HOW that method created fear and compliance — that is your SOC.",
+                starter: "One way the Nazis created a police state was through the use of concentration camps...\n\nAnother method that contributed to the Nazi police state was their control over law courts...\n\nA final way the Nazis created a police state was through [OWN KNOWLEDGE — e.g. the Gestapo / the SS]...",
+                markScheme: `<div class="marks-section">
+    <h5>Mark Allocation — 12 marks (Level Response)</h5>
+    <p><strong>Knowledge (K) — up to 6 marks. Acceptable examples:</strong></p>
+    <ul>
+      <li>First concentration camp opened at Dachau 1933; conditions publicised to create fear</li>
+      <li>People's Court established to try treason cases; trials in secret; no jury; no appeal; judges loyal to Nazi Party</li>
+      <li>534 people executed by People's Court between 1934 and 1939</li>
+      <li>Gestapo wore plain clothes; tapped phones; sent suspects to camps without trial</li>
+      <li>Enabling Act March 1933 gave Hitler power to pass laws without Reichstag for 4 years</li>
+      <li>SS established as Hitler's personal bodyguard; completely loyal; separate from SA</li>
+    </ul>
+    <p><strong>SOC (cause and consequence) — up to 6 marks:</strong> Explanations of HOW each method mechanically created a police state — typically by generating fear, preventing opposition, or ensuring compliance.</p>
+    <p><strong>Do NOT award:</strong> Vague phrases such as "this created fear" without explaining the mechanism. Examiners want to see WHY the fear was effective and HOW it prevented opposition.</p>
+    <p><strong>Examiner's Comment:</strong> The strongest answers explain that the Gestapo's power came partly from their invisibility in plain clothes — this is a SOC-level insight, not just a factual statement. Students who treat this as mere K rather than explaining the psychological mechanism miss marks.</p>
+    </div>`,
+                modelAnswer: "One way the Nazis created a police state between 1933 and 1939 was through the establishment of concentration camps. The first camp was opened at Dachau in 1933 and was widely publicised in German media. Conditions in the camps were deliberately harsh and featured hard labour, poor food and brutal treatment (K). This helped create a police state because the public awareness of what awaited opponents of the regime served as a powerful deterrent. Citizens knew that speaking out against the Nazis — or being denounced by a neighbour — could result in imprisonment in conditions of deliberate suffering. This created a climate of self-censorship across German society, effectively silencing potential opposition before it could form (SOC). Therefore, concentration camps were central to the police state because their existence alone was enough to suppress dissent.\n\nAnother way the Nazis created a police state was through their control of the law courts. The People's Court was established to hear cases of treason, the most serious crime under the Nazi regime. Trials were held in secret, there was no jury, judges were personally selected for their loyalty to the Nazi Party, and convicted individuals had no right of appeal. Between 1934 and 1939, 534 people were executed by the People's Court (K). This created a police state because it removed the protection of fair legal process from ordinary citizens. People could be arrested, tried in secret and executed on the basis of little or no evidence, with no mechanism for challenge or appeal. The knowledge that the legal system itself was an instrument of Nazi control ensured that opposition was seen as not only dangerous but futile (SOC). Therefore, the Nazis' manipulation of the courts was a key pillar of the police state because it eliminated legal protection for German citizens.\n\nA final way the Nazis created a police state was through the Gestapo, the Nazi secret police. The Gestapo operated in plain clothes rather than uniform, tapped phone lines, monitored correspondence and could send suspects directly to concentration camps without going through normal legal processes (K). This was particularly effective in creating a police state because ordinary Germans could never be certain whether a colleague, neighbour or stranger was a Gestapo agent. This uncertainty forced people to self-police their own speech and behaviour constantly, reducing the risk of opposition forming even without active Gestapo presence. The result was that the Nazis achieved control not just through active surveillance but through the psychological impact of the possibility of surveillance (SOC). Therefore, the Gestapo created a police state by making every German citizen their own censor."
+            },
+            {
+                num: "Q4",
+                marks: 12,
+                type: "written",
+                caseStudy: "",
+                question: "Explain why the Nazi Party was reorganised in the years 1924–28. (12)\n\nYou may use the following in your answer:\n• elections\n• the Bamberg Conference (1926)\nYou must also use information of your own.",
+                hint: "Your two stimulus points are elections and the Bamberg Conference. A strong third factor is the impact of the Munich Putsch (1923) — it forced Hitler to pursue legal means and restructure the party for electoral politics. You could also use Mein Kampf, the creation of the SS, or the regional Gaue system.",
+                starter: "One reason why the Nazi Party was reorganised from 1924 to 1928 was to increase its performance in elections...\n\nAnother reason why the Nazi Party was reorganised was the Bamberg Conference of 1926...\n\nA final reason why the Nazi Party was reorganised was [OWN KNOWLEDGE — e.g. the consequences of the Munich Putsch]...",
+                markScheme: `<div class="marks-section">
+    <h5>Mark Allocation — 12 marks (Level Response)</h5>
+    <p><strong>Knowledge (K) — up to 6 marks. Acceptable examples:</strong></p>
+    <ul>
+      <li>Nazi Party won only 12 seats (3% of votes) in May 1928 election</li>
+      <li>Germany was economically stable under Stresemann, reducing extremist appeal</li>
+      <li>Bamberg Conference 1926 — Hitler confronted socialist wing; labelled Strasser 'communist'</li>
+      <li>Munich Putsch November 1923 — Hitler imprisoned for 9 months; learned power must be won legally</li>
+      <li>Creation of SS as personally loyal bodyguard, separate from SA</li>
+      <li>Germany divided into regional Gaue, each with an appointed leader loyal to Hitler</li>
+      <li>Hitler wrote Mein Kampf in prison — outlined core nationalist ideology that restructured party's direction</li>
+      <li>Positions of Party Secretary and Party Treasurer created to improve internal management</li>
+    </ul>
+    <p><strong>SOC — up to 6 marks:</strong> Explanations of WHY reorganisation was necessary and HOW each factor caused the party to change its structure or direction.</p>
+    <p><strong>Examiner's Comment:</strong> Strong answers connect the Munich Putsch failure directly to the need for reorganisation — Hitler's imprisonment and the Putsch's failure are K; the realisation that power had to be won through elections, and the organisational changes this required, is the SOC chain. Many students describe the Putsch without making this connection.</p>
+    </div>`,
+                modelAnswer: "One reason why the Nazi Party was reorganised from 1924 to 1928 was Hitler's recognition that the party needed to become more electable. In the May 1928 election, the Nazi Party won only 12 seats — approximately 3% of the overall vote. This poor performance occurred partly because Germany's economy had stabilised under Stresemann, reducing the appeal of extremist parties during a period of relative prosperity (K). This poor electoral performance was a key driver of reorganisation because Hitler understood that the NSDAP could not gain power without winning significantly more votes. He responded by creating specialist Nazi organisations for doctors, lawyers and teachers to widen the party's appeal to the influential middle classes — groups who had previously dismissed the Nazis as a party of street violence. This shift in strategy reflected a fundamental change in how Hitler intended to seize power (SOC). Therefore, poor electoral results forced the Nazi Party to professionalize and broaden its appeal in order to become a genuine electoral threat.\n\nAnother reason for reorganisation was the Bamberg Conference of 1926. Hitler had become concerned that the Nazi Party was fracturing into 'nationalist' and 'socialist' wings with conflicting aims. At Bamberg, he directly confronted the left-wing faction led by Gregor Strasser, labelling them 'communists' and enemies of the movement (K). The Conference was significant because it allowed Hitler to reassert ideological unity by removing the socialist faction and cementing the NSDAP as a right-wing nationalist party. This gave the party a clearer, more consistent identity that could be marketed to potential supporters. It also strengthened Hitler's personal dominance by eliminating an internal rival power base that could have challenged his leadership (SOC). Therefore, the Bamberg Conference reorganised the Nazi Party by imposing ideological discipline and consolidating Hitler's personal authority.\n\nA final reason for the reorganisation of the Nazi Party was the consequences of the Munich Putsch. In November 1923, Hitler attempted to seize power by force, capturing officials in a Munich beer hall. The Putsch failed, Hitler was arrested and sentenced to prison, serving nine months in Landsberg (K). The failure of the Putsch was the single most important driver of party reorganisation because Hitler concluded that power could not be seized by violence — it had to be won through legal political means. In prison he wrote Mein Kampf, which outlined the nationalist ideology the party would now pursue. On release, he restructured the NSDAP by creating formal positions of Party Secretary and Party Treasurer, and dividing Germany into regional Gaue with appointed leaders loyal to him, making the party far more organised and professionally managed (SOC). Therefore, the Munich Putsch forced a fundamental rethink of how the Nazi Party would operate, transforming it from a street movement into an electoral organisation."
+            },
+            {
+                num: "Q5",
+                marks: 1,
+                type: "mcq",
+                caseStudy: "",
+                question: "Which of the following correctly describes the mark allocation for Q2 on Edexcel Paper 3?",
+                options: [
+                    "8 marks for Knowledge, 4 marks for SOC",
+                    "6 marks for Knowledge, 6 marks for SOC",
+                    "4 marks for Knowledge, 8 marks for SOC",
+                    "12 marks for Knowledge only, no SOC marks awarded"
+                ],
+                answer: 1,
+                hint: "Think about what the examiner told you the 12 marks are split between — there are two equally important skills being assessed.",
+                starter: "The correct answer is...",
+                markScheme: `<div class="marks-section">
+    <h5>Answer: B — 1 mark</h5>
+    <p><strong>B: 6 marks for Knowledge, 6 marks for SOC.</strong> The 12 marks are split equally between factual knowledge and second-order concept analysis.</p>
+    <ul>
+      <li><strong>Why A is wrong:</strong> The split is equal (6/6), not 8/4. Overweighting K would mean SOC analysis matters less than it does.</li>
+      <li><strong>Why C is wrong:</strong> SOC is not worth more than K — both carry equal weight.</li>
+      <li><strong>Why D is wrong:</strong> SOC marks are a fundamental part of the mark scheme. An answer with no SOC analysis cannot score above Level 2 (3–4 marks maximum).</li>
+    </ul>
+    </div>`,
+                modelAnswer: ""
+            },
+            {
+                num: "Q6",
+                marks: 12,
+                type: "written",
+                caseStudy: "",
+                question: "Explain why the Weimar Republic faced political instability in the years 1919–23. (12)\n\nYou may use the following in your answer:\n• the Kapp Putsch\n• proportional representation\nYou must also use information of your own.",
+                hint: "Your two stimulus points are the Kapp Putsch and proportional representation. A strong third factor is the hyperinflation crisis of 1923 / French invasion of the Ruhr, the Treaty of Versailles and the 'stab in the back' myth, or the Spartacist Uprising. Make sure you explain HOW each factor caused political instability — not just what happened.",
+                starter: "One reason the Weimar Republic faced political instability was opposition from the left and right, including the Kapp Putsch...\n\nAnother reason for political instability was the use of proportional representation in the Weimar Constitution...\n\nA final reason for political instability was [OWN KNOWLEDGE — e.g. hyperinflation / Treaty of Versailles / Spartacist Uprising]...",
+                markScheme: `<div class="marks-section">
+    <h5>Mark Allocation — 12 marks (Level Response)</h5>
+    <p><strong>Knowledge (K) — up to 6 marks. Acceptable examples:</strong></p>
+    <ul>
+      <li>Kapp Putsch March 1920 — Wolfgang Kapp; 5,000 Freikorps seized Berlin; government fled; general strike defeated it</li>
+      <li>Spartacist Uprising January 1919 — Rosa Luxemburg and Karl Liebknecht; crushed by Freikorps; 100+ killed</li>
+      <li>Proportional representation → no majority → 9 coalition governments 1919–23</li>
+      <li>Article 48 — President could rule by decree; used to bypass Reichstag</li>
+      <li>Treaty of Versailles 1919 — £6.6bn reparations; War Guilt Clause; 'November Criminals'; stab in the back myth</li>
+      <li>French invasion of Ruhr January 1923; government printed money; mark worthless by November 1923</li>
+      <li>Hyperinflation — loaf of bread cost 200 billion marks by November 1923; middle-class savings wiped out</li>
+    </ul>
+    <p><strong>SOC — up to 6 marks:</strong> Explanations of HOW each factor caused political instability — weakening confidence in the republic, enabling extremism, undermining the economy, or creating conditions for revolt.</p>
+    <p><strong>Common errors to avoid:</strong> Describing uprisings without explaining why they caused instability. Listing problems without linking them to political consequences. Including events from after 1923.</p>
+    <p><strong>Examiner's Comment:</strong> Students frequently confuse 'instability' with 'unpopularity' — these are closely related but distinct. Political instability specifically refers to the inability to maintain stable government, not just public dissatisfaction. The strongest answers link each factor explicitly to government collapse, violent challenges to authority, or the erosion of democratic norms.</p>
+    </div>`,
+                modelAnswer: "One reason the Weimar Republic faced political instability between 1919 and 1923 was the violent opposition it faced from both the left and right. In January 1919, the Spartacist Uprising — a communist revolt led by Rosa Luxemburg and Karl Liebknecht — attempted to overthrow the new republic. Although it was crushed by the Freikorps with over 100 killed, in March 1920 the Kapp Putsch saw 5,000 right-wing nationalist Freikorps troops seize Berlin, forcing the government to flee. The Putsch only failed because of a general strike by German workers (K). This caused political instability because it revealed that the Weimar government could not rely on its own army to defend it — army generals refused to fire on the Freikorps. The existence of powerful, armed groups on both the extreme left and right demonstrated that the republic lacked the legitimacy and coercive power to govern securely. Extremists on both sides were willing to use violence to overthrow the democratically elected government (SOC). Therefore, violent opposition from left and right created fundamental political instability by exposing the fragility of the new republic.\n\nAnother reason for political instability was the Weimar Constitution's use of proportional representation. Under PR, seats in the Reichstag were allocated according to the percentage of votes each party won, meaning no single party ever gained a majority. This forced parties to form coalition governments of two or more parties with different aims and policies. There were 9 different coalition governments between 1919 and 1923 alone (K). This caused instability because coalition partners frequently disagreed on key policies — particularly economic decisions — and governments regularly collapsed, triggering new elections and further uncertainty. Additionally, Article 48 of the Constitution allowed the President to rule by emergency decree without the Reichstag, undermining the principle of parliamentary democracy. Frequent elections and reliance on emergency powers made it impossible for the government to provide the firm, consistent leadership needed to address Germany's enormous post-war challenges (SOC). Therefore, proportional representation was a structural cause of political instability by making stable, decisive government nearly impossible.\n\nA final reason for political instability was the hyperinflation crisis of 1923. In January 1923 France invaded the Ruhr, Germany's industrial heartland, after Germany defaulted on coal reparations. The government responded by calling a general strike and continuing to pay workers — funding this by printing vast quantities of money. By November 1923 the German mark had become completely worthless, with a loaf of bread costing 200 billion marks (K). This caused severe political instability because it destroyed the savings of the middle classes overnight, wiping out the financial security of the very social group that had been most supportive of the Weimar Republic. The government's inability to protect its citizens from economic catastrophe destroyed confidence in the republic's competence and drove many towards extremist parties who promised strong, decisive action. The economic chaos also provided the conditions for the Munich Putsch of November 1923, in which Hitler attempted to exploit the crisis to seize power (SOC). Therefore, hyperinflation intensified political instability by collapsing public trust in the government and fuelling support for anti-democratic extremists."
+            }
+        ];
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
