@@ -208,18 +208,6 @@
             subtitle: "Interactive revision guide · Master the 'Explain Why' question"
         };
 
-        /* ── Apply metadata on load ── */
-        document.addEventListener('DOMContentLoaded', () => {
-            const badgeEl = document.querySelector('.badge');
-            const h1El = document.querySelector('header h1');
-            const subEl = document.querySelector('header p');
-            const titleEl = document.querySelector('title');
-
-            if (badgeEl) badgeEl.innerHTML = pageMeta.badge;
-            if (h1El) h1El.textContent = pageMeta.title;
-            if (subEl) subEl.textContent = pageMeta.subtitle;
-            if (titleEl) titleEl.textContent = pageMeta.title.replace(/&amp;/g, '&');
-        });
 
         /* ══════════════════════════════════════════════
            ARRAY 1 · topics  (Key Learning cards)
@@ -276,13 +264,13 @@
     <p>For every piece of evidence (K), you must follow it with a SOC sentence that explains <em>how</em> and <em>why</em> it caused the development in the question — not just what happened.</p>`
             },
             {
-                title: "The PEEL Paragraph Structure",
+                title: "The TEAL paragraph structure",
                 tag: "Exam Technique",
-                content: `<p>Every paragraph in your Q2 answer should follow the <strong>PEEL structure</strong>. You need <strong>three PEEL paragraphs</strong> to access Level 4. Each paragraph covers one distinct factor.</p>
+                content: `<p>Every paragraph in your Q2 answer should follow the <strong>TEAL structure</strong>. You need <strong>three TEAL paragraphs</strong> to access Level 4. Each paragraph covers one distinct factor.</p>
     <ul>
-      <li><strong>P — Point:</strong> State the factor/reason clearly in one sentence. This answers the 'why' directly.</li>
+      <li><strong>T — Topic sentence :</strong> State the factor/reason clearly in one sentence. This answers the 'why' directly.</li>
       <li><strong>E — Evidence (K):</strong> Provide specific, accurate factual detail. Include dates, statistics, named individuals, events, or laws. Use <em>multiple</em> pieces of evidence from within the time period stated in the question.</li>
-      <li><strong>E — Explain (SOC):</strong> Explain how your evidence caused or resulted in the development in the question. This is your second-order concept application — the examiner's most important mark-scoring element.</li>
+      <li><strong>A — Analysis (SOC):</strong> Analysis of how your evidence caused or resulted in the development in the question. This is your second-order concept application — the examiner's most important mark-scoring element.</li>
       <li><strong>L — Link:</strong> Link back to the question using key words from it to close the paragraph.</li>
     </ul>
     <div class="case-study-box">

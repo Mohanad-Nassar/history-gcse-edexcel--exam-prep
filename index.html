@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weimar &amp; Nazi Germany — Revision Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700;900&display=swap"
+    rel="stylesheet" />
   <style>
     /* ── CSS Variables (mirror stylesheet.css) ── */
     :root {
@@ -23,10 +26,16 @@
       --text-dim: #b0a898;
       --card-bg: #1e1c17;
       --radius: 10px;
-      --shadow: 0 4px 24px rgba(0,0,0,.5);
+      --shadow: 0 4px 24px rgba(0, 0, 0, .5);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -52,7 +61,7 @@
       position: absolute;
       inset: 0;
       background: repeating-linear-gradient(45deg, transparent, transparent 40px,
-        rgba(200,150,58,.03) 40px, rgba(200,150,58,.03) 41px);
+          rgba(200, 150, 58, .03) 40px, rgba(200, 150, 58, .03) 41px);
       pointer-events: none;
     }
 
@@ -60,7 +69,8 @@
       content: '';
       position: absolute;
       bottom: -1px;
-      left: 0; right: 0;
+      left: 0;
+      right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
     }
@@ -174,7 +184,7 @@
     .q-card:hover {
       border-color: var(--accent);
       transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
     }
 
     .q-card-accent {
@@ -221,7 +231,7 @@
       justify-content: space-between;
       padding: 12px 22px;
       border-top: 1px solid var(--border);
-      background: rgba(0,0,0,.15);
+      background: rgba(0, 0, 0, .15);
     }
 
     .q-card-marks {
@@ -345,8 +355,8 @@
 
     /* ── Formula box (reuse from stylesheet) ── */
     .formula-box {
-      background: rgba(200,150,58,.08);
-      border: 1px solid rgba(200,150,58,.2);
+      background: rgba(200, 150, 58, .08);
+      border: 1px solid rgba(200, 150, 58, .2);
       border-radius: var(--radius);
       padding: 16px 20px;
       font-family: 'DM Mono', monospace;
@@ -378,13 +388,25 @@
 
     /* ── Responsive ── */
     @media (max-width: 640px) {
-      .hero { padding: 36px 16px 32px; }
-      main { padding: 28px 12px 48px; }
-      .paper-banner { gap: 16px; }
-      .pb-divider { display: none; }
+      .hero {
+        padding: 36px 16px 32px;
+      }
+
+      main {
+        padding: 28px 12px 48px;
+      }
+
+      .paper-banner {
+        gap: 16px;
+      }
+
+      .pb-divider {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- ── Hero ── -->
@@ -420,7 +442,7 @@
       <div class="pb-divider"></div>
       <div class="paper-banner-item">
         <span class="pb-label">Total marks</span>
-        <span class="pb-value">52 marks · 1 hr 20 min</span>
+        <span class="pb-value">52 marks · 1 hr 30 min</span>
       </div>
     </div>
 
@@ -435,7 +457,8 @@
         <div class="q-card-body">
           <div class="q-card-number">Question 3(a)</div>
           <div class="q-card-title">Give Two Things You Can Infer</div>
-          <div class="q-card-desc">Practise reading a source and making supported inferences. Covers what counts as inference vs. description, how to structure your answer, and common traps.</div>
+          <div class="q-card-desc">Practise reading a source and making supported inferences. Covers what counts as
+            inference vs. description, how to structure your answer, and common traps.</div>
         </div>
         <div class="q-card-footer">
           <span class="q-card-marks"><strong>4</strong> marks · ~5 min</span>
@@ -453,7 +476,8 @@
         <div class="q-card-body">
           <div class="q-card-number">Question 3(b) — Extended</div>
           <div class="q-card-title">Explain Why…</div>
-          <div class="q-card-desc">Master the 12-mark causal explanation question. Covers the two-factor structure, how to link causes, and the difference between description and explanation.</div>
+          <div class="q-card-desc">Master the 12-mark causal explanation question. Covers the two-factor structure, how
+            to link causes, and the difference between description and explanation.</div>
         </div>
         <div class="q-card-footer">
           <span class="q-card-marks"><strong>12</strong> marks · ~15 min</span>
@@ -472,7 +496,8 @@
         <div class="q-card-body">
           <div class="q-card-number">Question 3(a) — Sources</div>
           <div class="q-card-title">How Useful are Sources B and C?</div>
-          <div class="q-card-desc">Develop source utility analysis skills. Covers nature, origin, purpose, content evaluation, and how to use own knowledge to contextualise sources for marks.</div>
+          <div class="q-card-desc">Develop source utility analysis skills. Covers nature, origin, purpose, content
+            evaluation, and how to use own knowledge to contextualise sources for marks.</div>
         </div>
         <div class="q-card-footer">
           <span class="q-card-marks"><strong>8</strong> marks · ~12 min</span>
@@ -490,7 +515,8 @@
         <div class="q-card-body">
           <div class="q-card-number">Questions 3(b) &amp; 3(c)</div>
           <div class="q-card-title">Comparing Interpretations</div>
-          <div class="q-card-desc">Understand how to identify the main difference between two historical interpretations and explain why historians reach different conclusions using Sources B and C.</div>
+          <div class="q-card-desc">Understand how to identify the main difference between two historical interpretations
+            and explain why historians reach different conclusions using Sources B and C.</div>
         </div>
         <div class="q-card-footer">
           <span class="q-card-marks"><strong>4 + 4</strong> marks · ~10 min</span>
@@ -508,7 +534,8 @@
         <div class="q-card-body">
           <div class="q-card-number">Question 3(d)</div>
           <div class="q-card-title">How Far Do You Agree with Interpretation 2?</div>
-          <div class="q-card-desc">The big essay. Learn how to build an evaluative argument, weigh interpretations against each other, deploy own knowledge, and reach a supported judgement.</div>
+          <div class="q-card-desc">The big essay. Learn how to build an evaluative argument, weigh interpretations
+            against each other, deploy own knowledge, and reach a supported judgement.</div>
         </div>
         <div class="q-card-footer">
           <span class="q-card-marks"><strong>16</strong> marks · ~25 min</span>
@@ -534,7 +561,8 @@
       Q3(c) Why Different · · · · · 4 marks &nbsp;·&nbsp; ~5 min<br>
       Q3(d) Extended Essay · · · 16 marks &nbsp;·&nbsp; ~25 min<br>
       ─────────────────────────────────────<br>
-      Total · · · · · · · · · · · · · · · <strong style="color:var(--accent2)">48 marks &nbsp;·&nbsp; ~1 hr 7 min</strong>
+      Total · · · · · · · · · · · · · · · <strong style="color:var(--accent2)">48 marks &nbsp;·&nbsp; ~1 hr 7
+        min</strong>
     </div>
 
     <!-- ── How to Use ── -->
@@ -545,14 +573,16 @@
         <div class="how-icon">📚</div>
         <div>
           <div class="how-label">Key Learning</div>
-          <div class="how-desc">Expandable content cards covering all core concepts, techniques, and examples for the question type.</div>
+          <div class="how-desc">Expandable content cards covering all core concepts, techniques, and examples for the
+            question type.</div>
         </div>
       </div>
       <div class="how-card">
         <div class="how-icon">❓</div>
         <div>
           <div class="how-label">MCQ Quiz</div>
-          <div class="how-desc">Multiple-choice questions with instant feedback and detailed explanations for every option.</div>
+          <div class="how-desc">Multiple-choice questions with instant feedback and detailed explanations for every
+            option.</div>
         </div>
       </div>
       <div class="how-card">
@@ -566,42 +596,48 @@
         <div class="how-icon">✏️</div>
         <div>
           <div class="how-label">Fill in the Blanks</div>
-          <div class="how-desc">Complete sentences using a word bank — tests recall of key facts, dates, and exam technique rules.</div>
+          <div class="how-desc">Complete sentences using a word bank — tests recall of key facts, dates, and exam
+            technique rules.</div>
         </div>
       </div>
       <div class="how-card">
         <div class="how-icon">✅</div>
         <div>
           <div class="how-label">True / False</div>
-          <div class="how-desc">Challenge common misconceptions with statements that target the most frequent student errors.</div>
+          <div class="how-desc">Challenge common misconceptions with statements that target the most frequent student
+            errors.</div>
         </div>
       </div>
       <div class="how-card">
         <div class="how-icon">⚠️</div>
         <div>
           <div class="how-label">Misconceptions</div>
-          <div class="how-desc">See exactly what examiners warn about and learn the accurate, mark-scheme-approved response.</div>
+          <div class="how-desc">See exactly what examiners warn about and learn the accurate, mark-scheme-approved
+            response.</div>
         </div>
       </div>
       <div class="how-card">
         <div class="how-icon">🎯</div>
         <div>
           <div class="how-label">Exam Tips</div>
-          <div class="how-desc">Step-by-step formula for each question type with weak vs. strong answer examples and sentence starters.</div>
+          <div class="how-desc">Step-by-step formula for each question type with weak vs. strong answer examples and
+            sentence starters.</div>
         </div>
       </div>
       <div class="how-card">
         <div class="how-icon">🃏</div>
         <div>
           <div class="how-label">Flashcards</div>
-          <div class="how-desc">Flip-card revision of every key term, technique, and past-exam example — ideal for last-minute review.</div>
+          <div class="how-desc">Flip-card revision of every key term, technique, and past-exam example — ideal for
+            last-minute review.</div>
         </div>
       </div>
       <div class="how-card">
         <div class="how-icon">📝</div>
         <div>
           <div class="how-label">Exam Practice</div>
-          <div class="how-desc">Real exam-style questions with hints, sentence starters, mark schemes, and full model answers.</div>
+          <div class="how-desc">Real exam-style questions with hints, sentence starters, mark schemes, and full model
+            answers.</div>
         </div>
       </div>
     </div>
@@ -613,4 +649,5 @@
   </footer>
 
 </body>
+
 </html>

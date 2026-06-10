@@ -206,19 +206,6 @@
       subtitle: "Interactive revision guide · 4-mark source inference question · Full exam practice"
     };
 
-    /* ── Apply metadata on load ── */
-    document.addEventListener('DOMContentLoaded', () => {
-      const badgeEl = document.querySelector('.badge');
-      const h1El = document.querySelector('header h1');
-      const subEl = document.querySelector('header p');
-      const titleEl = document.querySelector('title');
-
-      if (badgeEl) badgeEl.innerHTML = pageMeta.badge;
-      if (h1El) h1El.textContent = pageMeta.title;
-      if (subEl) subEl.textContent = pageMeta.subtitle;
-      if (titleEl) titleEl.textContent = pageMeta.title.replace(/&amp;/g, '&');
-    });
-
 
     /* ══════════════════════════════════════════════
        ARRAY 1 · topics  (📚 Key Learning)
